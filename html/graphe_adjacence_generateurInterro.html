@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="../css/style.css">	
+
+        <title>graphe et matrice adjacence</title>
+
+		<style>
+		
+			table {
+			border : solid 1px white;
+			}
+			td {
+			border : solid 1px white;
+			width:20px;
+			height:20px;
+			text-align:center;
+			}
+			
+			body {
+
+			color:#ffffff;
+			background-color:#555555;
+			font-family: sans-serif;
+			font-weight:bold;
+			font-size:15px;
+			}
+			
+			cache {
+			display:none;
+			}
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+		div { 
+			position:relative;
+			background-color : #7f7f7f;
+		}
+		
+		body {
+			background-color : #7f7f7f;
+			margin-left:10px;
+		}
+		
+		img.superpose {
+			position: absolute;
+
+			width:200px;
+			height:200px;
+		}
+		
+		#img_1 {
+			z-index: 10;
+		}
+		
+			@media print{
+				#saut_page {
+					page-break-before: always;
+				}
+			}		
+		
+
+		</style>
+    </head>
+    <body>
+
+		<div id="enonce_generateur"> </div>
+		
+
+		<main>
+			
+
+		</main>		
+		
+		<!-- </div><div id=\"saut_page\"></div>
+		-->
+		
+<!--		<div style="display:flex; justify-content:space-between;"><p>Nom : </p><p>Prenom :</p><p></p></div> -->
+
+
+
+
+		
+	</body>
+	
+	<script>
+	function nomImage(a,b)
+	{
+		let nomImage="";
+		a==0 ? nomImage="A" : null ;
+		a==1 ? nomImage="B" : null ;
+		a==2 ? nomImage="C" : null ;
+		a==3 ? nomImage="D" : null ;
+		a==4 ? nomImage="E" : null ;
+		a==5 ? nomImage="F" : null ;
+		nomImage=nomImage+"vers";
+		b==0 ? nomImage+="A" : null ;
+		b==1 ? nomImage+="B" : null ;
+		b==2 ? nomImage+="C" : null ;
+		b==3 ? nomImage+="D" : null ;
+		b==4 ? nomImage+="E" : null ;
+		b==5 ? nomImage+="F" : null ;		
+		nomImage=nomImage+".png";
+		return nomImage;
+	}
+	
+	function successeur(a,b,c)
+	{
+		let sommet="";
+		let successeur1="";
+		let successeur2="";
+		let reponse="";
+		
+		a==0 ? sommet="A" : null ;
+		a==1 ? sommet="B" : null ;
+		a==2 ? sommet="C" : null ;
+		a==3 ? sommet="D" : null ;
+		a==4 ? sommet="E" : null ;
+		a==5 ? sommet="F" : null ;
+
+		b==0 ? successeur1="A" : null ;
+		b==1 ? successeur1="B" : null ;
+		b==2 ? successeur1="C" : null ;
+		b==3 ? successeur1="D" : null ;
+		b==4 ? successeur1="E" : null ;
+		b==5 ? successeur1="F" : null ;
+		
+		c==0 ? successeur2="A" : null ;
+		c==1 ? successeur2="B" : null ;
+		c==2 ? successeur2="C" : null ;
+		c==3 ? successeur2="D" : null ;
+		c==4 ? successeur2="E" : null ;
+		c==5 ? successeur2="F" : null ;
+		
+		reponse="<p style=\"margin:0px;\">Le sommet "+sommet+" a pour successeur "+successeur1+" et "+successeur2+"</p>";
+		return reponse;
+	}	
+	
+		let images="<div id=\"reponse\" ><div style=\"display:flex; \"><div id=\"images_corrige\" style=\"width:250px; height:220px;\">"
+		let enonce="";
+		let tablo_corrige=document.getElementById("tablo_corrige");
+		let enonce_generateur=document.getElementById("enonce_generateur");
+		let left=0
+		
+	for(let nbEleve=0;nbEleve<15;nbEleve++)
+	{
+		let tablo=[[0, 0, 0, 0 ,0, 0], [0, 0, 0, 0 ,0, 0], [0, 0, 0, 0 ,0, 0], [0, 0, 0, 0 ,0, 0], [0, 0, 0, 0 ,0, 0],[0, 0, 0, 0 ,0, 0]];
+
+
+		
+		enonce_generateur.innerHTML=enonce_generateur.innerHTML+"<p><center>Graphe et matrice d adjacence - correction sujet "+nbEleve+" </center></p>"
+
+
+									
+								//	+"<img src=\"graphe_adjacence/fond.png\" id=\"img_1\" class=\"superpose\" >"
+		
+		let zindex=10;
+	
+		for(let k=0;k<6;k++)
+		{
+
+			i1= Math.floor(Math.random() * (6)) ;
+			i2 = Math.floor(Math.random() * (6)) ;
+			while(i1==i2)
+			{
+				i2 = Math.floor(Math.random() * (6)) ;
+			}
+
+			tablo[k][i1]=1;
+			zindex++;
+			images=images+"<img src=\"graphe_adjacence/"+nomImage(k,i1)+"\" class=\"superpose\" style=\"z-index:"+zindex+"\" >"
+			tablo[k][i2]=1;
+			zindex++;
+			images=images+"<img src=\"graphe_adjacence/"+nomImage(k,i2)+"\" class=\"superpose\" style=\"z-index:"+zindex+"\" >"
+
+			
+			if(k==5)
+				images=images+"</div>"
+			
+			enonce=enonce+successeur(k,i1,i2);
+		}
+		
+	
+		enonce_generateur.innerHTML=enonce_generateur.innerHTML+images+"<div id=\"tablo_corrige\"><table>"
+								+"<tr><td>"+tablo[0][0]+"</td><td>"+tablo[0][1]+"</td><td>"+tablo[0][2]+"</td><td>"+tablo[0][3]+"</td><td>"+tablo[0][4]+"</td><td>"+tablo[0][5]+"</td></tr>"
+								+"<tr><td>"+tablo[1][0]+"</td><td>"+tablo[1][1]+"</td><td>"+tablo[1][2]+"</td><td>"+tablo[1][3]+"</td><td>"+tablo[1][4]+"</td><td>"+tablo[1][5]+"</td></tr>"
+								+"<tr><td>"+tablo[2][0]+"</td><td>"+tablo[2][1]+"</td><td>"+tablo[2][2]+"</td><td>"+tablo[2][3]+"</td><td>"+tablo[2][4]+"</td><td>"+tablo[2][5]+"</td></tr>"
+								+"<tr><td>"+tablo[3][0]+"</td><td>"+tablo[3][1]+"</td><td>"+tablo[3][2]+"</td><td>"+tablo[3][3]+"</td><td>"+tablo[3][4]+"</td><td>"+tablo[3][5]+"</td></tr>"
+								+"<tr><td>"+tablo[4][0]+"</td><td>"+tablo[4][1]+"</td><td>"+tablo[4][2]+"</td><td>"+tablo[4][3]+"</td><td>"+tablo[4][4]+"</td><td>"+tablo[4][5]+"</td></tr>"
+								+"<tr><td>"+tablo[5][0]+"</td><td>"+tablo[5][1]+"</td><td>"+tablo[5][2]+"</td><td>"+tablo[5][3]+"</td><td>"+tablo[5][4]+"</td><td>"+tablo[5][5]+"</td></tr>"
+								+"</table></div></div></div>"
+								+"<div class=\"enonce\">"
+								+"<div style=\"display:flex; justify-content:space-between;\"><br><br><p>Nom : </p><p>Prenom :</p><p></p></div>"
+								+"<p><center>Graphe et matrice d adjacence -  sujet \""+nbEleve+"\" </center></p>"
+								+"<div style=\"display:flex;height:180px;\">"
+								+"<div id=\"enonce\" style=\"margin-right:50px;\">"
+								+enonce
+								+"</div>"
+								+"<div id=\"images\">"
+								+"<img src=\"graphe_adjacence/fond.png\" id=\"img_1\" class=\"superpose\" style=\"width:150px; height:150px; margin-top:20px;\">"
+								+"</div></div><p >Completer le schéma sagittal et donnez la matrice d'adjacence</p></div>"
+								+"</div></div></div><div id=\"saut_page\"></div>"
+		enonce=""
+		images="<div id=\"reponse\" ><div style=\"display:flex; \"><div id=\"images_corrige\" style=\"width:250px; height:220px;\">"
+		
+	}
+	
+	</script>
+</html>
+

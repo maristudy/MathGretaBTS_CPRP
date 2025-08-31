@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>Les changements de base</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				width:300px;
+				height:50px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+				break-before: page;
+				border-bottom : solid 1px black;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+			let nbEleves = 29;
+			
+			for(let i=0;i<=nbEleves;i++)
+			{
+				// choix des valeurs et conversion en hexa et decimal
+			let xa,ya,xb,yb,m,p,signexa,signexb,signeya,signeyb;
+			xa = Math.floor(Math.random()*8) + 1;
+			ya = Math.floor(Math.random()*8) + 1;
+			xb = Math.floor(Math.random()*8) + 1;
+			while(xb == xa)
+				{
+					xb = Math.floor(Math.random()*8) + 1;
+				}
+			yb = Math.floor(Math.random()*8) + 1;
+			while(yb == ya)
+				{
+					yb = Math.floor(Math.random()*8) + 1;
+				}			
+				
+			m = ( yb - ya ) / (xb - xa)
+			p = ya - (m*xa)
+			
+			if (p<0)
+				{ p = p; }
+				else
+				{ p = "+ "+p; }
+				
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = "BTS CPRP 1 - équation de droite - Correction numéro "+i+"<br><br>Notre équation est de la forme y = m x + p. <br> m se calcule en utilisant la formule suivante : <br> m = ( yB - yA ) / ( xB - xA )" +
+			"<br> Nous avons donc m = ( "+yb+" - ("+ya+") ) / ( "+xb+" - ("+xa+") ) = "+ ( yb - ya ) +" / "+(xb - xa)+" = "+ m+"<br><br>"+
+			"Nous allons maintenant calculer p. Nous savons que la droite passe par le point A. Les coordonnées de A vérifient l'équation suivante : "+
+			" "+ya+" = "+m+" * "+xa+" + p <br>Nous avons donc "+ya+" = "+(m*xa)+" + p <br>d'où p = "+p+"<br> La droite qui passe par les points A et B a pour équation"+
+			" y = "+m+" x "+p +"<br><br>";	
+				
+				//"<p >Pour la conversion hexa vers binaire ( et réciproquement ) on utilise le tableau<br>"+
+				//"Pour la conversion du décimal vers une autre base, on utilise les divisions successives ( de 2 pour le binaire et de 16 pour l'hexa )<br>"+
+				//"Pour la conversion du binaire vers le décimal, on utilise les puissances de 2 ( ou les puissances de 16 pour l'hexa )</p>";		
+				sujet.appendChild(reponse);
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = "BTS CPRP 1 - équation de droite - Sujet numéro "+i;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+				enonce.innerHTML= "Quelle est l'équation de la droite qui passe par le point A ( "+xa+" ; "+ya+" ) et le point B ( "+xb+" ; "+yb+" ) ? Justifier votre réponse. <br><br><br><br><br><br><br><br>";
+
+				
+				
+				sujet.appendChild(enonce);
+				
+//				espace=document.createElement("div");
+//				espace.setAttribute("class","espace");
+//				sujet.appendChild(espace);
+
+
+			
+			}
+			
+		</script>
+		
+	</body>
+</html>

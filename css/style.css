@@ -1,0 +1,44 @@
+* {
+	padding : 0px;
+	margin : 0px;
+}
+
+body {
+	background-color : #555555;
+	color : #e0e0e0;
+	font-family: sans-serif;
+}
+
+a , a:visited {
+	color: #80caff; //8080ff;
+}
+
+li , ul {
+	margin-left:15px;
+}
+
+section , article {
+	margin-top : 10px;
+	margin-bottom:10px;
+	margin-left:15px;
+}
+
+article {
+	display:none;
+}
+
+h2 {
+	background-color:#424242;
+}
+
+.cache {
+	display : none ;
+}
+
+.visible {
+	display : block ;
+}
+
+.cours{
+	margin-top:15px ;
+}

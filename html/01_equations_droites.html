@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les changements de base</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+			border : solid 1px white;
+			}
+			td {
+			border : solid 1px white;
+			width:200px;
+			height:40px;
+			text-align:center;
+			}
+
+			cache {
+			display:none;
+			}
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaLannion/"> gitpage </a> </p>
+		</header>
+		<main>
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+			
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+			
+			let xa,ya,xb,yb,m,p,signexa,signexb,signeya,signeyb;
+			xa = Math.floor(Math.random()*8) + 1;
+			ya = Math.floor(Math.random()*8) + 1;
+			xb = Math.floor(Math.random()*8) + 1;
+			while(xb == xa)
+				{
+					xb = Math.floor(Math.random()*8) + 1;
+				}
+			yb = Math.floor(Math.random()*8) + 1;
+			while(yb == ya)
+				{
+					yb = Math.floor(Math.random()*8) + 1;
+				}			
+				
+			m = ( yb - ya ) / (xb - xa)
+			p = ya - (m*xa)
+			
+			if (p<0)
+				{ p = p; }
+				else
+				{ p = "+ "+p; }
+
+			
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= "Quelle est l'équation de la droite qui passe par le point A ( "+xa+" ; "+ya+" ) et le point B ( "+xb+" ; "+yb+" ) ? Justifier votre réponse. <br><br><br><br><br><br><br><br>";
+
+			reponse = document.getElementById("reponse");
+			reponse.innerHTML= "Notre équation est de la forme y = m x + p. <br> m se calcule en utilisant la formule suivante : <br> m = ( yB - yA ) / ( xB - xA )" +
+			"<br> Nous avons donc m = ( "+yb+" - ("+ya+") ) / ( "+xb+" - ("+xa+") ) = "+ ( yb - ya ) +" / "+(xb - xa)+" = "+ m+"<br><br>"+
+			"Nous allons maintenant calculer p. Nous savons que la droite passe par le point A. Les coordonnées de A vérifient l'équation suivante : "+
+			" "+ya+" = "+m+" * "+xa+" + p <br>Nous avons donc "+ya+" = "+(m*xa)+" + p <br>d'où p = "+p+"<br> La droite qui passe par les points A et B a pour équation"+
+			" y = "+m+" x "+p +"";		
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>

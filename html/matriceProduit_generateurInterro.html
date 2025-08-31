@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<div id="enonce"> </div>
+
+	<style>
+			tr {
+				border-spacing: 0;
+			}
+			
+			table {
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				height:25px;
+				width:25px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			.cache {
+			display:none;
+			}
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			body {
+				display:flex;
+				color:#ffffff;
+				background-color:#7f7f7f;
+				font-family: sans-serif;
+				font-weight:bold;
+				font-size:14px;
+			}
+			
+			a, a:visited {
+				color:#ffffff;
+			}
+			
+			.vide{
+				background-color:#7f7f7f;
+			}
+			
+			.barre{
+
+				border-top : solid 2px black;
+			}
+			
+			.plein{
+				background-color:grey;
+				color:grey;
+				width:35px;
+				height:35px;
+			}
+			
+			@media print{
+				#saut_page {
+					page-break-before: always;
+				}
+			}
+			
+	</style>
+
+<script>
+
+	var enonce=document.getElementById("enonce");
+	let sujet;
+	let correction;
+	
+	for(let i=0; i<14;i++)
+	{
+
+			let a11,a12,a21,a22,b11,b12,b21,b22
+			a11= Math.floor(Math.random()*8) + 1
+			a12= Math.floor(Math.random()*8) + 1
+			a21= Math.floor(Math.random()*8) + 1
+			a22= Math.floor(Math.random()*8) + 1
+			b11= Math.floor(Math.random()*8) + 1
+			b12= Math.floor(Math.random()*8) + 1
+			b21= Math.floor(Math.random()*8) + 1
+			b22= Math.floor(Math.random()*8) + 1
+			coef= Math.floor(Math.random()*7) + 2
+		
+
+		enonce.innerHTML+= "<div id=\"reponse\" ><center><span> ** correction sujet "+
+							i+" **</span></center>"+
+							"<div  id=\"reponse\" > <div style=\"display:flex; margin-top:25px;margin-left:30px;margin-bottom:30px;\">" +
+								"<div style=\"display:flex; flex-direction:column;\">"+
+									"<div style=\"margin-bottom:10px;\">Matrice  "+coef+"A :</div>"+
+									"<div style=\"display:flex;width:110px;\"><div style=\"border-top: 2px solid black; border-left: 2px solid black;\">&nbsp;</div><div style=\"margin: 5px 15px 5px 15px;width:70px;\">"+(a11*coef)+"</div><div style=\"margin: 5px 15px 5px 15px;width:70px;\">"+(a12*coef)+"</div><div style=\"border-top: 2px solid black; border-right: 2px solid black;\">&nbsp;</div></div>"+
+									"<div style=\"display:flex;width:110px;\"><div style=\"border-bottom: 2px solid black; border-left: 2px solid black;\">&nbsp;</div><div style=\"margin: 5px 15px 5px 15px;width:70px;\">"+(a21*coef)+"</div><div style=\"margin: 5px 15px 5px 15px;width:70px;\">"+(a22*coef)+"</div><div style=\"border-bottom: 2px solid black; border-right: 2px solid black;\">&nbsp;</div></div>"+
+								"</div>"+
+								
+								"<div style=\"display:flex; flex-direction:column;margin-left:100px;\">"+
+									"<div style=\"margin-bottom:10px;\">Matrice A x B :</div>"+
+									"<div style=\"display:flex;width:110px;\"><div style=\"border-top: 2px solid black; border-left: 2px solid black;\">&nbsp;</div><div style=\"margin: 5px 15px 5px 15px;width:70px;\">"+((a11*b11)+(a12*b21))+"</div><div style=\"margin: 5px 15px 5px 15px;width:70px;\">"+((a11*b12)+(a12*b22))+"</div><div style=\"border-top: 2px solid black; border-right: 2px solid black;\">&nbsp;</div></div>"+
+									"<div style=\"display:flex;width:110px;\"><div style=\"border-bottom: 2px solid black; border-left: 2px solid black;\">&nbsp;</div><div style=\"margin: 5px 15px 5px 15px;width:70px;\">"+((a21*b11)+(a22*b21))+"</div><div style=\"margin: 5px 15px 5px 15px;width:70px;\">"+((a21*b12)+(a22*b22))+"</div><div style=\"border-bottom: 2px solid black; border-right: 2px solid black;\">&nbsp;</div></div>"+
+								"</div>"+
+							"</div></div>"+
+							"</div></div><hr>";	
+
+		
+		enonce.innerHTML+=" <br>NOM : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+		"PRENOM : <br>"+
+		"<center>** sujet numéro "+i+" **</center></span><hr>";
+
+		
+
+		enonce.innerHTML+="<div style=\"display:flex; margin-top:25px;margin-left:30px;\">" +
+								"<div style=\"display:flex; flex-direction:column;\">"+
+									"<div style=\"margin-bottom:10px;\">Matrice A :</div>"+
+									"<div style=\"display:flex;\"><div style=\"border-top: 2px solid black; border-left: 2px solid black;\">&nbsp;</div><div style=\"margin: 5px 15px 5px 15px;\">"+a11+"</div><div style=\"margin: 5px 15px 5px 15px;\">"+a12+"</div><div style=\"border-top: 2px solid black; border-right: 2px solid black;\">&nbsp;</div></div>"+
+									"<div style=\"display:flex;\"><div style=\"border-bottom: 2px solid black; border-left: 2px solid black;\">&nbsp;</div><div style=\"margin: 5px 15px 5px 15px;\">"+a21+"</div><div style=\"margin: 5px 15px 5px 15px;\">"+a22+"</div><div style=\"border-bottom: 2px solid black; border-right: 2px solid black;\">&nbsp;</div></div>"+
+								"</div>"+
+								
+								"<div style=\"display:flex; flex-direction:column;margin-left:100px;\">"+
+									"<div style=\"margin-bottom:10px;\">Matrice B :</div>"+
+									"<div style=\"display:flex;\"><div style=\"border-top: 2px solid black; border-left: 2px solid black;\">&nbsp;</div><div style=\"margin: 5px 15px 5px 15px;\">"+b11+"</div><div style=\"margin: 5px 15px 5px 15px;\">"+b12+"</div><div style=\"border-top: 2px solid black; border-right: 2px solid black;\">&nbsp;</div></div>"+
+									"<div style=\"display:flex;\"><div style=\"border-bottom: 2px solid black; border-left: 2px solid black;\">&nbsp;</div><div style=\"margin: 5px 15px 5px 15px;\">"+b21+"</div><div style=\"margin: 5px 15px 5px 15px;\">"+b22+"</div><div style=\"border-bottom: 2px solid black; border-right: 2px solid black;\">&nbsp;</div></div>"+
+								"</div>"+
+								"<div style=\"margin-top:25px;margin-left:30px;\"> Calculer la matrice "+coef+"A, puis la matrice A x B</div>"+
+							"</div><div id=\"saut_page\"></div> " // saut de page
+
+	}
+
+
+</script>
+
+</body>
+</html> 
