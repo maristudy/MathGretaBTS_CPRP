@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les polynômes de degrès 2</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+				width:200px;
+				height:40px;
+				text-align:center;
+			}
+
+			body{
+				font-size: 2em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+			
+			let xa,ya,xb,yb,m,p,signexa,signexb,signeya,signeyb;
+
+		
+			let signea = Math.floor(Math.random()*10);
+			let a = Math.floor(Math.random()*5) + 2;
+			let b = Math.floor(Math.random()*5) + 2;
+			let c = Math.floor(Math.random()*5) + 2;
+			let signeHorsSol="positif";
+			let signeEntreSol="négatif";
+				
+			while((b*b)-(4*a*c) == 0)
+			{
+				b = Math.floor(Math.random()*5) + 2;
+			}
+			
+			if ((signea%2)!=0 )
+			{
+				a = a*(-1);
+				signeHorsSol= "négatif";
+				signeEntreSol="positif";
+			}
+			
+			if(a>0)
+			{
+				c = c*(-1)
+			}
+
+			let delta= (b*b)-(4*a*c)
+			let x1=((b*(-1))-Math.sqrt(delta))/(2*a)
+			let x2=((b*(-1))+Math.sqrt(delta))/(2*a)
+			
+			if (x1<x2)
+			{
+				sol1=x1;
+				sol2=x2;
+			}
+			else
+			{
+				sol1=x2;
+				sol2=x1;
+			}
+			
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= "Soit la fonction f(x) = "+a+" x<sup>2</sup>" + (b<0?" - "+b:" + "+b)+" x "+(c<0?" "+c:" + "+c)+". <br>"+
+				"On vous demande de trouver les solutions de l'équation f(x) = 0 et de déterminer le signe de f(x).<br>(0.5) Donner la formule de &Delta; <br>(0.5) Calculer &Delta; en détaillant votre calcul, donner le signe de &Delta; et en déduire le nombre de solution<br>"+
+				"(0.5) Donner la formule pour trouver la première solution<br> (0.5) Calculer la première solution en détaillant votre calcul<br>"+
+				"(0.5) Donner la formule pour trouver la seconde solution<br> (0.5) Calculer la seconde solution en détaillant votre calcul<br>"+
+				"(0.5) Donner l'ensemble des solutions <br>(0.5) Donner le signe de f(x) sur l'ensemble des réels";
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			reponse = document.getElementById("reponse");
+			reponse.innerHTML= "&Delta; = (b<sup>2</sup> - 4ac) = ( "+b+"<sup>2</sup> - 4 * (" +a+" * "+c+" )) = "+b*b+" + "+(4*a*c*(-1))+" = "+delta+""+
+			"<br> &Delta; est positif, nous avons donc deux solutions. La première solution est <br>x<sub>1</sub> =  ( - b - &radic;(&Delta;) ) / 2 a = "+"( - "+b+" - &radic;("+delta+")) / "+"(2 * "+a+") = "+x1+
+			"<br> La seconde solution est <br>x<sub>2</sub> =  ( - b + &radic;(&Delta;) ) / 2 a = "+"( - "+b+" + &radic;("+delta+")) / "+"(2 * "+a+") = "+x2+
+			"<br> L'ensemble des solutions est S = { "+sol1+" ; "+sol2+" }. Le signe de f(x) sur l'ensemble des réels est : "+
+			"<br>  <sup class=\"big\">-&infin;</sup>&nbsp;&nbsp;&nbsp;<sub class=\"big\">"+signeHorsSol+"</sub>&nbsp;&nbsp;&nbsp;&nbsp;<sup class=\"big\">"+sol1+"</sup>&nbsp;&nbsp;&nbsp;&nbsp;<sub class=\"big\">"+signeEntreSol+"</sub>&nbsp;&nbsp;&nbsp;&nbsp;<sup class=\"big\">"+sol2+"</sup>&nbsp;&nbsp;&nbsp;&nbsp;<sub class=\"big\">"+signeHorsSol+"</sub>&nbsp;&nbsp;&nbsp;&nbsp;<sup class=\"big\">+&infin;</sup>";
+		
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>
