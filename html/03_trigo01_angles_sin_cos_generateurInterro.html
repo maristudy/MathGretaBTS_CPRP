@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>- trigonométrie 01 - sans calculatrice -</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+				font-size:16px;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+				break-before: page;
+				border-bottom : solid 1px black;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+			
+			
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+			let nbEleves = 15;
+			
+			for(let i=0;i<=nbEleves;i++)
+			{
+		
+			
+			let angleDegre,angleRadian,sinus,cosinus,tangente,anglesExo,sinusExo,cosinusExo,tabExo;
+			
+			angleDegre = ["0","30","45","60","90","180"]
+			angleRadian = ["0","<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">6</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">3</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","&pi;" ]
+			sinus = ["0","<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">√2</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">√3</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","1","0" ]
+			cosinus = ["1","<span class=\"math\"><span class=\"frac\"><span class=\"num\">√3</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">√2</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","0","-1" ]
+			tangente = ["0","<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">√3</span></span> ou <span class=\"math\"><span class=\"frac\"><span class=\"num\">√3</span><span class=\"fracbar\">/</span><span class=\"den\">3</span></span>","1","√3","n'existe pas","0"  ]
+			
+//			<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">√3</span></span>
+
+
+ 
+ anglesExo = ["15","18","36","54","72","75"]
+ sinusExo = ["<span class=\"math\"><span class=\"frac\"><span class=\"num\">((-1+√3)√2)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">(-1+√5)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)(√(5-(√5))))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">(1+√5)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)(√(5+(√5))))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)+(√6))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>"]		
+ cosinusExo = ["<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)+(√6))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)(√(5+(√5))))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">(1+√5)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)(√(5-(√5))))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">(-1+√5)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((-1+√3)√2)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>"]
+ 
+ 			let indiceExo1sin = Math.floor((Math.random()*(angleDegre.length)));
+			let indiceExo1cos = Math.floor((Math.random()*(angleDegre.length)));
+			while(indiceExo1sin==indiceExo1cos)
+			{
+				indiceExo1cos = Math.floor((Math.random()*(angleDegre.length)));
+			}
+			
+			let indiceExo2 = Math.floor((Math.random()*(anglesExo.length)));
+				
+tabExo = [
+["cos(&nbsp;<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>&nbsp;+&nbsp;"+anglesExo[indiceExo2]+"°)<br><br>" ," - sin(x)"," - "+sinusExo[indiceExo2]+""],
+["sin(&nbsp;<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>&nbsp;+&nbsp;"+anglesExo[indiceExo2]+"°&nbsp;)<br><br>"," cos(x)",""+cosinusExo[indiceExo2]+""],
+["cos(&nbsp;<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>&nbsp;-&nbsp;"+anglesExo[indiceExo2]+"°)<br><br>" ," sin(x)",""+sinusExo[indiceExo2]+""],
+["sin(&nbsp;<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>&nbsp;-&nbsp;"+anglesExo[indiceExo2]+"°&nbsp;)<br><br>"," cos(x)",""+cosinusExo[indiceExo2]+""],
+["cos(&nbsp;&pi;&nbsp;+&nbsp;"+anglesExo[indiceExo2]+"°&nbsp;)<br><br><br>"," - cos(x)"," - "+cosinusExo[indiceExo2]+""],
+["sin(&nbsp;&pi;&nbsp;+&nbsp;"+anglesExo[indiceExo2]+"°&nbsp;)<br><br><br>"," - sin(x)"," - "+sinusExo[indiceExo2]+""],
+["cos(&nbsp;&pi;&nbsp;-&nbsp;"+anglesExo[indiceExo2]+"°&nbsp;)<br><br><br>"," - cos(x)"," - "+cosinusExo[indiceExo2]+""],
+["sin(&nbsp;&pi;&nbsp;-&nbsp;"+anglesExo[indiceExo2]+"°&nbsp;)<br><br><br>"," sin(x)"," "+sinusExo[indiceExo2]+""],
+["cos(&nbsp;-&nbsp;"+anglesExo[indiceExo2]+"°&nbsp;)<br><br><br>"," cos(x)"," "+cosinusExo[indiceExo2]+""],
+["sin(&nbsp;-&nbsp;"+anglesExo[indiceExo2]+"°&nbsp;)<br><br><br>"," - sin(x)"," - "+sinusExo[indiceExo2]+""],
+ ];
+
+ind01 = Math.floor((Math.random()*(tabExo.length)))
+ind02 = Math.floor((Math.random()*(tabExo.length)))
+ind03 = Math.floor((Math.random()*(tabExo.length)))
+ind04 = Math.floor((Math.random()*(tabExo.length)))
+
+			while(ind01 == ind02)
+			{
+				ind02 = Math.floor((Math.random()*(tabExo.length)));
+			}
+
+			while( (ind01 == ind03) || (ind02 == ind03) )
+			{
+				ind03 = Math.floor((Math.random()*(tabExo.length)));
+			}			
+
+			while( (ind01 == ind04) || (ind02 == ind04) || (ind03 == ind04) )
+			{
+				ind04 = Math.floor((Math.random()*(tabExo.length)));
+			}
+
+				
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = "BTS CPRP 1 - trigonométrie 01 - sans calculatrice - Correction numéro "+i+"<br>" +
+			"1/ Donner la valeur exacte de :<br>sin("+angleDegre[indiceExo1sin]+"°) = "+sinus[indiceExo1sin]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cos("+angleDegre[indiceExo1cos]+"°) = "+cosinus[indiceExo1cos]+"<br>"+
+				"2/Sachant que sin( "+anglesExo[indiceExo2]+"° ) = "+sinusExo[indiceExo2]+" et que cos( "+anglesExo[indiceExo2]+"° ) = "+cosinusExo[indiceExo2]+"<br> compléter le tableau suivant : <br>"+
+				"<table><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = "+anglesExo[indiceExo2]+"°&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> <td>&nbsp;&plusmn;cos(x)&nbsp;ou&nbsp;&plusmn;sin(x)&nbsp;</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeur&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"+
+				"<tr><td>"+tabExo[ind01][0]+"</td> <td>"+tabExo[ind01][1]+"</td> <td>"+tabExo[ind01][2]+"</td></tr>"+
+				"<tr><td>"+tabExo[ind02][0]+"</td> <td>"+tabExo[ind02][1]+"</td> <td>"+tabExo[ind02][2]+"</td></tr>"+
+				"<tr><td>"+tabExo[ind03][0]+"</td> <td>"+tabExo[ind03][1]+"</td> <td>"+tabExo[ind03][2]+"</td></tr>"+
+				"<tr><td>"+tabExo[ind04][0]+"</td> <td>"+tabExo[ind04][1]+"</td> <td>"+tabExo[ind04][2]+"</td></tr>"+
+				"</table><br>"	;
+				
+				//"<p >Pour la conversion hexa vers binaire ( et réciproquement ) on utilise le tableau<br>"+
+				//"Pour la conversion du décimal vers une autre base, on utilise les divisions successives ( de 2 pour le binaire et de 16 pour l'hexa )<br>"+
+				//"Pour la conversion du binaire vers le décimal, on utilise les puissances de 2 ( ou les puissances de 16 pour l'hexa )</p>";		
+				sujet.appendChild(reponse);
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = "BTS CPRP 1 - trigonométrie 01 - sans calculatrice - Sujet numéro "+i;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+			enonce.innerHTML= "<br>1/ Donner la valeur exacte de :<br>sin("+angleDegre[indiceExo1sin]+"°) = <br><br>cos("+angleDegre[indiceExo1cos]+"°) = <br><br><br>"+
+				"2/Sachant que sin( "+anglesExo[indiceExo2]+"° ) = "+sinusExo[indiceExo2]+" et que cos( "+anglesExo[indiceExo2]+"° ) = "+cosinusExo[indiceExo2]+"<br> compléter le tableau suivant : <br><br>"+
+				"<table><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = "+anglesExo[indiceExo2]+"°&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> <td>&nbsp;&plusmn;cos(x)&nbsp;ou&nbsp;&plusmn;sin(x)&nbsp;</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeur&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"+
+				"<tr><td>"+tabExo[ind01][0]+"</td> <td></td> <td></td></tr>"+
+				"<tr><td>"+tabExo[ind02][0]+"</td> <td></td> <td></td></tr>"+
+				"<tr><td>"+tabExo[ind03][0]+"</td> <td></td> <td></td></tr>"+
+				"<tr><td>"+tabExo[ind04][0]+"</td> <td></td> <td></td></tr>"+
+				"</table>";
+				
+				sujet.appendChild(enonce);
+				
+//				espace=document.createElement("div");
+//				espace.setAttribute("class","espace");
+//				sujet.appendChild(espace);
+
+
+			
+			}
+			
+		</script>
+		
+	</body>
+</html>

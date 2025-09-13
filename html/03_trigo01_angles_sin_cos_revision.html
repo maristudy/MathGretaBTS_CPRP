@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les angles / sinus / cosinus </title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+
+				text-align:center;
+			}
+
+			body{
+				font-size: 2em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+			
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<div id="reponse" class="cache">
+				<p>&nbsp;</p>
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+						
+			let angleDegre,angleRadian,sinus,cosinus,tangente,anglesExo,sinusExo,cosinusExo,tabExo;
+			
+			angleDegre = ["0","30","45","60","90","180"]
+			angleRadian = ["0","<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">6</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">3</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","&pi;" ]
+			sinus = ["0","<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">√2</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">√3</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","1","0" ]
+			cosinus = ["1","<span class=\"math\"><span class=\"frac\"><span class=\"num\">√3</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">√2</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>","0","-1" ]
+			tangente = ["0","<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">√3</span></span> ou <span class=\"math\"><span class=\"frac\"><span class=\"num\">√3</span><span class=\"fracbar\">/</span><span class=\"den\">3</span></span>","1","√3","n'existe pas","0"  ]
+			
+//			<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">√3</span></span>
+ 
+ anglesExo = ["15","18","36","54","72","75"]
+ sinusExo = ["<span class=\"math\"><span class=\"frac\"><span class=\"num\">((-1+√3)√2)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">(-1+√5)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)(√(5-(√5))))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">(1+√5)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)(√(5+(√5))))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)+(√6))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>"]		
+ cosinusExo = ["<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)+(√6))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)(√(5+(√5))))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">(1+√5)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((√2)(√(5-(√5))))</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">(-1+√5)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>","<span class=\"math\"><span class=\"frac\"><span class=\"num\">((-1+√3)√2)</span><span class=\"fracbar\">/</span><span class=\"den\">4</span></span>"]
+ 	
+// https://cms.alloprof.qc.ca/sites/default/files/styles/1440w/public/2023-05/im1389-1-cercle-trigonometrique.png?itok=WUcrl1ff
+// https://www.ilemaths.net/img/fiches/maths-premiere/maths_1_s_cercle_et_formules_trigonometrie_cours_05.gif		
+// https://tutorathomes.com/rapports-trigonometriques/		
+// https://www.alloschool.com/element/47622#&gid=1&pid=1		
+
+				
+tabExo = [
+["cos(&nbsp;<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>&nbsp;+&nbsp;x°)<br>" ," - sin(x)" ],
+["sin(&nbsp;<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>&nbsp;+&nbsp;x°&nbsp;)<br>"," cos(x)" ],
+["cos(&nbsp;<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>&nbsp;-&nbsp;x°)<br>" ," sin(x)" ],
+["sin(&nbsp;<span class=\"math\"><span class=\"frac\"><span class=\"num\">&pi;</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>&nbsp;-&nbsp;x°&nbsp;)<br>"," cos(x)" ],
+["cos(&nbsp;&pi;&nbsp;+&nbsp;x°&nbsp;)<br><br>"," - cos(x)" ],
+["sin(&nbsp;&pi;&nbsp;+&nbsp;x°&nbsp;)<br><br>"," - sin(x)" ],
+["cos(&nbsp;&pi;&nbsp;-&nbsp;x°&nbsp;)<br><br>"," - cos(x)" ],
+["sin(&nbsp;&pi;&nbsp;-&nbsp;x°&nbsp;)<br><br>"," sin(x)" ],
+["cos(&nbsp;-&nbsp;x°&nbsp;)<br><br>"," cos(x)" ],
+["sin(&nbsp;-&nbsp;x°&nbsp;)<br><br>"," - sin(x)" ],
+ ];
+
+			let i = 0;
+			let j = 0;
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= "1/ Donner la valeur exacte des sinus, cosinus, tangente :<br>"+
+			"<table><tr> <td>angle (°)</td> <td>angle (radian)</td> <td>sin(x)</td> <td>cos(x)</td> <td>tan(x)</td> </tr>"+
+			"<tr> <td>"+angleDegre[0]+"</td> <td>"+angleRadian[0]+"</td> <td>"+sinus[0]+"</td> <td>"+cosinus[0]+"</td> <td>"+tangente[0]+"</td> </tr>"+
+			"<tr> <td>"+angleDegre[1]+"</td> <td>"+angleRadian[1]+"</td> <td>"+sinus[1]+"</td> <td>"+cosinus[1]+"</td> <td>"+tangente[1]+"</td> </tr>"+
+			"<tr> <td>"+angleDegre[2]+"</td> <td>"+angleRadian[2]+"</td> <td>"+sinus[2]+"</td> <td>"+cosinus[2]+"</td> <td>"+tangente[2]+"</td> </tr>"+
+			"<tr> <td>"+angleDegre[3]+"</td> <td>"+angleRadian[3]+"</td> <td>"+sinus[3]+"</td> <td>"+cosinus[3]+"</td> <td>"+tangente[3]+"</td> </tr>"+
+			"<tr> <td>"+angleDegre[4]+"</td> <td>"+angleRadian[4]+"</td> <td>"+sinus[4]+"</td> <td>"+cosinus[4]+"</td> <td>"+tangente[4]+"</td> </tr>"+
+			"<tr> <td>"+angleDegre[5]+"</td> <td>"+angleRadian[5]+"</td> <td>"+sinus[5]+"</td> <td>"+cosinus[5]+"</td> <td>"+tangente[5]+"</td> </tr>"+
+			"</table><br><br><img src=\"https://www.ilemaths.net/img/fiches/maths-premiere/maths_1_s_cercle_et_formules_trigonometrie_cours_05.gif\" alt=\"les angles dans le cercle trigo\">" ;
+			
+				enonce.innerHTML += "<br><br>Les relations des angles dans le cercle trigonométrique<br>"+
+				"<table><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x°&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> <td>&nbsp;&plusmn;cos(x)&nbsp;ou&nbsp;&plusmn;sin(x)&nbsp;</td></tr>"+
+				"<tr><td>"+tabExo[0][0]+"</td> <td>"+tabExo[0][1]+"</td></tr> "+
+				"<tr><td>"+tabExo[1][0]+"</td> <td>"+tabExo[1][1]+"</td></tr> "+
+				"<tr><td>"+tabExo[2][0]+"</td> <td>"+tabExo[2][1]+"</td></tr> "+
+				"<tr><td>"+tabExo[3][0]+"</td> <td>"+tabExo[3][1]+"</td></tr> "+
+				"<tr><td>"+tabExo[4][0]+"</td> <td>"+tabExo[4][1]+"</td></tr> "+
+				"<tr><td>"+tabExo[5][0]+"</td> <td>"+tabExo[5][1]+"</td></tr> "+
+				"<tr><td>"+tabExo[6][0]+"</td> <td>"+tabExo[6][1]+"</td></tr> "+
+				"<tr><td>"+tabExo[7][0]+"</td> <td>"+tabExo[7][1]+"</td></tr> "+
+				"<tr><td>"+tabExo[8][0]+"</td> <td>"+tabExo[8][1]+"</td></tr> "+
+				"<tr><td>"+tabExo[9][0]+"</td> <td>"+tabExo[9][1]+"</td></tr> "+
+				"</table>";
+				
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			
+		</script>
+		
+	</body>
+</html>
