@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>- trigonométrie 02 - avec calculatrice -</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+				font-size:16px;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+				break-before: page;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+				break-before: page;
+				border-bottom : solid 1px black;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+			
+			
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+			let nbEleves = 15;
+			
+			for(let i=0;i<=nbEleves;i++)
+			{
+		
+			
+			// ["urlImage","angle","oppose", "adjacent","hypoténuse","trigoHypo","trigoAutre","3emeAngle"]
+			let TabEnonce=[
+				["../images/triangleABC.png","B","AC", "AB","BC","cosinus","trigoAutre","C"],
+				["../images/triangleABC.png","C","AB", "AC","BC","trigoHypo","trigoAutre","B"],
+				["../images/triangleDEF.png","D","EF", "DF","DE","trigoHypo","trigoAutre","E"],
+				["../images/triangleDEF.png","E","DF", "EF","DE","trigoHypo","trigoAutre","D"],
+				["../images/triangleGHI.png","H","GI", "GH","IH","trigoHypo","trigoAutre","I"],
+				["../images/triangleGHI.png","I","GH", "GI","IH","trigoHypo","trigoAutre","H"],
+				["../images/triangleJKL.png","J","KL", "JK","JL","trigoHypo","trigoAutre","L"],
+				["../images/triangleJKL.png","L","JK", "KL","JL","trigoHypo","trigoAutre","J"]
+				]
+
+			let angle = Math.floor((Math.random()*(40))+20);
+			let cote = Math.floor((Math.random()*(5))+3);
+			let indice = Math.floor((Math.random()*(7)));
+			let typeCote = (Math.floor(Math.random()*10))%2 ; // 0 = opposé / 1 = adjacent	
+			let reponse_3_1="";
+			let reponse_3_2="";
+			let reponse_3_3="";
+			let reponse_4_1="";
+			let reponse_4_2="";
+			let reponse_4_3="";			
+			
+			if (typeCote==0)
+			{
+				 reponse_3_1="formule utilisée : sinus = côté opposé / hypoténuse = "+TabEnonce[indice][2]+" / "+TabEnonce[indice][4]+" ";
+				 reponse_3_2="sinus ("+angle+" ) = "+cote+" / "+TabEnonce[indice][4]+" => "+TabEnonce[indice][4]+" = "+cote+" / "+Math.sin( (angle*Math.PI) / 180 )+" ";
+				 reponse_3_3="L'hypoténuse mesure "+cote / Math.sin( (angle*Math.PI) / 180 )+" cm de long";
+				 reponse_4_1="formule utilisée : cosinus ("+TabEnonce[indice][7]+" ) = côté adjacent / hypoténuse  ";
+				 reponse_4_2= "Calcul : cosinus ("+TabEnonce[indice][7]+" ) = "+TabEnonce[indice][2]+" / "+TabEnonce[indice][4]+" = "+cote/(cote/Math.sin( (angle*Math.PI) / 180 ))+"<br> Arccos ( "+cote/(cote/Math.sin( (angle*Math.PI) / 180 ))+" ) = "+Math.floor((Math.acos(cote/(cote / Math.sin( (angle*Math.PI) / 180 )))*(180/Math.PI)))+" °";
+				 reponse_4_3="L'angle "+TabEnonce[indice][7]+" mesure "+Math.floor((Math.acos(cote/(cote / Math.sin( (angle*Math.PI) / 180 ))))*(180/Math.PI))+" °"		
+			}
+			else
+			{
+				 reponse_3_1="formule utilisée : cosinus = côté adjacent / hypoténuse = "+TabEnonce[indice][3]+" / "+TabEnonce[indice][4]+" ";
+				 reponse_3_2="cosinus ("+angle+" ) = "+cote+" / "+TabEnonce[indice][4]+" => "+TabEnonce[indice][4]+" = "+cote/Math.cos( (angle*Math.PI) / 180 )+" ";
+				 reponse_3_3="L'hypoténuse mesure "+cote/Math.cos( (angle*Math.PI) / 180 )+" cm de long";
+				 reponse_4_1="formule utilisée : sinus ("+TabEnonce[indice][7]+" ) = côté opposé / hypoténuse  ";
+				 reponse_4_2="Calcul : sin ("+TabEnonce[indice][7]+" ) = "+TabEnonce[indice][3]+" / "+TabEnonce[indice][4]+" = "+cote/(cote/Math.cos( (angle*Math.PI) / 180 ))+"<br> Arcsin ( "+cote/(cote/Math.cos( (angle*Math.PI) / 180 ))+" ) = "+Math.floor((Math.asin(cote/(cote / Math.cos( (angle*Math.PI) / 180 )))*(180/Math.PI)))+" °";
+				 reponse_4_3="L'angle "+TabEnonce[indice][7]+" mesure "+Math.floor((Math.asin(cote/(cote / Math.cos( (angle*Math.PI) / 180 ))))*(180/Math.PI))+" °";			
+			}
+
+				
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = "BTS CPRP 1 - trigonométrie 02 - avec calculatrice - Correction numéro "+i+"<br><br>" +
+			"1/ En utilisant les mots \"côté opposé\", \"côté adjacent\" et \"hypoténuse\", donnez les formules pour calculer : <br>"+
+				"(0.5) sin ( "+TabEnonce[indice][1]+" ) = côté opposé / hypoténuse <br>"+
+				"(0.5) cos ( "+TabEnonce[indice][1]+" ) = côté adjacent / hypoténuse <br>"+
+				"(0.5) tan ( "+TabEnonce[indice][1]+" ) = côté opposé / côté adjacent<br><br>"+
+				"2/ En utilisant les côtés du triangle, donnez les formules pour calculer : <br>"+
+				"(0.5) sin ( "+TabEnonce[indice][1]+" ) = "+TabEnonce[indice][2]+" / "+TabEnonce[indice][4]+"<br>"+
+				"(0.5) cos ( "+TabEnonce[indice][1]+" ) = "+TabEnonce[indice][3]+" / "+TabEnonce[indice][4]+"<br>"+
+				"(0.5) tan ( "+TabEnonce[indice][1]+" ) = "+TabEnonce[indice][2]+" / "+TabEnonce[indice][3]+"<br><br>"+
+				"3/ Calculer la longueur de l'hypoténuse : "+
+				"<br>(0.5) indiquer la formule trigonométrique utilisée : "+reponse_3_1+
+				"<br><br>(0.5) détaillez votre calcul : "+reponse_3_2+
+				"<br><br>(0.5) rédigez votre réponse : "+reponse_3_3+
+				"<br><br>4/ Calculer la mesure de l'angle "+TabEnonce[indice][7]+" : "+
+				"<br><br>(0.5) indiquer la formule trigonométrique utilisée : "+reponse_4_1+
+				"<br><br>(0.5) détaillez votre calcul : "+reponse_4_2+
+				"<br><br>(0.5) rédigez votre réponse : "+reponse_4_3;
+				
+				//"<p >Pour la conversion hexa vers binaire ( et réciproquement ) on utilise le tableau<br>"+
+				//"Pour la conversion du décimal vers une autre base, on utilise les divisions successives ( de 2 pour le binaire et de 16 pour l'hexa )<br>"+
+				//"Pour la conversion du binaire vers le décimal, on utilise les puissances de 2 ( ou les puissances de 16 pour l'hexa )</p>";		
+				sujet.appendChild(reponse);
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = "BTS CPRP 1 - trigonométrie 02 - avec calculatrice - Sujet numéro "+i;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+			enonce.innerHTML= "<img src=\""+TabEnonce[indice][0]+"\" alt=\"triangle\" width=\"30%\"><br><br>"+
+				"L'angle "+TabEnonce[indice][1]+" mesure "+angle+" ° et le côté "+TabEnonce[indice][typeCote+2]+" mesure "+cote+" cm.<br><br>"+
+				"1/ En utilisant les mots \"côté opposé\", \"côté adjacent\" et \"hypoténuse\", donnez les formules pour calculer : <br><br>"+
+				"(0.5) sin ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"(0.5) cos ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"(0.5) tan ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"2/ En utilisant les côtés du triangle, donnez les formules pour calculer : <br><br>"+
+				"(0.5) sin ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"(0.5) cos ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"(0.5) tan ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"3/ Calculer la longueur de l'hypoténuse : <br>"+
+				"(0.5) indiquer la formule trigonométrique utilisée : <br><br><br>"+
+				"(0.5) détaillez votre calcul : <br><br><br>"+
+				"(0.5) rédigez votre réponse : <br><br><br>"+
+				"4/ Calculer la mesure de l'angle "+TabEnonce[indice][7]+" : <br>"+
+				"(0.5) indiquer la formule trigonométrique utilisée : <br><br><br>"+
+				"(0.5) détaillez votre calcul : <br><br><br>"+
+				"(0.5) rédigez votre réponse : ";
+				
+				sujet.appendChild(enonce);
+				
+//				espace=document.createElement("div");
+//				espace.setAttribute("class","espace");
+//				sujet.appendChild(espace);
+
+
+			
+			}
+			
+		</script>
+		
+	</body>
+</html>

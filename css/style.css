@@ -14,6 +14,16 @@ a , a:visited {
 	color: #80caff; //8080ff;
 }
 
+.video a:visited , .video a  {
+	color: #f59090; //8080ff;
+}
+
+.interro a:visited , .video a  {
+	color: #86fac4; //8080ff;
+}
+
+86fac4
+
 li , ul {
 	margin-left:15px;
 }

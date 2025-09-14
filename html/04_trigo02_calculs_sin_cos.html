@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les calculs avec les sinus / cosinus </title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+
+				text-align:center;
+			}
+
+			body{
+				font-size: 2em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+			
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+				<p>&nbsp;</p>
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+			// ["urlImage","angle","oppose", "adjacent","hypoténuse","trigoHypo","trigoAutre","3emeAngle"]
+			let TabEnonce=[
+				["../images/triangleABC.png","B","AC", "AB","BC","cosinus","trigoAutre","C"],
+				["../images/triangleABC.png","C","AB", "AC","BC","trigoHypo","trigoAutre","B"],
+				["../images/triangleDEF.png","D","EF", "DF","DE","trigoHypo","trigoAutre","E"],
+				["../images/triangleDEF.png","E","DF", "EF","DE","trigoHypo","trigoAutre","D"],
+				["../images/triangleGHI.png","H","GI", "GH","IH","trigoHypo","trigoAutre","I"],
+				["../images/triangleGHI.png","I","GH", "GI","IH","trigoHypo","trigoAutre","H"],
+				["../images/triangleJKL.png","J","KL", "JK","JL","trigoHypo","trigoAutre","L"],
+				["../images/triangleJKL.png","L","JK", "KL","JL","trigoHypo","trigoAutre","J"]
+				]
+
+			let angle = Math.floor((Math.random()*(40))+20);
+			let cote = Math.floor((Math.random()*(5))+3);
+			let indice = Math.floor((Math.random()*(7)));
+			let typeCote = (Math.floor(Math.random()*10))%2 ; // 0 = opposé / 1 = adjacent	
+			let reponse_3_1="";
+			let reponse_3_2="";
+			let reponse_3_3="";
+			let reponse_4_1="";
+			let reponse_4_2="";
+			let reponse_4_3="";			
+			
+			if (typeCote==0)
+			{
+				 reponse_3_1="formule utilisée : sinus = côté opposé / hypoténuse = "+TabEnonce[indice][2]+" / "+TabEnonce[indice][4]+" ";
+				 reponse_3_2="sinus ("+angle+" ) = "+cote+" / "+TabEnonce[indice][4]+" => "+TabEnonce[indice][4]+" = "+cote+" / "+Math.sin( (angle*Math.PI) / 180 )+" ";
+				 reponse_3_3="L'hypoténuse mesure "+cote / Math.sin( (angle*Math.PI) / 180 )+" cm de long";
+				 reponse_4_1="formule utilisée : cosinus ("+TabEnonce[indice][7]+" ) = côté adjacent / hypoténuse  ";
+				 reponse_4_2= "Calcul : cosinus ("+TabEnonce[indice][7]+" ) = "+TabEnonce[indice][2]+" / "+TabEnonce[indice][4]+" = "+cote/(cote/Math.sin( (angle*Math.PI) / 180 ))+"<br> Arccos ( "+cote/(cote/Math.sin( (angle*Math.PI) / 180 ))+" ) = "+Math.floor((Math.acos(cote/(cote / Math.sin( (angle*Math.PI) / 180 )))*(180/Math.PI)))+" °";
+				 reponse_4_3="L'angle "+TabEnonce[indice][7]+" mesure "+Math.floor((Math.acos(cote/(cote / Math.sin( (angle*Math.PI) / 180 ))))*(180/Math.PI))+" °"		
+			}
+			else
+			{
+				 reponse_3_1="formule utilisée : cosinus = côté adjacent / hypoténuse = "+TabEnonce[indice][3]+" / "+TabEnonce[indice][4]+" ";
+				 reponse_3_2="cosinus ("+angle+" ) = "+cote+" / "+TabEnonce[indice][4]+" => "+TabEnonce[indice][4]+" = "+cote/Math.cos( (angle*Math.PI) / 180 )+" ";
+				 reponse_3_3="L'hypoténuse mesure "+cote/Math.cos( (angle*Math.PI) / 180 )+" cm de long";
+				 reponse_4_1="formule utilisée : sinus ("+TabEnonce[indice][7]+" ) = côté opposé / hypoténuse  ";
+				 reponse_4_2="Calcul : sin ("+TabEnonce[indice][7]+" ) = "+TabEnonce[indice][3]+" / "+TabEnonce[indice][4]+" = "+cote/(cote/Math.cos( (angle*Math.PI) / 180 ))+"<br> Arcsin ( "+cote/(cote/Math.cos( (angle*Math.PI) / 180 ))+" ) = "+Math.floor((Math.asin(cote/(cote / Math.cos( (angle*Math.PI) / 180 )))*(180/Math.PI)))+" °";
+				 reponse_4_3="L'angle "+TabEnonce[indice][7]+" mesure "+Math.floor((Math.asin(cote/(cote / Math.cos( (angle*Math.PI) / 180 ))))*(180/Math.PI))+" °";			
+			}
+			
+//			<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">√3</span></span>
+			
+// https://cms.alloprof.qc.ca/sites/default/files/styles/1440w/public/2023-05/im1389-1-cercle-trigonometrique.png?itok=WUcrl1ff
+// https://www.ilemaths.net/img/fiches/maths-premiere/maths_1_s_cercle_et_formules_trigonometrie_cours_05.gif		
+// https://tutorathomes.com/rapports-trigonometriques/		
+// https://www.alloschool.com/element/47622#&gid=1&pid=1		
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+
+			
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML = "<img src=\""+TabEnonce[indice][0]+"\" alt=\"triangle\" width=\"30%\"><br><br>"+
+				"L'angle "+TabEnonce[indice][1]+" mesure "+angle+" ° et le côté "+TabEnonce[indice][typeCote+2]+" mesure "+cote+" cm.<br><br>"+
+				"1/ En utilisant les mots \"côté opposé\", \"côté adjacent\" et \"hypoténuse\", donnez les formules pour calculer : <br><br>"+
+				"(0.5) sin ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"(0.5) cos ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"(0.5) tan ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"2/ En utilisant les côtés du triangle, donnez les formules pour calculer : <br><br>"+
+				"(0.5) sin ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"(0.5) cos ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"(0.5) tan ( "+TabEnonce[indice][1]+" ) = <br><br>"+
+				"3/ Calculer la longueur de l'hypoténuse : <br><br>"+
+				"(0.5) indiquer la formule trigonométrique utilisée : <br><br>"+
+				"(0.5) détaillez votre calcul : <br><br>"+
+				"(0.5) rédigez votre réponse : <br><br>"+
+				"4/ Calculer la mesure de l'angle "+TabEnonce[indice][7]+" : <br><br>"+
+				"(0.5) indiquer la formule trigonométrique utilisée : <br><br>"+
+				"(0.5) détaillez votre calcul : <br><br>"+
+				"(0.5) rédigez votre réponse : <br><br>";
+
+				
+			reponse = document.getElementById("reponse");
+			reponse.innerHTML = "1/ En utilisant les mots \"côté opposé\", \"côté adjacent\" et \"hypoténuse\", donnez les formules pour calculer : <br>"+
+				"(0.5) sin ( "+TabEnonce[indice][1]+" ) = côté opposé / hypoténuse <br>"+
+				"(0.5) cos ( "+TabEnonce[indice][1]+" ) = côté adjacent / hypoténuse <br>"+
+				"(0.5) tan ( "+TabEnonce[indice][1]+" ) = côté opposé / côté adjacent<br>"+
+				"2/ En utilisant les côtés du triangle, donnez les formules pour calculer : <br>"+
+				"(0.5) sin ( "+TabEnonce[indice][1]+" ) = "+TabEnonce[indice][2]+" / "+TabEnonce[indice][4]+"<br>"+
+				"(0.5) cos ( "+TabEnonce[indice][1]+" ) = "+TabEnonce[indice][3]+" / "+TabEnonce[indice][4]+"<br>"+
+				"(0.5) tan ( "+TabEnonce[indice][1]+" ) = "+TabEnonce[indice][2]+" / "+TabEnonce[indice][3]+"<br>"+
+				"3/ Calculer la longueur de l'hypoténuse : "+
+				"<br>(0.5) indiquer la formule trigonométrique utilisée : "+reponse_3_1+
+				"<br>(0.5) détaillez votre calcul : "+reponse_3_2+
+				"<br>(0.5) rédigez votre réponse : "+reponse_3_3+
+				"<br>4/ Calculer la mesure de l'angle "+TabEnonce[indice][7]+" : "+
+				"<br>(0.5) indiquer la formule trigonométrique utilisée : "+reponse_4_1+
+				"<br>(0.5) détaillez votre calcul : "+reponse_4_2+
+				"<br>(0.5) rédigez votre réponse : "+reponse_4_3;
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>
