@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les polynômes de degrès 2</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+				width:200px;
+				height:40px;
+				text-align:center;
+			}
+
+			body{
+				font-size: 1.5em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+		@media screen and (min-width: 795px) {
+			body{
+				font-size: 1em;
+				}
+			}				
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+			function derivationDegres2(coef)
+			{
+			// coef = [a,b,c] avec a = coef x2 / b = coef x / c = cste
+				return ""+(2*coef[0])+"x "+(coef[1]>0?"+ ":" ")+coef[1] ;
+			}
+
+			function derivationDegres3(coef)
+			{
+			// coef = [a,b,c,d ] avec a = coef x3 / b = coef x2 / c = coef x / d = cste
+				return ""+(3*coef[0])+"x<sup>2</sup> "+(coef[1]>0?"+ ":" ")+(2*coef[1])+" x "+(coef[2]>0?"+ ":" ")+coef[2] ;
+			}
+
+			function derivationLn(coef)
+			{
+			// coef = [a,b,c,d ] avec a = coef x3 / b = coef x2 / c = coef x / d = cste
+				return "<span class=\"math\"><span class=\"frac\"><span class=\"num\">"+derivationDegres3(coef)+"</span><span class=\"fracbar\">/</span><span class=\"den\">"+
+			coef[0]+"x<sup>3</sup> "+ (coef[1]>0?"+ ":" ")+coef[1]+"x<sup>2</sup> "+(coef[2]>0?"+ ":"")+coef[2]+" x "+(coef[3]>0?"+ ":"")+coef[3]+"</span></span>" ;
+			}
+			
+			function derivationExp(coef)
+			{
+			// coef = coef = [a,b,c] avec a = coef x2 / b = coef x / c = cste
+				return "( "+derivationDegres2(coef)+" ) exp ( "+coef[0]+"x<sup>2</sup> "+ (coef[1]>0?"+ ":" ")+coef[1]+"x "+(coef[2]>0?"+ ":"")+coef[2]+" )" ;
+			}
+
+			function derivationQuotient(coefQuot)
+			{
+			// coefNum = [a,b,] avec a = coef x / b =  cste /*/ coefDenom = [a,b,]  avec a = coef x / b =  cste
+				return "<span class=\"math\"><span class=\"frac\"><span class=\"num\">"+((coefQuot[3]*coefQuot[0])-(coefQuot[1]*coefQuot[2]))+"</span><span class=\"fracbar\">/</span><span class=\"den\">"+
+			"( "+coefQuot[2]+" x "+(coefQuot[3]>0?"+ ":"")+coefQuot[3]+" )<sup>2</sup> </span></span>" ;
+			}
+			
+			let coef01,coef02,coef03,coef;
+			let coef04,coef05,coef06,coef07,coefd2;
+		
+
+			 coef01 = Math.floor(Math.random()*5) + 2;
+			 coef02 = Math.floor(Math.random()*5) + 2;
+			 coef03 = Math.floor(Math.random()*5) + 2;
+			 coef = [coef01,coef02,coef03]
+
+			 coef04 = Math.floor(Math.random()*5) + 2;
+			 coef05 = Math.floor(Math.random()*5) + 2;
+			 coef06 = Math.floor(Math.random()*5) + 2;
+			 coef07 = Math.floor(Math.random()*5) + 2;			 
+			 coefd2 = [coef04,coef05,coef06,coef07]
+
+			 coef08 = Math.floor(Math.random()*5) + 2;
+			 coef09 = Math.floor(Math.random()*5) + 2;
+			 coef10 = Math.floor(Math.random()*5) + 2;
+			 coef11 = Math.floor(Math.random()*5) + 2;			 
+			 coefLn = [coef08,coef09,coef10,coef11]
+
+			 coef12 = Math.floor(Math.random()*5) + 2;
+			 coef13 = Math.floor(Math.random()*5) + 2;
+			 coef14 = Math.floor(Math.random()*5) + 2;
+			 coefExp = [coef12,coef13,coef14];
+			 
+			 coef15 = Math.floor(Math.random()*5) + 2;
+			 coef16 = Math.floor(Math.random()*5) + 2;
+			 coef17 = Math.floor(Math.random()*5) + 2;
+			 while(coef17==coef15)
+			 {
+				coef17 = Math.floor(Math.random()*5) + 2;
+			 }
+
+			 coef18 = Math.floor(Math.random()*5) + 2;			 
+			 while((coef18==coef16) || ((coef18*coef15)-(coef16*coef17)==0))
+			 {
+				coef18 = Math.floor(Math.random()*5) + 2;
+			 }
+			 
+
+			
+			 coefQuot = [coef15,coef16,coef17,coef18];
+
+			 
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= "1) Quelle est la dérivée de la fonction : "+coef[0]+"x<sup>2</sup> "+ (coef[1]>0?"+ ":" ")+coef[1]+"x "+(coef[2]>0?"+ ":"")+coef[2]+
+								"<br><br>"+
+								"2) Quelle est la dérivée de la fonction : "+coefd2[0]+"x<sup>3</sup> "+ (coefd2[1]>0?"+ ":" ")+coefd2[1]+"x<sup>2</sup> "+(coefd2[2]>0?"+ ":"")+coefd2[2]+" x "+(coefd2[3]>0?"+ ":"")+coefd2[3]+
+								"<br><br>"+
+								"3) Quelle est la dérivée de la fonction ln ("+coefLn[0]+"x<sup>3</sup> "+ (coefLn[1]>0?"+ ":" ")+coefLn[1]+"x<sup>2</sup> "+(coefLn[2]>0?"+ ":"")+coefLn[2]+" x "+(coefLn[3]>0?"+ ":"")+coefLn[3]+")"+
+								"<br><br>"+
+								"4) Quelle est la dérivée de la fonction exp( "+coefExp[0]+"x<sup>2</sup> "+ (coefExp[1]>0?"+ ":" ")+coefExp[1]+"x "+(coefExp[2]>0?"+ ":"")+coefExp[2]+" )"+
+								"<br><br>"+
+								"5) Quelle est la dérivée de la fonction <span class=\"math\"><span class=\"frac\"><span class=\"num\">"+ coefQuot[0]+" x + "+coefQuot[1]+"</span><span class=\"fracbar\">/</span><span class=\"den\">"+
+								+ coefQuot[2]+" x + "+coefQuot[3]+"</span></span>";
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			reponse = document.getElementById("reponse");
+			deri01=derivationDegres2(coef)
+			deri02=derivationDegres3(coefd2)
+			deri03=derivationLn(coefLn)
+			deri04=derivationExp(coefExp)
+			deri05=derivationQuotient(coefQuot)
+			reponse.innerHTML= "1) "+deri01+"<br><br>2) "+deri02+"<br><br>3) "+deri03+"<br><br>4) "+deri04+"<br><br>5) "+deri05;
+		
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>
