@@ -24,8 +24,14 @@ a , a:visited {
 
 86fac4
 
-li , ul {
+li {
 	margin-left:15px;
+	padding-left:15px;
+}
+
+ul {
+	margin-left:15px;
+	padding-left:15px;
 }
 
 section , article {
