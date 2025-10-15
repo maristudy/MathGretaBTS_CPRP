@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les calculs avec les sinus / cosinus </title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+				margin-left:25px;
+				margin-right:25px;
+				width:90%
+			}
+			
+
+			
+			td {
+				border : solid 1px white;
+				width:50%;
+				text-align:center;
+			}
+
+			body{
+				font-size: 1.5em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+			.enonce img {
+				width:150px;
+				height:auto;
+			}
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+			
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+		@media screen and (min-width: 795px) {
+			body{
+				font-size: 1em;
+				}
+			}	
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+				<p>&nbsp;</p>
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+			// ["urlImage","angle","oppose", "adjacent","hypoténuse","trigoHypo","trigoAutre","3emeAngle"]
+			let simples=[
+				["../images/perimetres/carre.png"],
+				["../images/perimetres/cercle_diametre.png"],
+				["../images/perimetres/cercle_rayon.png"],
+				["../images/perimetres/rectangle.png"],
+				]
+
+			let complexes=[
+				["../images/perimetres/perimetre_complexe_01.png"],
+				["../images/perimetres/perimetre_complexe_02.png"],
+				["../images/perimetres/perimetre_complexe_03.png"],
+				["../images/perimetres/perimetre_complexe_04.png"],
+				["../images/perimetres/perimetre_complexe_05.png"],
+			/*	["../images/perimetres/perimetre_complexe_06.png"],
+				["../images/perimetres/perimetre_complexe_07.png"],
+				["../images/perimetres/perimetre_complexe_08.png"],
+				["../images/perimetres/perimetre_complexe_09.png"],
+				["../images/perimetres/perimetre_complexe_10.png"],
+				["../images/perimetres/perimetre_complexe_11.png"],
+				["../images/perimetres/perimetre_complexe_12.png"],	*/			
+				]
+				
+			let iSimple = Math.floor((Math.random()*(simples.length)));
+			let iComplexe = Math.floor((Math.random()*(complexes.length)));
+			let td1_enonce="";
+			let td2_enonce="";
+			let td1_reponse="";
+			let td2_reponse="";
+			let valSimple01;
+			let valSimple02;
+			let valComplexe01;
+			
+			switch(iSimple)
+			{
+				case 0: //carre
+					valSimple01 = Math.floor((Math.random()*(7)))+2;
+					td1_enonce="Calculez le périmètre du carré. Le côté [AB] mesure "+valSimple01+" cm.<br>(0.5) Détail du calcul :<br>(0.5) Réponse : <br><br>";
+					td1_reponse="Calcul : 4 x "+valSimple01+" = "+(4*valSimple01)+".<br>Réponse : Le périmètre du carré est de "+(4*valSimple01)+" cm.";
+					break;
+					
+				case 1://cercle_diam
+					valSimple01 = Math.floor((Math.random()*(7)))+2;
+					td1_enonce="Calculez le périmètre du cercle. Le diamètre [AB] vaut "+valSimple01+" cm<br>(0.5) Détail du calcul :<br>(0.5) Réponse : <br><br>";
+					td1_reponse="Calcul : 2 x &#120529; x rayon = 2 x &#120529; x (<span class=\"math\"><span class=\"frac\"><span class=\"num\">diamètre</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>) = "+(valSimple01*Math.PI)+" cm."+
+								"<br>Réponse : Le périmètre du cercle est de "+(valSimple01*Math.PI)+" cm.";
+					break;
+
+				case 2://cercle_rayon
+					valSimple01 = Math.floor((Math.random()*(7)))+2;
+					td1_enonce="Calculez le périmètre du cercle. Le rayon [AB] vaut "+valSimple01+" cm<br>(0.5) Détail du calcul :<br>(0.5) Réponse : <br><br>";
+					td1_reponse="Calcul : 2 x &#120529; x rayon = 2 x &#120529; x (<span class=\"math\"><span class=\"frac\"><span class=\"num\">diamètre</span><span class=\"fracbar\">/</span><span class=\"den\">2</span></span>) = "+(2*valSimple01*Math.PI)+" cm."+
+								"<br>Réponse : Le périmètre du cercle est de "+(2*valSimple01*Math.PI)+" cm.";
+					break;
+
+				case 3://rectangle
+					valSimple01 = Math.floor((Math.random()*(7)))+2;
+					valSimple02 = Math.floor((Math.random()*(7)))+2;
+					while(valSimple01 == valSimple02)
+					{
+						valSimple02 = Math.floor((Math.random()*(7)))+2;
+					}
+					td1_enonce="Calculez le périmètre du rectangle. Le côté [AB] mesure "+valSimple01+" cm. Le côté [BC] mesure  "+valSimple02+" cm.<br>(0.5) Détail du calcul :<br>(0.5) Réponse : <br><br>";
+					td1_reponse="Calcul : 2 x ( [AB] + [BC] ) = 2 x ("+valSimple01+" + "+valSimple02+ ") = "+(2*(valSimple01+valSimple02))+ " cm.<br>"+
+								"Réponse : Le périmètre du rectangle mesure "+(2*(valSimple01+valSimple02))+ " cm.";
+					break;
+				
+				
+			}
+			
+			switch(iComplexe)
+			{
+				case 0:
+				valComplexe01 = Math.floor((Math.random()*(7)))+2;
+				td2_enonce="Calculez le périmètre de la figure grise. Le côté [DC] mesure "+valComplexe01+" cm.<br>(0.5) Décomposition du périmètre<br>(0.5) Détail du calcul <br>(0.5) Réponse : <br><br>";
+				td2_reponse="Calcul : L'arc [DB] correspond à un quart du périmètre d'un cercle de rayon [DC]. On a donc [DB] = <span class=\"math\"><span class=\"frac\"><span class=\"num\"> 2 x &#120529; x [DC]</span><span class=\"fracbar\">/</span><span class=\"den\"> 4 </span></span> = "+(valComplexe01*Math.PI)/2+" cm.<br>"+
+							"L'arc [DC] correspond à la moitié du périmètre d'un cercle de diamètre [DC]. On a donc [DC] = <span class=\"math\"><span class=\"frac\"><span class=\"num\">  &#120529; x [DC]</span><span class=\"fracbar\">/</span><span class=\"den\"> 2 </span></span> = "+(valComplexe01*Math.PI)/2+" cm <br>"+
+							"Le côté [BC] mesure la même chose que [DC]. [BC] = "+valComplexe01+" cm. Le périmètre mesure "+((1+Math.PI)*valComplexe01)+" cm.";
+				break;
+				
+				case 1:
+				valComplexe01 = Math.floor((Math.random()*(7)))+2;
+				td2_enonce="Calculez le périmètre de la figure sachant que a mesure "+valComplexe01+" cm.<br>(0.5) Décomposition du périmètre<br>(0.5) Détail du calcul <br>(0.5) Réponse : <br><br>";
+				td2_reponse="Calcul : La figure est composée de 16 segments de longueur a à "+valComplexe01+" cm. 16 x a = "+(16*valComplexe01)+" cm.<br>"+
+							"Le périmètre de la figure mesure "+(16*valComplexe01)+" cm.";
+				break;				
+		
+				case 2:
+				valComplexe01 = Math.floor((Math.random()*(7)))+2;
+				td2_enonce="Calculez le périmètre de la figure sachant que a mesure "+valComplexe01+" cm.<br>(0.5) Décomposition du périmètre<br>(0.5) Détail du calcul <br>(0.5) Réponse : <br><br>";
+				td2_reponse="Calcul : La figure est composée de 12 segments de longueur a à "+valComplexe01+" cm. 12 x a = "+(12*valComplexe01)+" cm.<br>"+
+							"Le périmètre de la figure mesure "+(12*valComplexe01)+" cm.";
+				break;	
+
+				case 3:
+				valComplexe01 = Math.floor((Math.random()*(7)))+2;
+				td2_enonce="Calculez le périmètre de la figure blanche sachant que le diamètre du cercle blanc vaut la moitié de a et que le diamètre du petit cercle gris vaut la moitié du diamètre de cercle blanc. On a, a = "+valComplexe01+" cm.<br>(0.5) Décomposition du périmètre<br>(0.5) Détail du calcul <br>(0.5) Réponse : <br><br>";
+				td2_reponse="Calcul : Le périmètre du cercle blanc mesure ( 2 x a x &#120529;) / 4 = "+((valComplexe01*Math.PI)/2)+" cm.<br>"+
+							"Le périmètre du petit cercle gris mesure ( 2 x a x &#120529;) / 8 = "+((valComplexe01*Math.PI)/4)+" cm.<br>. Le périmètre de la figure blanche est la somme des périmètres des deux cercles. <br"+((valComplexe01*Math.PI)/2)+" + "+((valComplexe01*Math.PI)/4) +" = "+((3*valComplexe01*Math.PI)/4)+" cm.<br>"+
+							"Réponse : Le périmètre de la figure blanche mesure "+((3*valComplexe01*Math.PI)/4)+" cm.";
+				break;
+				
+				case 4:
+				valComplexe01 = Math.floor((Math.random()*(7)))+2;
+				td2_enonce="Calculez le périmètre de la figure grise. On a, [AM] = "+valComplexe01+" cm.<br>(0.5) Détail du calcul <br>(0.5) Réponse : <br><br>";
+				td2_reponse="Calcul : Le périmètre du demi cercle (AM) mesure ( 2 x [AM] x &#120529;) / 4 = "+((valComplexe01*Math.PI)/2)+" cm.<br>"+
+							"Le périmètre demi cercle (AB) mesure ( 2 x [AM] x &#120529;) / 2 = "+((valComplexe01*Math.PI))+" cm.<br>. Le périmètre de la figure est composée de 2 fois le périmètre du demi cercle (AM) auquel on additionne le périmètre du demi cercle (AB)  .<br> "+((valComplexe01*Math.PI))+" + "+((valComplexe01*Math.PI)) +" = "+((2*valComplexe01*Math.PI))+" cm.<br>"+
+							"Réponse : Le périmètre de la figure grise mesure "+((2*valComplexe01*Math.PI))+" cm.";
+				break;				
+				
+		}			
+			
+			
+		
+			
+
+			
+//			<span class=\"math\"><span class=\"frac\"><span class=\"num\">1</span><span class=\"fracbar\">/</span><span class=\"den\">√3</span></span>
+			
+// https://cms.alloprof.qc.ca/sites/default/files/styles/1440w/public/2023-05/im1389-1-cercle-trigonometrique.png?itok=WUcrl1ff
+// https://www.ilemaths.net/img/fiches/maths-premiere/maths_1_s_cercle_et_formules_trigonometrie_cours_05.gif		
+// https://tutorathomes.com/rapports-trigonometriques/		
+// https://www.alloschool.com/element/47622#&gid=1&pid=1		
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+
+			
+			enonce = document.getElementsByClassName("enonce")[0];
+			
+				enonce.innerHTML = "<table><tr><td><img src=\""+simples[iSimple][0]+"\" alt=\"perimetre simple\" ></td><td><img src=\""+complexes[iComplexe][0]+"\" alt=\"perimetre complexe\" ></td></tr>"+
+									"<tr><td>"+td1_enonce+"</td><td>"+td2_enonce+"</td></tr>"+
+				"</table>";
+
+			
+			reponse = document.getElementById("reponse");
+			reponse.innerHTML = "<table><tr><td>"+td1_reponse+"</td><td>"+td2_reponse+"</td></tr>"+
+				"</table>";
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>
