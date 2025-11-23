@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>dichotomie</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+				font-size:16px;
+				margin-left:20px;
+				margin-right:20px;
+				margin-top:20px;
+				
+			}
+			
+			img {
+			width:75%;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				width:300px;
+				height:50px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+				break-before: page;
+				border-bottom : solid 1px black;
+				font-size:15px;
+				break-after: page; // sujet et correction sur des pages differentes
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+			let nbEleves = 20;
+			let nomSujet="<br>BTS CPRP - TD calculatrice - dichotomie -";
+			
+			for(let nbSujet=0;nbSujet<=nbEleves;nbSujet++)
+			{
+			
+			
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = nomSujet+" Correction numéro "+nbSujet+"<br><br>";	
+				
+<!-- les calculs ici -->	
+			 let x1min = Math.floor(Math.random()*5) + 1;
+			 let x2min = Math.floor(Math.random()*5) + 7;
+			 let x1max=x1min+1;
+			 let x2max=x2min+1;
+			 let n1 = Math.floor(Math.random()*15) + 1;
+			 let n2 = Math.floor(Math.random()*15) + 1;
+			 
+			 while(n1==n2)
+			 {
+				n2 = Math.floor(Math.random()*16);
+			 }
+			 
+			let decix1 = 0.03125+(n1 * 0.0625);
+			let decix2 = 0.03125+(n2 * 0.0625);
+			let x1 = x1min+decix1
+			let x2 = x2min+decix2
+			let s = (x1) + (x2);
+			let p = (x1) * (x2);
+			let valMin,valMax,milieu, valMilieu, solution;
+			function calcul(val,somme,produit)
+			{
+				let result=(val*val)-(somme*val)+produit;
+				return result
+			}
+			
+			question="En utilisant un raisonnement par dichotomie, on vous demande de trouver les deux solutions de l'équation suivante : f(x) = 0 avec "+
+					"f(x) = x<sup>2</sup> - "+s+" x + "+p+" <br> La racine X1 est comprise entre "+x1min+" et "+x1max+", la racine X2 est comprise entre "+x2min+" et "+x2max+
+					". Pour chaque racine, vous ferez 5 itérations en justifiant votre choix.<br>";			
+		
+			//reponse = document.getElementById("reponse");
+			solution="Pour X1 : ";
+			for(let i=1;i<=5;i++)
+			{ 
+				valMin= calcul(x1min,s,p);
+				valMax= calcul(x1max,s,p);
+				milieu=(x1min+x1max)/2;
+				valMilieu=calcul(milieu,s,p);
+				solution = solution + "<br>Itération "+i+" : <br>On effectue notre recherche sur l'interval [ "+x1min+" ; "+x1max+" ]. On a f("+x1min+") = "+valMin+" et f("+x1max+") = "+valMax;
+				solution = solution + ". <br>Le milieu de l'intervalle est x = "+milieu+". On a f("+milieu+") = "+valMilieu+". <br>";
+
+				if(valMilieu!=0)
+				{
+
+					if( ( (valMin<0) && (valMilieu<0) ) || ( (valMin>0) && (valMilieu>0) ) )
+					{
+						solution = solution + valMilieu +" et "+valMax+" sont de signe contraire. Nous continuons notre recherche sur l'intervalle [ "+milieu+" ; "+x1max+" ]";
+						x1min=milieu;
+					}
+					else
+					{
+						solution = solution + valMin +" et "+valMilieu+" sont de signe contraire. Nous continuons notre recherche sur l'intervalle [ "+x1min+" ; "+milieu+" ]";
+						x1max=milieu;				
+					}
+				}
+				else
+				{
+					solution = solution + "On a trouvé une solution pour x="+milieu;
+				}
+			}
+			
+			solution = solution +"<br><br>Pour X2 : ";
+			for(let i=1;i<=5;i++)
+			{ 
+				valMin= calcul(x2min,s,p);
+				valMax= calcul(x2max,s,p);
+				milieu=(x2min+x2max)/2;
+				valMilieu=calcul(milieu,s,p);
+				solution = solution + "<br>Itération "+i+" : <br>On effectue notre recherche sur l'interval [ "+x2min+" ; "+x2max+" ]. On a f("+x2min+") = "+valMin+" et f("+x2max+") = "+valMax;
+				solution = solution + ". <br>Le milieu de l'intervalle est x = "+milieu+". On a f("+milieu+") = "+valMilieu+". <br>";
+
+				if(valMilieu!=0)
+				{
+
+					if( ( (valMin<0) && (valMilieu<0) ) || ( (valMin>0) && (valMilieu>0) ) )
+					{
+						solution = solution + valMilieu +" et "+valMax+" sont de signe contraire. Nous continuons notre recherche sur l'intervalle [ "+milieu+" ; "+x2max+" ]";
+						x2min=milieu;
+					}
+					else
+					{
+						solution = solution + valMin +" et "+valMilieu+" sont de signe contraire. Nous continuons notre recherche sur l'intervalle [ "+x2min+" ; "+milieu+" ]";
+						x2max=milieu;				
+					}
+				}
+				else
+				{
+					solution = solution + "On a trouvé une solution pour x="+milieu;
+				}
+			}			
+			
+
+<!-- les calculs ici -->
+
+				sujet.appendChild(reponse);
+				
+			
+				reponse.innerHTML= reponse.innerHTML+solution;				
+<!-- la réponse ici -->		
+<!-- la réponse ici -->			
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = nomSujet+" Sujet numéro "+nbSujet;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+				
+			enonce.innerHTML= "<br>";
+
+<!-- l'enonce ici -->	
+<!-- l'enonce ici -->				
+			enonce.innerHTML= enonce.innerHTML+question;	
+				
+				
+				sujet.appendChild(enonce);
+			
+			}
+			
+		</script>
+		
+	</body>
+</html>

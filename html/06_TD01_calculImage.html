@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les polynômes de degrès 2</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+				width:200px;
+				height:40px;
+				text-align:center;
+			}
+
+			body{
+				font-size: 1.5em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+		@media screen and (min-width: 795px) {
+			body{
+				font-size: 1em;
+				}
+			}				
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+		
+		/*
+		
+		fonction 01 : a x*x e-bx + ln(c x*x*x) avec a et c entiers positif, b compris entre 0 et 1
+		fonction 02 : (e-x + ax*x -ln(bx))/(cx +edx) avec a,c entiers positifs, b et d compris entre 0 et1
+		fonction 03 : c/x +ln(ax*x*x*x)+e-bx avec a et c entier positif, b compris entre 0 et 1
+		fonction 04 : -axln((bx+1)/(cx*x)) e-dx+(1/x)^2 avec a,b,c entiers positifs, d compris entre 0.1 et 0.2
+		fonction 05 : e(-0.2/x) (3cos(0.5x)+5 sin(0.7x)) +5
+		
+		calcul de 5 ou 10 image comprises entre 2 et 50
+		
+		
+		un nombre aléatoire determine la fonction parmi les 5
+		
+		*/
+
+			
+			let coef01,a,b,c,d,e,i,x,y;
+			let fonction;
+			let result=["","",[]];
+
+			 coef01 = Math.floor(Math.random()*5);
+			// coef01=4;
+			 switch (coef01)
+			 {
+			 case 0:
+				fonction="fonction 0";
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20))/100;
+				c = (Math.floor((Math.random()*35)+1))/10;
+				d = Math.floor(Math.random()*5);
+				
+				result[0]="CalculImage00.jpg";
+				result[1]="avec a = "+a+" b = "+b+" c = "+c+" d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= (a*x*x*Math.exp((-1)*(b*x))+Math.log(c*x*x*x)+d);
+					result[2].push([x,y]);
+				}
+				console.log(result);
+				//image de la fonction, tirage a,b,c => retourne tableau avec image + les infos + tableau valeur x et resultat calcul
+				// tableau avec 2 chaines, une pour enonce et une avec la reponse
+				
+				break;
+				
+			 case 1:
+				fonction="fonction 1";
+				//	fonction 02 : (e-x + ax*x -ln(bx))/(cx +edx) avec a,c entiers positifs, b et d compris entre 0 et1
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20))/100;
+				c = (Math.floor((Math.random()*35)+1))/10;
+				d = (((Math.floor((Math.random()*10)))/100)+0.1).toFixed(2);
+				
+				result[0]="CalculImage01.jpg";
+				result[1]="avec a = "+a+" b = "+b+" c = "+c+" d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;						
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= (Math.exp((-1)*(x))+(a*x*x)-Math.log(b*x))/((c*x)+Math.exp(d*x));
+					result[2].push([x,y]);
+				}
+				console.log(result);
+				break;			 
+			 
+			 case 2:
+				fonction="fonction 2";
+				// 		fonction 03 : c/x +ln(ax*x*x*x)+e-bx + d/10 avec a et c entier positif, b compris entre 0 et 1
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20))/100;
+				c = (Math.floor((Math.random()*35)+1))/10;
+				d = (Math.floor(Math.random()*5))/10;
+				
+				result[0]="CalculImage02.jpg";
+				result[1]="avec a = "+a+" b = "+b+" c = "+c+" d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= (c/x) + Math.log(a*x*x*x*x) + Math.exp(((-1)*b*x) + (d));
+					result[2].push([x,y]);
+				}
+				console.log(result);
+				break;			 
+			 
+			 case 3:
+				fonction="fonction 3";
+				// fonction 04 : -axln((bx+1)/(cx*x)) e-dx+(1/x)^2 avec a,b,c entiers positifs, d compris entre 0.1 et 0.2
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20));
+				c = (Math.floor((Math.random()*35)+1));
+				d = Math.floor((Math.random()*9)+1)/100;	
+
+				result[0]="CalculImage03.jpg";
+				result[1]="avec a = "+a+" b = "+b+" c = "+c+" d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= (-1)*a*x*Math.log((b*x+1)/(c*x*x))*Math.exp((-1)*d*x)+((1/x)*(1/x));
+					result[2].push([x,y]);
+				}
+				console.log(result);				
+				break;
+
+			 case 4:
+				fonction="fonction 4";
+				// fonction 05 : e(-0.2/x) (3cos(0.5x)+sin(0.7x)) +5
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20));
+				c = (Math.floor((Math.random()*35)+1));
+				d = Math.floor((Math.random()*9)+1)/100;	
+
+				result[0]="CalculImage04.jpg";
+				result[1]="avec a = "+a+" b = "+b+" c = "+c+" d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= Math.exp(((-1)*a)/x)*((b*Math.cos(c*x))+Math.sin(d*x)) + 5;
+					result[2].push([x,y]);
+				}
+				console.log(result);					
+				break;				
+			 }
+			 coef02 = Math.floor(Math.random()*5) + 2;
+
+
+
+			 
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= "Vous avez la fonction suivante <img src=\"..\\images\\calculImage\\"+result[0]+"\"> <br>"+result[1]+
+								"<br>Calculez les images, au centième, de votre fonction pour les valeurs de x suivantes :<br>";
+								for(i=0;i<result[2].length;i++)
+								{
+									//enonce.innerHTML= enonce.innerHTML + "x = "+result[2][i][0]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = <br><br>";
+								}
+				ligne01="<tr><td>x=</td>";
+			ligne02="<tr><td>y=</td>";
+			ligne03="<tr><td></td>";
+			ligne04="<tr><td>x=</td>";
+			ligne05="<tr><td>y=</td>";
+			for(i=0;i<result[2].length;i++)
+				{
+					if(i<result[2].length/2)
+					{
+						ligne01=ligne01+"<td>"+result[2][i][0]+"</td>";
+						ligne02=ligne02+"<td>&nbsp;</td>";
+						ligne03=ligne03+"<td>&nbsp;</td>";
+					}
+				
+					else
+					{
+						ligne04=ligne04+"<td>"+result[2][i][0]+"</td>";
+						ligne05=ligne05+"<td>&nbsp;</td>";		
+					}
+				}
+			ligne01=ligne01+"<tr>";
+			ligne02=ligne02+"<tr>";
+			ligne03=ligne03+"<tr>";
+			ligne04=ligne04+"<tr>";
+			ligne05=ligne05+"<tr>";				
+			enonce.innerHTML= enonce.innerHTML+"<table>"+ligne01+ligne02+ligne03+ligne04+ligne05+"</table>";						
+
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			reponse = document.getElementById("reponse");
+			ligne01="<tr><td>x=</td>";
+			ligne02="<tr><td>y=</td>";
+			ligne03="<tr><td></td>";
+			ligne04="<tr><td>x=</td>";
+			ligne05="<tr><td>y=</td>";
+			for(i=0;i<result[2].length;i++)
+				{
+					if(i<result[2].length/2)
+					{
+						ligne01=ligne01+"<td>"+result[2][i][0]+"</td>";
+						ligne02=ligne02+"<td>"+(Math.round(result[2][i][1]*100)/100).toFixed(2)+"</td>";
+						ligne03=ligne03+"<td>&nbsp;</td>";
+					}
+				
+					else
+					{
+						ligne04=ligne04+"<td>"+result[2][i][0]+"</td>";
+						ligne05=ligne05+"<td>"+(Math.round(result[2][i][1]*100)/100).toFixed(2)+"</td>";		
+					}
+				}
+			ligne01=ligne01+"<tr>";
+			ligne02=ligne02+"<tr>";
+			ligne03=ligne03+"<tr>";
+			ligne04=ligne04+"<tr>";
+			ligne05=ligne05+"<tr>";				
+			reponse.innerHTML= "<table>"+ligne01+ligne02+ligne03+ligne04+ligne05+"</table>";
+		
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>

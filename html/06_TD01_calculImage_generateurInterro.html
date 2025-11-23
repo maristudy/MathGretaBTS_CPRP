@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>calculs fonctions dérivées</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+				font-size:16px;
+				margin-left:20px;
+				margin-right:20px;
+				margin-top:20px;
+				
+			}
+			
+			img {
+			width:75%;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				width:300px;
+				height:50px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+				break-before: page;
+				border-bottom : solid 1px black;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+			let nbEleves = 20;
+			
+			for(let j=0;j<=nbEleves;j++)
+			{
+			
+			
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = "<br>BTS CPRP - TD - calculatrice - calcul image - Correction numéro "+j+"<br><br>";	
+				
+				
+				
+			let coef01,a,b,c,d,e,i,x,y;
+			let fonction;
+			let result=["","",[]];
+
+			 coef01 = Math.floor(Math.random()*5);
+			// coef01=4;
+			 switch (coef01)
+			 {
+			 case 0:
+				fonction="fonction 0";
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20))/100;
+				c = (Math.floor((Math.random()*35)+1))/10;
+				d = Math.floor(Math.random()*5);
+				
+				result[0]="CalculImage00.jpg";
+				result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= (a*x*x*Math.exp((-1)*(b*x))+Math.log(c*x*x*x)+d);
+					result[2].push([x,y]);
+				}
+				console.log(result);
+				//image de la fonction, tirage a,b,c => retourne tableau avec image + les infos + tableau valeur x et resultat calcul
+				// tableau avec 2 chaines, une pour enonce et une avec la reponse
+				
+				break;
+				
+			 case 1:
+				fonction="fonction 1";
+				//	fonction 02 : (e-x + ax*x -ln(bx))/(cx +edx) avec a,c entiers positifs, b et d compris entre 0 et1
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20))/100;
+				c = (Math.floor((Math.random()*35)+1))/10;
+				d = (((Math.floor((Math.random()*10)))/100)+0.1).toFixed(2);
+				
+				result[0]="CalculImage01.jpg";
+				result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;						
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= (Math.exp((-1)*(x))+(a*x*x)-Math.log(b*x))/((c*x)+Math.exp(d*x));
+					result[2].push([x,y]);
+				}
+				console.log(result);
+				break;			 
+			 
+			 case 2:
+				fonction="fonction 2";
+				// 		fonction 03 : c/x +ln(ax*x*x*x)+e-bx + d/10 avec a et c entier positif, b compris entre 0 et 1
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20))/100;
+				c = (Math.floor((Math.random()*35)+1))/10;
+				d = (Math.floor(Math.random()*5))/10;
+				
+				result[0]="CalculImage02.jpg";
+				result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= (c/x) + Math.log(a*x*x*x*x) + Math.exp(((-1)*b*x) + (d));
+					result[2].push([x,y]);
+				}
+				console.log(result);
+				break;			 
+			 
+			 case 3:
+				fonction="fonction 3";
+				// fonction 04 : -axln((bx+1)/(cx*x)) e-dx+(1/x)^2 avec a,b,c entiers positifs, d compris entre 0.1 et 0.2
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20));
+				c = (Math.floor((Math.random()*35)+1));
+				d = Math.floor((Math.random()*9)+1)/100;	
+
+				result[0]="CalculImage03.jpg";
+				result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= (-1)*a*x*Math.log((b*x+1)/(c*x*x))*Math.exp((-1)*d*x)+((1/x)*(1/x));
+					result[2].push([x,y]);
+				}
+				console.log(result);				
+				break;
+
+			 case 4:
+				fonction="fonction 4";
+				// fonction 05 : e(-0.2/x) (3cos(0.5x)+sin(0.7x)) +5
+				a = (Math.floor(Math.random()*5)+1);
+				b = (Math.floor((Math.random()*10)+20));
+				c = (Math.floor((Math.random()*35)+1));
+				d = Math.floor((Math.random()*9)+1)/100;	
+
+				result[0]="CalculImage04.jpg";
+				result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d;
+				
+				for (i=0;i<10;i++)
+				{
+					x= (Math.floor((Math.random()*500)+0.1))/20;
+					while( result[2].indexOf(x) !== -1 )
+					{
+						x= (Math.floor((Math.random()*500)+0.1))/20;
+					}
+					y= Math.exp(((-1)*a)/x)*((b*Math.cos(c*x))+Math.sin(d*x)) + 5;
+					result[2].push([x,y]);
+				}
+				console.log(result);					
+				break;				
+			 }
+			 coef02 = Math.floor(Math.random()*5) + 2;
+
+				
+				
+				
+				
+				
+				
+				sujet.appendChild(reponse);
+				
+			ligne01="<tr><td>x=</td>";
+			ligne02="<tr><td>y=</td>";
+			ligne03="<tr><td></td>";
+			ligne04="<tr><td>x=</td>";
+			ligne05="<tr><td>y=</td>";
+			for(i=0;i<result[2].length;i++)
+				{
+					if(i<result[2].length/2)
+					{
+						ligne01=ligne01+"<td>"+result[2][i][0]+"</td>";
+						ligne02=ligne02+"<td>"+(Math.round(result[2][i][1]*100)/100).toFixed(2)+"</td>";
+						ligne03=ligne03+"<td>&nbsp;</td>";
+					}
+				
+					else
+					{
+						ligne04=ligne04+"<td>"+result[2][i][0]+"</td>";
+						ligne05=ligne05+"<td>"+(Math.round(result[2][i][1]*100)/100).toFixed(2)+"</td>";		
+					}
+				}
+			ligne01=ligne01+"<tr>";
+			ligne02=ligne02+"<tr>";
+			ligne03=ligne03+"<tr>";
+			ligne04=ligne04+"<tr>";
+			ligne05=ligne05+"<tr>";				
+			reponse.innerHTML= reponse.innerHTML+"<table>"+ligne01+ligne02+ligne03+ligne04+ligne05+"</table><br><br>";				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = "BTS CPRP - TD - calculatrice - calcul image - Sujet numéro "+j;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+				
+			enonce.innerHTML= "Vous avez la fonction suivante <img src=\"..\\images\\calculImage\\"+result[0]+"\"> <br>"+result[1]+
+								"<br>Calculez les images, au centième, de votre fonction pour les valeurs de x suivantes :<br>";
+
+				ligne01="<tr><td>x=</td>";
+			ligne02="<tr><td>y=</td>";
+			ligne03="<tr><td></td>";
+			ligne04="<tr><td>x=</td>";
+			ligne05="<tr><td>y=</td>";
+			for(i=0;i<result[2].length;i++)
+				{
+					if(i<result[2].length/2)
+					{
+						ligne01=ligne01+"<td>"+result[2][i][0]+"</td>";
+						ligne02=ligne02+"<td>&nbsp;</td>";
+						ligne03=ligne03+"<td>&nbsp;</td>";
+					}
+				
+					else
+					{
+						ligne04=ligne04+"<td>"+result[2][i][0]+"</td>";
+						ligne05=ligne05+"<td>&nbsp;</td>";		
+					}
+				}
+			ligne01=ligne01+"<tr>";
+			ligne02=ligne02+"<tr>";
+			ligne03=ligne03+"<tr>";
+			ligne04=ligne04+"<tr>";
+			ligne05=ligne05+"<tr>";				
+			enonce.innerHTML= enonce.innerHTML+"<table>"+ligne01+ligne02+ligne03+ligne04+ligne05+"</table>";	
+				
+				
+				sujet.appendChild(enonce);
+			
+			}
+			
+		</script>
+		
+	</body>
+</html>
