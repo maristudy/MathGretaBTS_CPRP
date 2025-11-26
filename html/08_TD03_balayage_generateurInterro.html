@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>balayage</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+				font-size:16px;
+				margin-left:20px;
+				margin-right:20px;
+				margin-top:20px;
+				
+			}
+			
+			img {
+			width:75%;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				width:300px;
+				height:50px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+				break-before: page;
+				border-bottom : solid 1px black;
+				font-size:15px;
+				break-after: page; // sujet et correction sur des pages differentes
+			}
+			
+					.reponse	td {
+				border : solid 1px black;
+				width:300px;
+				height:25px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+			let nbEleves = 20;
+			let nomSujet="<br>BTS CPRP -";
+			
+			for(let nbSujet=0;nbSujet<=nbEleves;nbSujet++)
+			{
+			
+			
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = nomSujet+" Correction numéro "+nbSujet+"<br><br>";	
+				
+<!-- les calculs ici -->
+			 let x1 = Math.floor((Math.random()+1)*2500);
+			 while( (x1%10 == 0) || (x1%100 == 0) )
+			 {
+				x1 = Math.floor((Math.random()+1)*2500);
+			 }			 
+			 x1=x1/1000;
+			 
+			 let x2 = Math.floor((Math.random()+1)*8500);
+			 while( ((x2%10 == 0) || (x2%100 == 0) || (x1 == x2 ) ))
+			 {
+				x2 = Math.floor(Math.random()*8500);
+			 }		
+			x2=x2/1000;
+			
+			 let s=x1+x2;
+			 let p= x1 * x2;
+ 
+			function calcul(val,somme,produit)
+			{
+				let result=(val*val)-(somme*val)+produit;
+				return result
+			}	
+<!-- les calculs ici -->
+
+				sujet.appendChild(reponse);
+				
+			
+	//			reponse.innerHTML= reponse.innerHTML+"<br><br>";				
+<!-- la réponse ici -->		
+			//reponse = document.getElementById("reponse");
+			solution="x1= "+x1+" x2= "+x2+"<br>Pour X1 : <br> <div style=\"display:flex;\">";
+			solution = solution + "<div>encadrement au dixième : <br> <table><tr><td>x</td><td>f(x)</td></tr>";
+			for(let i=1;i<=10;i++)
+			{ 
+				solution = solution +"<tr><td>"+(Math.trunc(x1)+(i*0.1))+"</td><td>"+calcul((Math.trunc(x1)+(i*0.1)),s,p)+"</td></tr>";
+			}						
+			solution = solution + "</table><br>. La valeur f(x1)=0 est atteinte pour x1 compris entre "+(Math.trunc(x1*10)/10)+" et "+((Math.trunc(x1*10)/10)+0.1)+".<br><br>";
+			
+			solution = solution + "</div><div style=\"margin-left:10px;\">encadrement au centième : <br> <table><tr><td>x</td><td>f(x)</td></tr>";
+			for(let i=1;i<=10;i++)
+			{ 
+				solution = solution +"<tr><td>"+((Math.trunc(x1*10)/10)+(i*0.01))+"</td><td>"+calcul(((Math.trunc(x1*10)/10)+(i*0.01)),s,p)+"</td></tr>";
+			}						
+			solution = solution + "</table><br></div></div>. réponse : La valeur f(x1)=0 est atteinte pour x1 compris entre "+(Math.trunc(x1*100)/100)+" et "+(Math.trunc(x1*100)/100+0.01)+"<br><br>";
+
+			solution= solution + "Pour X2 : <br><div style=\"display:flex;\">";
+			solution = solution + "<div>encadrement au dixième : <br> <table><tr><td>x</td><td>f(x)</td></tr>";
+			for(let i=1;i<=10;i++)
+			{ 
+				solution = solution +"<tr><td>"+(Math.trunc(x2)+(i*0.1))+"</td><td>"+calcul((Math.trunc(x2)+(i*0.1)),s,p)+"</td></tr>";
+			}						
+			solution = solution + "</table><br>. La valeur f(x2)=0 est atteinte pour x2 compris entre "+(Math.trunc(x2*10)/10)+" et "+((Math.trunc(x2*10)/10)+0.1)+".<br><br>";
+			
+			solution = solution + "</div><div style=\"margin-left:10px;\">encadrement au centième : <br> <table><tr><td>x</td><td>f(x)</td></tr>";
+			for(let i=1;i<=10;i++)
+			{ 
+				solution = solution +"<tr><td>"+((Math.trunc(x2*10)/10)+(i*0.01))+"</td><td>"+calcul(((Math.trunc(x2*10)/10)+(i*0.01)),s,p)+"</td></tr>";
+			}						
+			solution = solution + "</table><br></div></div>. réponse : La valeur f(x2)=0 est atteinte pour x2 compris entre "+(Math.trunc(x2*100)/100)+" et "+(Math.trunc(x2*100)/100+0.01)+"<br><br>";
+
+reponse.innerHTML= reponse.innerHTML+solution;	
+
+<!-- la réponse ici -->			
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = nomSujet+" Sujet numéro "+nbSujet;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+				
+			enonce.innerHTML= "<br>";
+
+<!-- l'enonce ici -->	
+
+			question="En utilisant la méthode par balayage, trouver les deux solutions x1 et x2 de l'équation f(x)=0 avec<br> f(x) = x<sup>2</sup> - "+s+" x + "+p+
+					" On sait que x1 est compris entre "+Math.trunc(x1)+" et "+(Math.trunc(x1)+1)+", x2 est compris entre "+Math.trunc(x2)+" et "+(Math.trunc(x2)+1)+
+					". On donnera un encadrement au centième de x1 et x2. Vous expliquerez votre démarche en complétant les tableaux.<br><div style=\"display:flex;\">"+
+					"<div>X1 : <br> encadrement au dixième <br><table><tr><td>x</td><td>f(x)</td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr><tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> </table> On cherche les centièmes sur l'intervalle :  <br><br>"+			
+					"</div><div style=\"margin-left:10px;\">X1 : <br> encadrement au centième <br><table><tr><td>x</td><td>f(x)</td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr><tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> </table> <br>"+
+					"</div></div>réponse : <br><br><br><div style=\"display:flex;\">"+
+					"<div>X2 : <br> encadrement au dixième <br><table><tr><td>x</td><td>f(x)</td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr><tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> </table> On cherche les centièmes sur l'intervalle :  <br><br>"+			
+					"</div><div style=\"margin-left:10px;\">X2 : <br> encadrement au centième <br><table><tr><td>x</td><td>f(x)</td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> <tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr><tr><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td><td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> </td></tr> </table> <br>"+
+					"</div></div>réponse : <br><br><br>";					
+			enonce.innerHTML= question;
+<!-- l'enonce ici -->				
+			enonce.innerHTML= enonce.innerHTML+"";	
+				
+				
+				sujet.appendChild(enonce);
+			
+			}
+			
+		</script>
+		
+	</body>
+</html>
