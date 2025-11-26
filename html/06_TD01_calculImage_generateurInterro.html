@@ -173,10 +173,10 @@
 				
 				for (i=0;i<10;i++)
 				{
-					x= (Math.floor((Math.random()*500)+0.1))/20;
+					x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;
 					while( result[2].indexOf(x) !== -1 )
 					{
-						x= (Math.floor((Math.random()*500)+0.1))/20;
+						x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;
 					}
 					y= (a*x*x*Math.exp((-1)*(b*x))+Math.log(c*x*x*x)+d);
 					result[2].push([x,y]);
@@ -200,10 +200,10 @@
 				
 				for (i=0;i<10;i++)
 				{
-					x= (Math.floor((Math.random()*500)+0.1))/20;						
+					x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;						
 					while( result[2].indexOf(x) !== -1 )
 					{
-						x= (Math.floor((Math.random()*500)+0.1))/20;
+						x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;
 					}
 					y= (Math.exp((-1)*(x))+(a*x*x)-Math.log(b*x))/((c*x)+Math.exp(d*x));
 					result[2].push([x,y]);
@@ -224,10 +224,10 @@
 				
 				for (i=0;i<10;i++)
 				{
-					x= (Math.floor((Math.random()*500)+0.1))/20;
+					x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;
 					while( result[2].indexOf(x) !== -1 )
 					{
-						x= (Math.floor((Math.random()*500)+0.1))/20;
+						x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;
 					}
 					y= (c/x) + Math.log(a*x*x*x*x) + Math.exp(((-1)*b*x) + (d));
 					result[2].push([x,y]);
@@ -248,10 +248,10 @@
 				
 				for (i=0;i<10;i++)
 				{
-					x= (Math.floor((Math.random()*500)+0.1))/20;
+					x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;
 					while( result[2].indexOf(x) !== -1 )
 					{
-						x= (Math.floor((Math.random()*500)+0.1))/20;
+						x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;
 					}
 					y= (-1)*a*x*Math.log((b*x+1)/(c*x*x))*Math.exp((-1)*d*x)+((1/x)*(1/x));
 					result[2].push([x,y]);
@@ -268,14 +268,14 @@
 				d = Math.floor((Math.random()*9)+1)/100;	
 
 				result[0]="CalculImage04.jpg";
-				result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d;
+				result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d+". Les angles sont en radiants.";
 				
 				for (i=0;i<10;i++)
 				{
-					x= (Math.floor((Math.random()*500)+0.1))/20;
+					x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;
 					while( result[2].indexOf(x) !== -1 )
 					{
-						x= (Math.floor((Math.random()*500)+0.1))/20;
+						x= ((Math.floor((Math.random()*500)+0.1))/20)+0.1;
 					}
 					y= Math.exp(((-1)*a)/x)*((b*Math.cos(c*x))+Math.sin(d*x)) + 5;
 					result[2].push([x,y]);
