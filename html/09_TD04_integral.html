@@ -130,8 +130,13 @@ calculer 2 ou 3 intégrales, valeur moyenne(donner formule), volume révolution(
 				{
 					return ( (0.5*c*x*x) + d*x + ( (Math.log(Math.abs(a*Math.cos(a*x) + b))/a) ) ) // ((u)ln(u) - (u))' = (u)'ln(u)
 				}
+
+				function primCosSin(x) 
+				{
+					return ( (0.5*c*x*x) + d*x + ( (Math.log(Math.abs(a*Math.sin(a*x) + b))/a) ) ) // ((u)ln(u) - (u))' = (u)'ln(u)
+				}
 				
-			numFonction=4;
+			numFonction=Math.floor(Math.random()*6);
 			
 			switch(numFonction)
 			{
@@ -442,7 +447,66 @@ calculer 2 ou 3 intégrales, valeur moyenne(donner formule), volume révolution(
 					console.log(result);
 					break;
 
+				case 5:
 
+					fonction="fonction 0";
+					aDeci = Math.trunc((Math.floor(Math.random()*9)))*0.1;
+					a = 0.5+ aDeci
+					while( (a).toString().length > 5)
+					{
+						aDeci = Math.trunc((Math.floor(Math.random()*9)))*0.1;
+						a = 0.5+ aDeci
+					}
+				
+					bDeci = Math.trunc(Math.floor(Math.random()*20))*0.1;
+					b= 1.5+ bDeci;
+					while( (b).toString().length > 5)
+					{
+						bDeci = Math.trunc(Math.floor(Math.random()*20))*0.1;
+						b= 1.5+ bDeci;
+					}				
+				
+					cDeci = Math.trunc(Math.floor(Math.random()*9))*0.1;
+					c= 0.1+ cDeci ;
+					while( (c).toString().length > 5)
+					{
+						cDeci = Math.trunc(Math.floor(Math.random()*9))*0.1;
+						c= 0.1+ cDeci ;
+					}				
+								
+					dDeci = Math.trunc(Math.floor(Math.random()*10));
+					d= 5+ dDeci ;
+					while( (d).toString().length > 5)
+					{
+						dDeci = Math.trunc(Math.floor(Math.random()*10));
+						d= 5+ dDeci ;
+					}				
+								
+					result[0]="cossin.png";
+					result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d+". Les angles sont en radiants. ";
+				
+					for (i=0;i<5;i++)
+					{
+						mmin= Math.floor((Math.random()*20));
+						delta=Math.floor((Math.random()*20))+1;					
+						pmin= delta + Math.floor((Math.random()*20))
+						while( result[2].indexOf(mmin) !== -1 )
+						{
+							mmin= Math.floor((Math.random()*20));
+						}
+					
+						pmin= delta+mmin + Math.floor((Math.random()*20))
+						while( result[2].indexOf(pmin) !== -1 )
+						{
+							pmin= delta+mmin + Math.floor((Math.random()*20))
+						}
+					
+						integ = primCosSin(pmin) - primCosSin(mmin)
+					
+						result[2].push([mmin,pmin,integ]);
+					}
+					console.log(result);
+					break;
 
 
 					
