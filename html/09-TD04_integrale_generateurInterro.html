@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>calculs fonctions dérivées</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+				font-size:16px;
+				margin-left:20px;
+				margin-right:20px;
+				margin-top:20px;
+				
+			}
+			
+			img {
+			width:75%;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				width:300px;
+				height:50px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.sujet img{
+						width:100px;
+						}
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+				break-before: page;
+				border-bottom : solid 1px black;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+			let nbEleves = 20;
+			let nomSujet="<br>BTS CPRP -";
+			
+			for(let nbSujet=0;nbSujet<=nbEleves;nbSujet++)
+			{
+			
+			
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = nomSujet+" Correction numéro "+nbSujet+"<br><br>";	
+				
+<!-- les calculs ici -->	
+
+			let coef01,a,b,c,d,e,i,x,y;
+			let fonction;
+			let result=["","",[]];
+			
+				function primLnSin(x) 
+				{
+					return ( (Math.sin((a*x)+b)+c)*(Math.log( Math.sin((a*x)+b)+c)) - ( Math.sin((a*x)+b)+c ) + (d*x) ) // ((u)ln(u) - (u))' = (u)'ln(u)
+				}			
+			
+				function primLnCos(x) 
+				{
+					return ( (Math.cos((a*x)+b)+c)*(Math.log( Math.cos((a*x)+b)+c)) - ( Math.cos((a*x)+b)+c ) + (d*x) ) // ((u)ln(u) - (u))' = (u)'ln(u)
+				}				
+			
+				function primESin(x) 
+				{
+					return ( ((Math.exp( Math.sin((a*x)+b))) + (d/2)*x*x + c*x  )) // ((u)ln(u) - (u))' = (u)'ln(u)
+				}	
+
+				function primECos(x) 
+				{
+					return ( ((Math.exp( Math.cos((a*x)+b))) + (d/2)*x*x + c*x  )) // ((u)ln(u) - (u))' = (u)'ln(u)
+				}
+
+				function primSinCos(x) 
+				{
+					return ( (0.5*c*x*x) + d*x + ( (Math.log(Math.abs(a*Math.cos(a*x) + b))/a) ) ) // ((u)ln(u) - (u))' = (u)'ln(u)
+				}
+
+				function primCosSin(x) 
+				{
+					return ( (0.5*c*x*x) + d*x + ( (Math.log(Math.abs(a*Math.sin(a*x) + b))/a) ) ) // ((u)ln(u) - (u))' = (u)'ln(u)
+				}
+				
+			//numFonction=Math.floor(Math.random()*6);
+			numFonction=nbSujet%6
+			
+			switch(numFonction)
+			{
+			
+				case 0:
+
+					fonction="fonction 0";
+					aDeci = Math.trunc((Math.floor(Math.random()*20)))*0.1;
+					a = 0.5+ aDeci
+					while( (a).toString().length > 5)
+					{
+						aDeci = Math.trunc((Math.floor(Math.random()*20)))*0.1;
+						a = 0.5+ aDeci
+					}
+				
+					bDeci = Math.trunc(Math.floor(Math.random()*50))*0.1;
+					b= -5+ bDeci;
+					while( (b).toString().length > 5)
+					{
+						bDeci = Math.trunc(Math.floor(Math.random()*50))*0.1;
+						b= -5+ bDeci;
+					}				
+				
+					cDeci = Math.trunc(Math.floor(Math.random()*6))*0.1;
+					c= 1.1+ cDeci ;
+					while( (c).toString().length > 5)
+					{
+						cDeci = Math.trunc(Math.floor(Math.random()*6))*0.1;
+						c= 1.1+ cDeci ;
+					}				
+								
+					dDeci = Math.trunc(Math.floor(Math.random()*30))*0.1;
+					d= 2+ dDeci ;
+					while( (d).toString().length > 5)
+					{
+						dDeci = Math.trunc(Math.floor(Math.random()*30))*0.1;
+						d= 2+ dDeci ;
+					}				
+								
+					result[0]="lnsin.png";
+					result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d+". Les angles sont en radiants. ";
+				
+					for (i=0;i<5;i++)
+					{
+						mmin= Math.floor((Math.random()*20));
+						delta=Math.floor((Math.random()*20))+1;					
+						pmin= delta + Math.floor((Math.random()*20))
+						while( result[2].indexOf(mmin) !== -1 )
+						{
+							mmin= Math.floor((Math.random()*20));
+						}
+					
+						pmin= delta+mmin + Math.floor((Math.random()*20))
+						while( result[2].indexOf(pmin) !== -1 )
+						{
+							pmin= delta+mmin + Math.floor((Math.random()*20))
+						}
+					
+						integ = primLnSin(pmin) - primLnSin(mmin)
+					
+						result[2].push([mmin,pmin,integ]);
+					}
+					console.log(result);
+					break;
+				
+				case 1:
+
+					fonction="fonction 1";
+					aDeci = Math.trunc((Math.floor(Math.random()*20)))*0.1;
+					a = 0.5+ aDeci
+					while( (a).toString().length > 5)
+					{
+						aDeci = Math.trunc((Math.floor(Math.random()*20)))*0.1;
+						a = 0.5+ aDeci
+					}
+				
+					bDeci = Math.trunc(Math.floor(Math.random()*50))*0.1;
+					b= -5+ bDeci;
+					while( (b).toString().length > 5)
+					{
+						bDeci = Math.trunc(Math.floor(Math.random()*50))*0.1;
+						b= -5+ bDeci;
+					}				
+				
+					cDeci = Math.trunc(Math.floor(Math.random()*6))*0.1;
+					c= 1.1+ cDeci ;
+					while( (c).toString().length > 5)
+					{
+						cDeci = Math.trunc(Math.floor(Math.random()*6))*0.1;
+						c= 1.1+ cDeci ;
+					}				
+								
+					dDeci = Math.trunc(Math.floor(Math.random()*30))*0.1;
+					d= 2+ dDeci ;
+					while( (d).toString().length > 5)
+					{
+						dDeci = Math.trunc(Math.floor(Math.random()*30))*0.1;
+						d= 2+ dDeci ;
+					}				
+								
+					result[0]="lncos.png";
+					result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d+". Les angles sont en radiants. ";
+				
+					for (i=0;i<5;i++)
+					{
+						mmin= Math.floor((Math.random()*20));
+						delta=Math.floor((Math.random()*20))+1;					
+						pmin= delta + Math.floor((Math.random()*20))
+						while( result[2].indexOf(mmin) !== -1 )
+						{
+							mmin= Math.floor((Math.random()*20));
+						}
+					
+						pmin= delta+mmin + Math.floor((Math.random()*20))
+						while( result[2].indexOf(pmin) !== -1 )
+						{
+							pmin= delta+mmin + Math.floor((Math.random()*20))
+						}
+					
+						integ = primLnCos(pmin) - primLnCos(mmin)
+					
+						result[2].push([mmin,pmin,integ]);
+					}
+					console.log(result);
+					break;		
+
+				case 2:
+
+					fonction="fonction 0";
+					aDeci = Math.trunc((Math.floor(Math.random()*7)));
+					a = 3+ aDeci
+					while( (a).toString().length > 5)
+					{
+						aDeci = Math.trunc((Math.floor(Math.random()*7)));
+						a = 3+ aDeci
+					}
+				
+					bDeci = Math.trunc(Math.floor(Math.random()*9));
+					b= 1+ bDeci;
+					while( (b).toString().length > 5)
+					{
+						bDeci = Math.trunc(Math.floor(Math.random()*9));
+						b= 1+ bDeci;
+					}				
+				
+					cDeci = Math.trunc(Math.floor(Math.random()*5));
+					c= 15+ cDeci ;
+					while( (c).toString().length > 5)
+					{
+						cDeci = Math.trunc(Math.floor(Math.random()*5));
+						c= 15+ cDeci ;
+					}				
+								
+					dDeci = Math.trunc(Math.floor(Math.random()*10))*0.1;
+					d= 0.1+ dDeci ;
+					while( (d).toString().length > 5)
+					{
+						dDeci = Math.trunc(Math.floor(Math.random()*10))*0.1;
+						d= 0.1+ dDeci ;
+					}				
+								
+					result[0]="esin.png";
+					result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d+". Les angles sont en radiants. ";
+				
+					for (i=0;i<5;i++)
+					{
+						mmin= Math.floor((Math.random()*20));
+						delta=Math.floor((Math.random()*20))+1;					
+						pmin= delta + Math.floor((Math.random()*20))
+						while( result[2].indexOf(mmin) !== -1 )
+						{
+							mmin= Math.floor((Math.random()*20));
+						}
+					
+						pmin= delta+mmin + Math.floor((Math.random()*20))
+						while( result[2].indexOf(pmin) !== -1 )
+						{
+							pmin= delta+mmin + Math.floor((Math.random()*20))
+						}
+					
+						integ = primESin(pmin) - primESin(mmin)
+					
+						result[2].push([mmin,pmin,integ]);
+					}
+					console.log(result);
+					break;
+
+				case 3:
+
+					fonction="fonction 0";
+					aDeci = Math.trunc((Math.floor(Math.random()*7)));
+					a = 3+ aDeci
+					while( (a).toString().length > 5)
+					{
+						aDeci = Math.trunc((Math.floor(Math.random()*7)));
+						a = 3+ aDeci
+					}
+				
+					bDeci = Math.trunc(Math.floor(Math.random()*9));
+					b= 1+ bDeci;
+					while( (b).toString().length > 5)
+					{
+						bDeci = Math.trunc(Math.floor(Math.random()*9));
+						b= 1+ bDeci;
+					}				
+				
+					cDeci = Math.trunc(Math.floor(Math.random()*5));
+					c= 15+ cDeci ;
+					while( (c).toString().length > 5)
+					{
+						cDeci = Math.trunc(Math.floor(Math.random()*5));
+						c= 15+ cDeci ;
+					}				
+								
+					dDeci = Math.trunc(Math.floor(Math.random()*10))*0.1;
+					d= 0.1+ dDeci ;
+					while( (d).toString().length > 5)
+					{
+						dDeci = Math.trunc(Math.floor(Math.random()*10))*0.1;
+						d= 0.1+ dDeci ;
+					}				
+								
+					result[0]="ecos.png";
+					result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d+". Les angles sont en radiants. ";
+				
+					for (i=0;i<5;i++)
+					{
+						mmin= Math.floor((Math.random()*20));
+						delta=Math.floor((Math.random()*20))+1;					
+						pmin= delta + Math.floor((Math.random()*20))
+						while( result[2].indexOf(mmin) !== -1 )
+						{
+							mmin= Math.floor((Math.random()*20));
+						}
+					
+						pmin= delta+mmin + Math.floor((Math.random()*20))
+						while( result[2].indexOf(pmin) !== -1 )
+						{
+							pmin= delta+mmin + Math.floor((Math.random()*20))
+						}
+					
+						integ = primECos(pmin) - primECos(mmin)
+					
+						result[2].push([mmin,pmin,integ]);
+					}
+					console.log(result);
+					break;
+
+
+				case 4:
+
+					fonction="fonction 0";
+					aDeci = Math.trunc((Math.floor(Math.random()*9)))*0.1;
+					a = 0.5+ aDeci
+					while( (a).toString().length > 5)
+					{
+						aDeci = Math.trunc((Math.floor(Math.random()*9)))*0.1;
+						a = 0.5+ aDeci
+					}
+				
+					bDeci = Math.trunc(Math.floor(Math.random()*20))*0.1;
+					b= 1.5+ bDeci;
+					while( (b).toString().length > 5)
+					{
+						bDeci = Math.trunc(Math.floor(Math.random()*20))*0.1;
+						b= 1.5+ bDeci;
+					}				
+				
+					cDeci = Math.trunc(Math.floor(Math.random()*9))*0.1;
+					c= 0.1+ cDeci ;
+					while( (c).toString().length > 5)
+					{
+						cDeci = Math.trunc(Math.floor(Math.random()*9))*0.1;
+						c= 0.1+ cDeci ;
+					}				
+								
+					dDeci = Math.trunc(Math.floor(Math.random()*10));
+					d= 5+ dDeci ;
+					while( (d).toString().length > 5)
+					{
+						dDeci = Math.trunc(Math.floor(Math.random()*10));
+						d= 5+ dDeci ;
+					}				
+								
+					result[0]="sincos.png";
+					result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d+". Les angles sont en radiants. ";
+				
+					for (i=0;i<5;i++)
+					{
+						mmin= Math.floor((Math.random()*20));
+						delta=Math.floor((Math.random()*20))+1;					
+						pmin= delta + Math.floor((Math.random()*20))
+						while( result[2].indexOf(mmin) !== -1 )
+						{
+							mmin= Math.floor((Math.random()*20));
+						}
+					
+						pmin= delta+mmin + Math.floor((Math.random()*20))
+						while( result[2].indexOf(pmin) !== -1 )
+						{
+							pmin= delta+mmin + Math.floor((Math.random()*20))
+						}
+					
+						integ = primSinCos(pmin) - primSinCos(mmin)
+					
+						result[2].push([mmin,pmin,integ]);
+					}
+					console.log(result);
+					break;
+
+				case 5:
+
+					fonction="fonction 0";
+					aDeci = Math.trunc((Math.floor(Math.random()*9)))*0.1;
+					a = 0.5+ aDeci
+					while( (a).toString().length > 5)
+					{
+						aDeci = Math.trunc((Math.floor(Math.random()*9)))*0.1;
+						a = 0.5+ aDeci
+					}
+				
+					bDeci = Math.trunc(Math.floor(Math.random()*20))*0.1;
+					b= 1.5+ bDeci;
+					while( (b).toString().length > 5)
+					{
+						bDeci = Math.trunc(Math.floor(Math.random()*20))*0.1;
+						b= 1.5+ bDeci;
+					}				
+				
+					cDeci = Math.trunc(Math.floor(Math.random()*9))*0.1;
+					c= 0.1+ cDeci ;
+					while( (c).toString().length > 5)
+					{
+						cDeci = Math.trunc(Math.floor(Math.random()*9))*0.1;
+						c= 0.1+ cDeci ;
+					}				
+								
+					dDeci = Math.trunc(Math.floor(Math.random()*10));
+					d= 5+ dDeci ;
+					while( (d).toString().length > 5)
+					{
+						dDeci = Math.trunc(Math.floor(Math.random()*10));
+						d= 5+ dDeci ;
+					}				
+								
+					result[0]="cossin.png";
+					result[1]="avec a = "+a+" / b = "+b+" / c = "+c+" / d = "+d+". Les angles sont en radiants. ";
+				
+					for (i=0;i<5;i++)
+					{
+						mmin= Math.floor((Math.random()*20));
+						delta=Math.floor((Math.random()*20))+1;					
+						pmin= delta + Math.floor((Math.random()*20))
+						while( result[2].indexOf(mmin) !== -1 )
+						{
+							mmin= Math.floor((Math.random()*20));
+						}
+					
+						pmin= delta+mmin + Math.floor((Math.random()*20))
+						while( result[2].indexOf(pmin) !== -1 )
+						{
+							pmin= delta+mmin + Math.floor((Math.random()*20))
+						}
+					
+						integ = primCosSin(pmin) - primCosSin(mmin)
+					
+						result[2].push([mmin,pmin,integ]);
+					}
+					console.log(result);
+					break;
+
+
+					
+			} // fin du switch numFonction				
+
+
+
+
+
+
+
+
+
+<!-- les calculs ici -->
+
+				sujet.appendChild(reponse);
+				
+			
+				reponse.innerHTML= reponse.innerHTML+"<br><br>";				
+<!-- la réponse ici -->		
+			reponse.innerHTML += "";
+				for (let j=0;j<result[2].length;j++)
+					{
+						reponse.innerHTML=reponse.innerHTML + "Pour m = "+result[2][j][0]+" et p = "+result[2][j][1]+". On a l'integrale qui vaut "+result[2][j][2]+"<br><br>";
+					}
+					
+<!-- la réponse ici -->			
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = nomSujet+" Sujet numéro "+nbSujet;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+				
+			enonce.innerHTML= "<br>";
+
+<!-- l'enonce ici -->	
+			enonce.innerHTML += "Vous avez la fonction suivante <img src=\"..\\images\\calculIntegrale\\"+result[0]+"\"> <br>"+result[1]+
+								"<br>Calculez les intégrales suivantes, <span class=\"sujet\"><img  src=\"..\\images\\calculIntegrale\\integrale.png\">.</span> <br>Le calcul sera au centième, avec : <br>";
+				for (let i=0;i<result[2].length;i++)
+					{
+						enonce.innerHTML=enonce.innerHTML + "m = "+result[2][i][1]+" et p = "+result[2][i][0]+"<br><br>";
+					}
+<!-- l'enonce ici -->				
+			enonce.innerHTML= enonce.innerHTML+"";	
+				
+				
+				sujet.appendChild(enonce);
+			
+			}
+			
+		</script>
+		
+	</body>
+</html>

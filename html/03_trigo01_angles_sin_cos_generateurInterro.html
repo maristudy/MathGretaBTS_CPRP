@@ -64,7 +64,7 @@
 			
 			.tabreponse td {
 				width:150px;
-				height:25px;			
+				height:20px;			
 			}
 			
 			.tabreponse {
@@ -74,6 +74,7 @@
 			.reponse {
 				break-before: page;
 				border-bottom : solid 1px black;
+				font-size:12px;
 			}
 			
 			hr {
@@ -202,7 +203,7 @@ ind04 = Math.floor((Math.random()*(tabExo.length)))
 				reponse = document.createElement("div");
 				reponse.setAttribute("class","reponse");
 				reponse.innerHTML = "BTS CPRP 1 - trigonométrie 01 - sans calculatrice - Correction numéro "+i+"<br>" +
-			"1/ Donner la valeur exacte de :<br>sin("+angleDegre[indiceExo1sin]+"°) = "+sinus[indiceExo1sin]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cos("+angleDegre[indiceExo1cos]+"°) = "+cosinus[indiceExo1cos]+"<br>"+
+			"<br>(0.5 point par bonne réponse) <br>1/ Donner la valeur exacte de :<br>sin("+angleDegre[indiceExo1sin]+"°) = "+sinus[indiceExo1sin]+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cos("+angleDegre[indiceExo1cos]+"°) = "+cosinus[indiceExo1cos]+"<br>"+
 				"2/Sachant que sin( "+anglesExo[indiceExo2]+"° ) = "+sinusExo[indiceExo2]+" et que cos( "+anglesExo[indiceExo2]+"° ) = "+cosinusExo[indiceExo2]+"<br> compléter le tableau suivant : <br>"+
 				"<table><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = "+anglesExo[indiceExo2]+"°&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> <td>&nbsp;&plusmn;cos(x)&nbsp;ou&nbsp;&plusmn;sin(x)&nbsp;</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeur&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"+
 				"<tr><td>"+tabExo[ind01][0]+"</td> <td>"+tabExo[ind01][1]+"</td> <td>"+tabExo[ind01][2]+"</td></tr>"+
@@ -238,7 +239,7 @@ ind04 = Math.floor((Math.random()*(tabExo.length)))
 				sujet.appendChild(divSujet);
 			
 				enonce=document.createElement("div");
-			enonce.innerHTML= "<br>1/ Donner la valeur exacte de :<br>sin("+angleDegre[indiceExo1sin]+"°) = <br><br>cos("+angleDegre[indiceExo1cos]+"°) = <br><br><br>"+
+			enonce.innerHTML= "<br>(0.5 point par bonne réponse) <br>1/ Donner la valeur exacte de :<br>sin("+angleDegre[indiceExo1sin]+"°) = <br><br>cos("+angleDegre[indiceExo1cos]+"°) = <br><br><br>"+
 				"2/Sachant que sin( "+anglesExo[indiceExo2]+"° ) = "+sinusExo[indiceExo2]+" et que cos( "+anglesExo[indiceExo2]+"° ) = "+cosinusExo[indiceExo2]+"<br> compléter le tableau suivant : <br><br>"+
 				"<table><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = "+anglesExo[indiceExo2]+"°&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> <td>&nbsp;&plusmn;cos(x)&nbsp;ou&nbsp;&plusmn;sin(x)&nbsp;</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeur&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"+
 				"<tr><td>"+tabExo[ind01][0]+"</td> <td></td> <td></td></tr>"+
