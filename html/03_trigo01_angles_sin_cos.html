@@ -158,8 +158,8 @@ ind04 = Math.floor((Math.random()*(tabExo.length)))
 			}
 			
 			enonce = document.getElementsByClassName("enonce")[0];
-			enonce.innerHTML= "1/ Donner la valeur exacte de :<br>sin("+angleDegre[indiceExo1sin]+"°) = <br><br>cos("+angleDegre[indiceExo1cos]+"°) = <br><br><br>"+
-				"2/Sachant que sin( "+anglesExo[indiceExo2]+"° ) = "+sinusExo[indiceExo2]+" et que cos( "+anglesExo[indiceExo2]+"° ) = "+cosinusExo[indiceExo2]+"<br> compléter le tableau suivant : <br><br>"+
+			enonce.innerHTML= "1/ Donner la valeur exacte de (0.5 par bonne réponse):<br>sin("+angleDegre[indiceExo1sin]+"°) = <br><br>cos("+angleDegre[indiceExo1cos]+"°) = <br><br><br>"+
+				"2/Sachant que sin( "+anglesExo[indiceExo2]+"° ) = "+sinusExo[indiceExo2]+" et que cos( "+anglesExo[indiceExo2]+"° ) = "+cosinusExo[indiceExo2]+"<br> compléter le tableau suivant : (0.25 par bonne réponse)<br><br>"+
 				"<table><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = "+anglesExo[indiceExo2]+"°&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> <td>&nbsp;&plusmn;cos(x)&nbsp;ou&nbsp;&plusmn;sin(x)&nbsp;</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeur&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"+
 				"<tr><td>"+tabExo[ind01][0]+"</td> <td></td> <td></td></tr>"+
 				"<tr><td>"+tabExo[ind02][0]+"</td> <td></td> <td></td></tr>"+
@@ -170,8 +170,8 @@ ind04 = Math.floor((Math.random()*(tabExo.length)))
 		<!-- https://www.w3schools.com/html/html_symbols.asp -->
 		
 			reponse = document.getElementById("reponse");
-			reponse.innerHTML = "1/ Donner la valeur exacte de :<br>sin("+angleDegre[indiceExo1sin]+"°) = "+sinus[indiceExo1sin]+"<br><br>cos("+angleDegre[indiceExo1cos]+"°) = "+cosinus[indiceExo1cos]+"<br><br><br>"+
-				"2/Sachant que sin( "+anglesExo[indiceExo2]+"° ) = "+sinusExo[indiceExo2]+" et que cos( "+anglesExo[indiceExo2]+"° ) = "+cosinusExo[indiceExo2]+"<br> compléter le tableau suivant : <br><br>"+
+			reponse.innerHTML = "1/ Donner la valeur exacte de (0.5 par bonne réponse):<br>sin("+angleDegre[indiceExo1sin]+"°) = "+sinus[indiceExo1sin]+"<br><br>cos("+angleDegre[indiceExo1cos]+"°) = "+cosinus[indiceExo1cos]+"<br><br><br>"+
+				"2/Sachant que sin( "+anglesExo[indiceExo2]+"° ) = "+sinusExo[indiceExo2]+" et que cos( "+anglesExo[indiceExo2]+"° ) = "+cosinusExo[indiceExo2]+"<br> compléter le tableau suivant (0.25 par bonne réponse): <br><br>"+
 				"<table><tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = "+anglesExo[indiceExo2]+"°&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td> <td>&nbsp;&plusmn;cos(x)&nbsp;ou&nbsp;&plusmn;sin(x)&nbsp;</td> <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valeur&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>"+
 				"<tr><td>"+tabExo[ind01][0]+"</td> <td>"+tabExo[ind01][1]+"</td> <td>"+tabExo[ind01][2]+"</td></tr>"+
 				"<tr><td>"+tabExo[ind02][0]+"</td> <td>"+tabExo[ind02][1]+"</td> <td>"+tabExo[ind02][2]+"</td></tr>"+

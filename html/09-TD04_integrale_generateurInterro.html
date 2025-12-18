@@ -143,7 +143,7 @@
 		<script>
 		
 			let nbEleves = 20;
-			let nomSujet="<br>BTS CPRP -";
+			let nomSujet="<br>BTS CPRP - intégrale - ";
 			
 			for(let nbSujet=0;nbSujet<=nbEleves;nbSujet++)
 			{
@@ -586,7 +586,7 @@
 			reponse.innerHTML += "";
 				for (let j=0;j<result[2].length;j++)
 					{
-						reponse.innerHTML=reponse.innerHTML + "Pour m = "+result[2][j][0]+" et p = "+result[2][j][1]+". On a l'integrale qui vaut "+result[2][j][2]+"<br><br>";
+						reponse.innerHTML=reponse.innerHTML + "Pour m = "+result[2][j][1]+" et p = "+result[2][j][0]+". On a l'integrale qui vaut "+result[2][j][2]+"<br><br>";
 					}
 					
 <!-- la réponse ici -->			
@@ -618,7 +618,7 @@
 
 <!-- l'enonce ici -->	
 			enonce.innerHTML += "Vous avez la fonction suivante <img src=\"..\\images\\calculIntegrale\\"+result[0]+"\"> <br>"+result[1]+
-								"<br>Calculez les intégrales suivantes, <span class=\"sujet\"><img  src=\"..\\images\\calculIntegrale\\integrale.png\">.</span> <br>Le calcul sera au centième, avec : <br>";
+								"<br>Calculez les intégrales suivantes, <span class=\"sujet\"><img  src=\"..\\images\\calculIntegrale\\integrale.png\">.</span> <br>Le resultat sera au centième, avec : <br><br>";
 				for (let i=0;i<result[2].length;i++)
 					{
 						enonce.innerHTML=enonce.innerHTML + "m = "+result[2][i][1]+" et p = "+result[2][i][0]+"<br><br>";

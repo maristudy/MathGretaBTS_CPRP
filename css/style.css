@@ -11,18 +11,17 @@ body {
 }
 
 a , a:visited {
-	color: #80caff; //8080ff;
+	color: #80caff; 
 }
 
 .video a:visited , .video a  {
-	color: #f2b2b2; //8080ff;
+	color: #f2b2b2; 
 }
 
 .interro a:visited , .interro a  {
-	color: #86fac4; //8080ff;
+	color: #86fac4; 
 }
 
-86fac4
 
 li {
 	margin-left:15px;

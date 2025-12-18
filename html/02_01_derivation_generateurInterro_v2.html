@@ -241,13 +241,13 @@
 			switch(trigo%2)
 			{
 			case 0:
-				trigoLibelle = "6) Quelle est la dérivée de la fonction : sin("+coef19+"x + "+coef20+") : <br><br> 7) Quelle est la dérivée de la fonction cos("+coef21+"x + "+coef22+")<br><br>"
-				trigoReponse = "6) "+coef19+"cos("+coef19+"x + "+coef20+") <br> 7) - "+coef21+"sin("+coef21+"x + "+coef22+")<br><br>"
+				trigoLibelle = "5) Quelle est la dérivée de la fonction : sin("+coef19+"x + "+coef20+") : <br><br> 6) Quelle est la dérivée de la fonction cos("+coef21+"x + "+coef22+")<br><br>"
+				trigoReponse = "5) "+coef19+"cos("+coef19+"x + "+coef20+") <br> 6) - "+coef21+"sin("+coef21+"x + "+coef22+")<br>"
 				break;
 				
 			case 1:
-				trigoLibelle = "6) Quelle est la dérivée de la fonction : cos("+coef19+"x + "+coef20+") : <br><br> 7) Quelle est la dérivée de la fonction sin("+coef21+"x + "+coef22+")<br><br>"
-				trigoReponse = "6) - "+coef19+"sin("+coef19+"x + "+coef20+") <br> 7)  "+coef21+"cos("+coef21+"x + "+coef22+")<br><br>"
+				trigoLibelle = "5) Quelle est la dérivée de la fonction : cos("+coef19+"x + "+coef20+") : <br><br> 6) Quelle est la dérivée de la fonction sin("+coef21+"x + "+coef22+")<br><br>"
+				trigoReponse = "5) - "+coef19+"sin("+coef19+"x + "+coef20+") <br> 6)  "+coef21+"cos("+coef21+"x + "+coef22+")<br>"
 			
 				break;	
 			 }			
@@ -262,7 +262,7 @@
 				reponse = document.createElement("div");
 				reponse.setAttribute("class","reponse");
 				reponse.innerHTML = "BTS CPRP 2 - calculs fonctions dérivées - Correction numéro "+i+"<br><br>" +
-			"1) "+deri01+"<br><br>2) "+deri02+"<br><br>3) "+deri03+"<br><br>4) "+deri04+"<br><br>5) "+deri05+"<br><br>"+trigoReponse;	
+			"1) "+deri01+"<br><br>2) "+deri02+"<br><br>3) "+deri03+"<br><br>4) "+deri04+"<br><br> "+trigoReponse+"7) "+deri05+"<br><br>";	
 				
 				//"<p >Pour la conversion hexa vers binaire ( et réciproquement ) on utilise le tableau<br>"+
 				//"Pour la conversion du décimal vers une autre base, on utilise les divisions successives ( de 2 pour le binaire et de 16 pour l'hexa )<br>"+
@@ -298,9 +298,9 @@
 								"3) Quelle est la dérivée de la fonction ln ("+coefLn[0]+"x<sup>3</sup> "+ (coefLn[1]>0?"+ ":" ")+coefLn[1]+"x<sup>2</sup> "+(coefLn[2]>0?"+ ":"")+coefLn[2]+" x "+(coefLn[3]>0?"+ ":"")+coefLn[3]+")"+
 								"<br><br><br><br><br><br>"+
 								"4) Quelle est la dérivée de la fonction exp( "+coefExp[0]+"x<sup>2</sup> "+ (coefExp[1]>0?"+ ":" ")+coefExp[1]+"x "+(coefExp[2]>0?"+ ":"")+coefExp[2]+" )"+
-								"<br><br><br><br><br><br>"+
-								"5) Quelle est la dérivée de la fonction <span class=\"math\"><span class=\"frac\"><span class=\"num\">"+ coefQuot[0]+" x + "+coefQuot[1]+"</span><span class=\"fracbar\">/</span><span class=\"den\">"+
-								+ coefQuot[2]+" x + "+coefQuot[3]+"</span></span><br><br>"+trigoLibelle;
+								"<br><br><br><br><br><br>"+trigoLibelle+
+								"7) Quelle est la dérivée de la fonction <span class=\"math\"><span class=\"frac\"><span class=\"num\">"+ coefQuot[0]+" x + "+coefQuot[1]+"</span><span class=\"fracbar\">/</span><span class=\"den\">"+
+								+ coefQuot[2]+" x + "+coefQuot[3]+"</span></span><br><br>";
 				
 				
 				sujet.appendChild(enonce);
