@@ -241,13 +241,13 @@
 			switch(trigo%2)
 			{
 			case 0:
-				trigoLibelle = "5) Quelle est la dérivée de la fonction : sin("+coef19+"x + "+coef20+") : <br><br> 6) Quelle est la dérivée de la fonction cos("+coef21+"x + "+coef22+")<br><br>"
-				trigoReponse = "5) "+coef19+"cos("+coef19+"x + "+coef20+") <br> 6) - "+coef21+"sin("+coef21+"x + "+coef22+")<br>"
+				trigoLibelle = "6) Quelle est la dérivée de la fonction : sin("+coef19+"x + "+coef20+") : <br><br> 7) Quelle est la dérivée de la fonction cos("+coef21+"x + "+coef22+")<br><br>"
+				trigoReponse = "6) formule : (sin(u))'= u' cos(u) § reponse : "+coef19+"cos("+coef19+"x + "+coef20+") <br> 7)formule : (cos(u))'= - u' sin(u) § reponse :  - "+coef21+"sin("+coef21+"x + "+coef22+")<br><br>"
 				break;
 				
 			case 1:
-				trigoLibelle = "5) Quelle est la dérivée de la fonction : cos("+coef19+"x + "+coef20+") : <br><br> 6) Quelle est la dérivée de la fonction sin("+coef21+"x + "+coef22+")<br><br>"
-				trigoReponse = "5) - "+coef19+"sin("+coef19+"x + "+coef20+") <br> 6)  "+coef21+"cos("+coef21+"x + "+coef22+")<br>"
+				trigoLibelle = "6) Quelle est la dérivée de la fonction : cos("+coef19+"x + "+coef20+") : <br><br> 7) Quelle est la dérivée de la fonction sin("+coef21+"x + "+coef22+")<br><br>"
+				trigoReponse = "6) formule : (cos(u))'= - u' sin(u) § reponse : - "+coef19+"sin("+coef19+"x + "+coef20+") <br> 7)formule : (sin(u))'= u' cos(u) § reponse :   "+coef21+"cos("+coef21+"x + "+coef22+")<br><br>"
 			
 				break;	
 			 }			
@@ -262,8 +262,8 @@
 				reponse = document.createElement("div");
 				reponse.setAttribute("class","reponse");
 				reponse.innerHTML = "BTS CPRP 2 - calculs fonctions dérivées - Correction numéro "+i+"<br><br>" +
-			"1) "+deri01+"<br><br>2) "+deri02+"<br><br>3) "+deri03+"<br><br>4) "+deri04+"<br><br> "+trigoReponse+"7) "+deri05+"<br><br>";	
-				
+			"1) "+deri01+"<br><br>2) "+deri02+"<br><br>3) formule : (ln(u))' = <span class=\"math\"><span class=\"frac\"><span class=\"num\">u'</span><span class=\"fracbar\">/</span><span class=\"den\">u</span></span> § reponse : "+deri03+"<br><br>4) formule : (exp(u))' = (u') exp(u) § reponse : "+deri04+"<br><br>5)formule : (<span class=\"math\"><span class=\"frac\"><span class=\"num\">u</span><span class=\"fracbar\">/</span><span class=\"den\">v</span></span>)' = <span class=\"math\"><span class=\"frac\"><span class=\"num\">u'v - uv'</span><span class=\"fracbar\">/</span><span class=\"den\">v<sup>2</sup></span></span> § reponse :   "+deri05+"<br><br>"+trigoReponse;
+			
 				//"<p >Pour la conversion hexa vers binaire ( et réciproquement ) on utilise le tableau<br>"+
 				//"Pour la conversion du décimal vers une autre base, on utilise les divisions successives ( de 2 pour le binaire et de 16 pour l'hexa )<br>"+
 				//"Pour la conversion du binaire vers le décimal, on utilise les puissances de 2 ( ou les puissances de 16 pour l'hexa )</p>";		
