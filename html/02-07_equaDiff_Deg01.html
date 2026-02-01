@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les équations différentielles de degrés 1</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+				width:200px;
+				height:40px;
+				text-align:center;
+			}
+
+			body{
+				font-size: 1.5em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+		@media screen and (min-width: 795px) {
+			body{
+				font-size: 1em;
+				}
+			}				
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+
+
+			
+			let a01,b01,c01;
+		
+
+			 a01 = Math.floor(Math.random()*7) + 2;
+			 b01 = Math.floor(Math.random()*7) + 2;
+			 c01 = Math.floor(Math.random()*5) + 2;
+	 
+/*
+			 coef04 = Math.floor(Math.random()*5) + 2;
+			 coef05 = Math.floor(Math.random()*5) + 2;
+			 coef06 = Math.floor(Math.random()*5) + 2;
+			 coef07 = Math.floor(Math.random()*5) + 2;			 
+
+			 coef08 = Math.floor(Math.random()*5) + 2;
+			 coef09 = Math.floor(Math.random()*5) + 2;
+			 coef10 = Math.floor(Math.random()*5) + 2;
+			 coef11 = Math.floor(Math.random()*5) + 2;			 
+
+			 coef12 = Math.floor(Math.random()*5) + 2;
+			 coef13 = Math.floor(Math.random()*5) + 2;
+			 coef14 = Math.floor(Math.random()*5) + 2;
+			 
+			 coef15 = Math.floor(Math.random()*5) + 2;
+			 coef16 = Math.floor(Math.random()*5) + 2;
+			 coef17 = Math.floor(Math.random()*5) + 2;
+			 
+			 while(coef17==coef15)
+			 {
+				coef17 = Math.floor(Math.random()*5) + 2;
+			 }
+
+			 coef18 = Math.floor(Math.random()*5) + 2;			 
+			 while((coef18==coef16) || ((coef18*coef15)-(coef16*coef17)==0))
+			 {
+				coef18 = Math.floor(Math.random()*5) + 2;
+			 }
+*/			 
+
+
+
+			 
+			 
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= "1) Quelles sont les solutions de l'équation différentielle (E) : "+a01+" y ' + "+b01+" y = 0"+
+								"<br>(0.25) forme générale :  <br><br>"+
+								"<br>(0.25) formule : <br><br>"+
+								"<br>(0.25) a = <br><br>"+
+								"<br>(0.25) b = <br><br>"+
+								"<br>(0.5) réponse :  <br><br>"+
+								"2) Trouver la solution de l'équation (E) qui vérifie y(0) = "+c01+" : <br><br>"+
+								"(0.5) Méthode : <br><br>"+
+								"(0.25) calculs : <br><br>"+
+								"(0.25) solution : <br><br>";
+								
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			reponse = document.getElementById("reponse");
+
+			reponse.innerHTML= ""+
+							"1) Quelles sont les solutions de l'équation différentielle (E) : "+a01+" y' + "+b01+" y = 0"+
+								"<br>(0.25) forme générale :  ay ' + by = 0<br>"+
+								"<br>(0.25) formule : les solutions sont de la forme y(x) = k e<span style=\"font-size:28px;\"><sup>(( - b/a)x)</sup></span> où k est un réel<br>"+
+								"<br>(0.25) a = "+a01+"<br>"+
+								"<br>(0.25) b = "+b01+"<br>"+
+								"<br>(0.5) réponse : y(x) = k e<span style=\"font-size:28px;\"><sup>(( - "+b01+"/"+a01+")x)</sup></span> <br>"+
+								"2) Trouver la solution de l'équation (E) qui vérifie y(0) = "+c01+": <br><br>"+
+								"(0.5) Méthode : Les solutions sont de la forme y(x) = k e<span style=\"font-size:28px;\"><sup>(( - "+b01+"/"+a01+")x)</sup></span>. On cherche la valeur de k qui permet d'avoir y(0) = "+c01+" quand x=0.<br><br>"+
+								"(0.25) calculs : y(0) = k  et y(0) = "+c01+". On a donc k = "+c01+"<br>"+
+								"(0.25) solution : La fonction qui vérifie la condition initiale est y(x) = "+c01+" e<span style=\"font-size:28px;\"><sup>(( - "+b01+"/"+a01+")x)</sup></span> <br><br>"+
+								"";
+		
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>

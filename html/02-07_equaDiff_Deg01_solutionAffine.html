@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les équations différentielles de degrés 1 - solution affine</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+				width:200px;
+				height:40px;
+				text-align:center;
+			}
+
+			body{
+				font-size: 1.5em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+		@media screen and (min-width: 795px) {
+			body{
+				font-size: 1em;
+				}
+			}				
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+
+
+			
+			let a,b,c,d,e,f;
+		
+
+			a = Math.floor(Math.random()*7) + 2;
+			b = Math.floor(Math.random()*7) + 2;
+			c = Math.floor(Math.random()*7) + 2;;
+			d = Math.floor(Math.random()*7) + 2;
+			e = Math.floor(Math.random()*7) + 2;
+			f = Math.floor(Math.random()*7) + 2;
+
+
+
+			 
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= "1) Déterminer une solution affine particulière de l'équation différentielle (E) : "+a+" y ' + "+b+" y = "+c+" x + "+d+" <br><br>"+
+								"(0.5) forme générale d'une fonction affine : <br><br>"+
+								"(0.5) dérivée de la forme générale de la fonction affine : <br><br>"+
+								"(0.5) équation à résoudre : <br><br>"+
+								"(0.5) calculs : <br><br><br><br>"+
+								"(0.5) système à résoudre :  <br><br>"+
+								"(0.5) solution : <br><br>";
+								
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			reponse = document.getElementById("reponse");
+
+			reponse.innerHTML= ""+
+							"1) Déterminer une solution affine particulière de l'équation différentielle (E) : "+a+" y ' + "+b+" y = "+c+" x + "+d+" <br><br>"+
+								"(0.5) forme générale d'une fonction affine : y(x) = a x + b<br>"+
+								"(0.5) dérivée de la forme générale de la fonction affine : y'(x) = a<br>"+
+								"(0.5) équation à résoudre : "+a+".(a) + "+b+".(a x + b) = "+c+" x + "+d+"<br>"+
+								"(0.5) calculs : "+b+"ax + "+a+"a + "+b+"b = "+c+" x + "+d+" <br>"+
+								"(0.5) système à résoudre :  <br>&nbsp;&nbsp;("+b+"a = "+c+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; donc a = "+c+" / "+b+" &nbsp;&nbsp;  a = "+(c/b)+"<br>&nbsp;&nbsp;("+a+"a + "+b+"b = "+d+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; donc b = ("+d+" - ("+a+". "+(c/b)+")) / "+b+") &nbsp;&nbsp;  b = "+((d-((a*c)/b))/b)+"<br>"+
+								"(0.5) solution : a = "+(c/b)+" et b = "+((d-((a*c)/b))/b)+" . La solution particulière de (E) est y(x) = "+(c/b)+" x + "+((d-((a*c)/b))/b)+"<br>";
+		
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>

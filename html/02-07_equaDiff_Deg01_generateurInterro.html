@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les équations différentielles de degrés 1</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				width:300px;
+				height:50px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+				break-before: page;
+				border-bottom : solid 1px black;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+		let nbEleves = 15;
+			
+		for(let i=0;i<=nbEleves;i++)
+		{
+
+
+			let a01,b01,c01;
+		
+
+			 a01 = Math.floor(Math.random()*7) + 2;
+			 b01 = Math.floor(Math.random()*7) + 2;
+			 c01 = Math.floor(Math.random()*5) + 2;
+
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = "BTS CPRP 2 - équations différentielles ordre 1 - Correction numéro "+i+"<br><br>" +
+							"1) Quelles sont les solutions de l'équation différentielle (E) : "+a01+" y' + "+b01+" y = 0"+
+								"<br>(0.25) forme générale :  ay ' + by = 0<br>"+
+								"(0.25) formule : les solutions sont de la forme y(x) = k e<span style=\"font-size:28px;\"><sup>(( - b/a)x)</sup></span> où k est un réel<br>"+
+								"(0.25) a = "+a01+"<br>"+
+								"(0.25) b = "+b01+"<br>"+
+								"(0.5) réponse : y(x) = k e<span style=\"font-size:28px;\"><sup>(( - "+b01+"/"+a01+")x)</sup></span> <br>"+
+								"2) Trouver la solution de l'équation (E) qui vérifie y(0) = "+c01+": <br>"+
+								"(0.5) Méthode : Les solutions sont de la forme y(x) = k e<span style=\"font-size:28px;\"><sup>(( - "+b01+"/"+a01+")x)</sup></span>. On cherche la valeur de k qui permet d'avoir y(0) = "+c01+" quand x=0.<br>"+
+								"(0.25) calculs : y(0) = k  et y(0) = "+c01+". On a donc k = "+c01+"<br>"+
+								"(0.25) solution : La fonction qui vérifie la condition initiale est y(x) = "+c01+" e<span style=\"font-size:28px;\"><sup>(( - "+b01+"/"+a01+")x)</sup></span> <br><br>"+
+								"";
+								
+				sujet.appendChild(reponse);
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = "BTS CPRP 2 - équations différentielles ordre 1 - Sujet numéro "+i;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+			enonce.innerHTML= "<br>"+
+								"1) Quelles sont les solutions de l'équation différentielle (E) : "+a01+" y ' + "+b01+" y = 0"+
+								"<br>(0.25) forme générale :  <br><br>"+
+								"<br>(0.25) formule : <br><br>"+
+								"<br>(0.25) a = <br><br>"+
+								"<br>(0.25) b = <br><br>"+
+								"<br>(0.5) réponse :  <br><br><br><br><br><br>"+
+								"2) Trouver la solution de l'équation (E) qui vérifie y(0) = "+c01+" : <br><br>"+
+								"(0.5) Méthode : <br><br><br><br>"+
+								"(0.25) calculs : <br><br><br><br>"+
+								"(0.25) solution : <br><br>";			
+
+				
+				
+				sujet.appendChild(enonce);
+				
+
+
+
+			
+		}
+			
+		</script>
+		
+	</body>
+</html>
