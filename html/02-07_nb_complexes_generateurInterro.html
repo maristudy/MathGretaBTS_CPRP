@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les nombres complexes</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				width:300px;
+				height:50px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+			padding-bottom:15px;
+				break-before: page;
+				border-bottom : solid 1px black;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+		let nbEleves = 15;
+			
+		for(let i=0;i<=nbEleves;i++)
+		{
+
+			let a,b,c,d,e,f;
+
+			a = Math.floor(Math.random()*17) + 2;
+			b = Math.floor(Math.random()*17) + 2;
+			
+			c = Math.floor(Math.random()*17) + 2;
+			d = Math.floor(Math.random()*17) + 2;
+
+			e = Math.floor(Math.random()*17) + 2;
+			f = Math.floor(Math.random()*17) + 2;
+			
+			while(a==c)
+			{
+				c = Math.floor(Math.random()*17) + 2;
+			}
+			
+			while(b==d)
+			{
+				d = Math.floor(Math.random()*17) + 2;
+			}			
+			
+			while((a==e)||(c==e))
+			{
+				e = Math.floor(Math.random()*17) + 2;
+			}
+			
+			while((b==f)||(d==f)||(e==f))
+			{
+				f = Math.floor(Math.random()*17) + 2;
+			}
+
+
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = "BTS CPRP 2 - les nombres complexes - Correction numéro "+i+"<br><br>" +
+							"Compléter le tableau suivant : (0.5 par case)"+
+			"<table>"+
+			"<tr><td> z </td><td> <span style=\"text-decoration:overline;\" > z </span> </td><td> Partie<br>réelle </td><td> partie<br>imaginaire</td></tr>"+ 
+			"<tr><td> "+a+" + "+b+"i </td><td> "+a+" - "+b+"i</td><td>"+a+" </td><td> "+b+"</td></tr>"+
+			"<tr><td> "+c+" + "+d+"i</td><td> "+c+" - "+d+"i </td><td> "+c+"</td><td> "+d+"</td></tr>"+
+			"<tr><td> "+e+" + "+f+"i </td><td> "+e+" - "+f+"i </td><td> "+e+" </td><td> "+f+" </td></tr>"+
+			"</table>";
+								
+				sujet.appendChild(reponse);
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = "BTS CPRP 2 - les nombres complexes - Sujet numéro "+i;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+			enonce.innerHTML= 			""+
+			"Compléter le tableau suivant : (0.5 par case)"+
+			"<table>"+
+			"<tr><td> z </td><td> <span style=\"text-decoration:overline;\" > z </span> </td><td> Partie<br>réelle </td><td> partie<br>imaginaire</td></tr>"+ 
+			"<tr><td> "+a+" + "+b+"i </td><td> </td><td> </td><td> </td></tr>"+
+			"<tr><td> </td><td> "+c+" - "+d+"i </td><td> </td><td> </td></tr>"+
+			"<tr><td> </td><td> </td><td> "+e+" </td><td> "+f+" </td></tr>"+
+			"</table>";			
+
+		
+				sujet.appendChild(enonce);
+				
+
+		}
+			
+		</script>
+		
+	</body>
+</html>

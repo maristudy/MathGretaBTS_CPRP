@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les nombres complexes - formes algébriques et calculs</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+				width:200px;
+				height:40px;
+				text-align:center;
+			}
+
+			body{
+				font-size: 1.5em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+		@media screen and (min-width: 795px) {
+			body{
+				font-size: 1em;
+				}
+			}				
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+			
+			let a,b,c,d,e,f;
+
+			a = Math.floor(Math.random()*17) + 2;
+			b = Math.floor(Math.random()*17) + 2;
+			
+			c = Math.floor(Math.random()*17) + 2;
+			d = Math.floor(Math.random()*17) + 2;
+
+			e = Math.floor(Math.random()*17) + 2;
+			f = Math.floor(Math.random()*17) + 2;
+			
+		
+			 
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= ""+
+			"z<sub>1</sub> = "+b+" + "+c+" i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; et &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"z<sub>2</sub> = "+e+" + "+f+" i <br>"+
+			"1/ Ecrire sous forme algébrique "+a+" x z<sub>1</sub> : <br>"+
+			"Calculs (0.5) : <br><br><br>"+
+			"résultats (0.5) :<br><br>"+
+			"2/ Ecrire sous forme algébrique ("+d+"i ) x z<sub>2</sub> : <br>"+
+			"Calculs (0.5) : <br><br><br>"+
+			"résultats (0.5) :<br><br>"+
+			"3/ Ecrire sous forme algébrique z<sub>1</sub> + z<sub>2</sub>  : <br>"+
+			"Calculs (1) : <br><br><br><br><br>"+
+			"résultats (0.5) :<br><br>"+
+			"4/ Ecrire sous forme algébrique z<sub>1</sub> x z<sub>2</sub>  : <br>"+
+			"Calculs (1) : <br><br><br><br><br><br><br>"+
+			"résultats (0.5) :<br><br>"+		
+			"5/ Ecrire sous forme algébrique z<sub>1</sub> / z<sub>2</sub>  : <br>"+
+			"Calculs (numérateur : 1 / dénominateur : 0.5) : <br><br><br><br><br><br><br><br><br>"+
+			"résultats (0.5) :<br><br>"+				
+			"";
+								
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			reponse = document.getElementById("reponse");
+
+			reponse.innerHTML= ""+
+			"z<sub>1</sub> = "+b+" + "+c+" i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; et &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"z<sub>2</sub> = "+e+" + "+f+" i <br>"+
+			"1/ Ecrire sous forme algébrique "+a+" x z<sub>1</sub> : <br>"+
+			"Calculs (0.5) : "+
+			"résultats (0.5) : "+(a*b)+" + "+(a*c)+"i <br>"+
+			"2/ Ecrire sous forme algébrique ("+d+"i ) x z<sub>2</sub> : <br>"+
+			"Calculs (0.5) : "+
+			"résultats (0.5) : - "+(f*d)+" + "+(e*d)+" i <br>"+
+			"3/ Ecrire sous forme algébrique z<sub>1</sub> + z<sub>2</sub>  : <br>"+
+			"Calculs (1) : "+
+			"résultats (0.5) : "+(e+b) +" + "+(c+f)+" i <br>"
+			"4/ Ecrire sous forme algébrique z<sub>1</sub> x z<sub>2</sub>  : <br>"+
+			"Calculs (1) : "+
+			"résultats (0.5) : "+((b*e)-(c*f))+" + "+((b*f)+(e*c))+" i <br>"+		
+			"5/ Ecrire sous forme algébrique z<sub>1</sub> / z<sub>2</sub>  : <br>"+
+			"Calculs (numérateur : 1 / dénominateur : 0.5) : "+
+			"résultats (0.5) : ("+ ((b*e)+(c*f))+" + "+((e*c)-(b*f))+" i ) / "+((e*e)+(f*f))+
+			"<br><br><br>";
+		
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>

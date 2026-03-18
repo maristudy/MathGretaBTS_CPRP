@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les polynômes de degrès 2 avec les complexes</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+				width:200px;
+				height:40px;
+				text-align:center;
+			}
+
+			body{
+				font-size: 1.5em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+			
+		@media screen and (min-width: 795px) {
+			body{
+				font-size: 1em;
+				}
+			}				
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+			
+			
+			let a = Math.floor(Math.random()*5) + 3;
+			let b = Math.floor(Math.random()*4) + 1;
+			let c = Math.floor(Math.random()*6) + 2;
+
+				
+			while((b*b)-(4*a*c) >= 0)
+			{
+				b = Math.floor(Math.random()*4) + 1;
+			}
+			
+
+			let delta= (b*b)-(4*a*c);
+			let r1=(b*(-1))/(2*a);
+			let i1=(Math.sqrt(delta*(-1)))/(2*a);
+
+			
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= "Soit la fonction f(x) = "+a+" x<sup>2</sup> + " +b+" x + "+c+" <br>"+
+				"On vous demande de trouver les solutions de l'équation f(z) = 0 ."+
+				"<br>(0.5) Donner la formule de &Delta; "+
+				"<br>(0.5) Calculer &Delta; en détaillant votre calcul."+
+				"<br>(0.5) Donner le signe de &Delta;<br>"+
+				"(0.5) Donner la formule pour trouver la première solution<br> "+
+				"(0.5) Détailler le calcul de la première solution sous forme algébrique<br>"+
+				"(0.5) Donner la première solution.<br>"+
+				"(0.5) Quel lien avons-nous entre les deux solutions ?<br> "+
+				"(0.5) Calculer la seconde solution.<br>"+
+				"";
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			reponse = document.getElementById("reponse");
+			reponse.innerHTML= "On vous demande de trouver les solutions de l'équation f(z) = 0 ."+
+				"<br>(0.5) Donner la formule de &Delta; : &Delta; = (b<sup>2</sup> - 4ac)"+
+				"<br>(0.5) Calculer &Delta; en détaillant votre calcul : "+delta+
+				"<br>(0.5) Donner le signe de &Delta; : négatif <br>"+
+				"(0.5) Donner la formule pour trouver la première solution : ( - b + &radic;(-&Delta;) ) / 2 a<br> "+
+				"(0.5) Détailler le calcul de la première solution sous forme algébrique<br>"+
+				"(0.5) Donner la première solution. : "+r1+" + "+i1+" i <br>"+
+				"(0.5) Quel lien avons-nous entre les deux solutions : Les solutions sont conjugées <br> "+
+				"(0.5) Calculer la seconde solution. : "+r1+" - "+i1+" i<br>"+
+				"";
+				
+
+		
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>

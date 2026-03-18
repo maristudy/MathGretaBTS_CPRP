@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les nombres complexes - formes algébriques et calculs</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				width:300px;
+				height:50px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+			padding-bottom:15px;
+				break-before: page;
+				border-bottom : solid 1px black;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+		let nbEleves = 15;
+			
+		for(let i=0;i<=nbEleves;i++)
+		{
+
+			let a,b,c,d,e,f;
+
+			a = Math.floor(Math.random()*17) + 2;
+			b = Math.floor(Math.random()*17) + 2;
+			
+			c = Math.floor(Math.random()*17) + 2;
+			d = Math.floor(Math.random()*17) + 2;
+
+			e = Math.floor(Math.random()*17) + 2;
+			f = Math.floor(Math.random()*17) + 2;
+
+
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = "BTS CPRP 2 - les nombres complexes  - formes algébriques et calculs - Correction numéro "+i+"<br><br>" +
+				"z<sub>1</sub> = "+b+" + "+c+" i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; et &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"z<sub>2</sub> = "+e+" + "+f+" i <br>"+
+			"1/ Ecrire sous forme algébrique "+a+" x z<sub>1</sub> : "+
+			"Calculs (0.5) : "+
+			"résultats (0.5) : "+(a*b)+" + "+(a*c)+"i <br>"+
+			"2/ Ecrire sous forme algébrique ("+d+"i ) x z<sub>2</sub> : "+
+			"Calculs (0.5) : "+
+			"résultats (0.5) : - "+(f*d)+" + "+(e*d)+" i <br>"+
+			"3/ Ecrire sous forme algébrique z<sub>1</sub> + z<sub>2</sub>  : "+
+			"Calculs (1) : "+
+			"résultats (0.5) : "+(e+b) +" + "+(c+f)+" i <br>"+
+			"4/ Ecrire sous forme algébrique z<sub>1</sub> x z<sub>2</sub>  : "+
+			"Calculs (1) : "+
+			"résultats (0.5) : "+((b*e)-(c*f))+" + "+((b*f)+(e*c))+" i <br>"+		
+			"5/ Ecrire sous forme algébrique z<sub>1</sub> / z<sub>2</sub>  : "+
+			"Calculs (numérateur : 1 / dénominateur : 0.5) : <br>"+
+			"résultats (0.5) : ("+ ((b*e)+(c*f))+" + "+((e*c)-(b*f))+" i ) / "+((e*e)+(f*f))+
+			"<br><br><br>";
+								
+				sujet.appendChild(reponse);
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = "BTS CPRP 2 - les nombres complexes  - formes algébriques et calculs - Sujet numéro "+i;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+			enonce.innerHTML= 			""+
+						"z<sub>1</sub> = "+b+" + "+c+" i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; et &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
+			"z<sub>2</sub> = "+e+" + "+f+" i <br>"+
+			"1/ Ecrire sous forme algébrique "+a+" x z<sub>1</sub> : <br>"+
+			"Calculs (0.5) : <br><br><br>"+
+			"résultats (0.5) :<br><br>"+
+			"2/ Ecrire sous forme algébrique ("+d+"i ) x z<sub>2</sub> : <br>"+
+			"Calculs (0.5) : <br><br><br>"+
+			"résultats (0.5) :<br><br>"+
+			"3/ Ecrire sous forme algébrique z<sub>1</sub> + z<sub>2</sub>  : <br>"+
+			"Calculs (1) : <br><br><br><br><br>"+
+			"résultats (0.5) :<br><br>"+
+			"4/ Ecrire sous forme algébrique z<sub>1</sub> x z<sub>2</sub>  : <br>"+
+			"Calculs (1) : <br><br><br><br><br><br><br>"+
+			"résultats (0.5) :<br><br>"+		
+			"5/ Ecrire sous forme algébrique z<sub>1</sub> / z<sub>2</sub>  : <br>"+
+			"Calculs (numérateur : 1 / dénominateur : 0.5) : <br><br><br><br><br><br><br><br><br>"+
+			"résultats (0.5) :<br><br>"+	
+			"";			
+
+		
+				sujet.appendChild(enonce);
+				
+
+		}
+			
+		</script>
+		
+	</body>
+</html>

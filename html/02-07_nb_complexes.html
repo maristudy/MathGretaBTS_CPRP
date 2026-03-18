@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les nombres complexes</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+				width:200px;
+				height:40px;
+				text-align:center;
+			}
+
+			body{
+				font-size: 1.5em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+		@media screen and (min-width: 795px) {
+			body{
+				font-size: 1em;
+				}
+			}				
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+			
+			let a,b,c,d,e,f;
+
+			a = Math.floor(Math.random()*17) + 2;
+			b = Math.floor(Math.random()*17) + 2;
+			
+			c = Math.floor(Math.random()*17) + 2;
+			d = Math.floor(Math.random()*17) + 2;
+
+			e = Math.floor(Math.random()*17) + 2;
+			f = Math.floor(Math.random()*17) + 2;
+			
+			while(a==c)
+			{
+				c = Math.floor(Math.random()*17) + 2;
+			}
+			
+			while(b==d)
+			{
+				d = Math.floor(Math.random()*17) + 2;
+			}			
+			
+			while((a==e)||(c==e))
+			{
+				e = Math.floor(Math.random()*17) + 2;
+			}
+			
+			while((b==f)||(d==f)||(e==f))
+			{
+				f = Math.floor(Math.random()*17) + 2;
+			}
+			
+			 
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= ""+
+			"Compléter le tableau suivant : (0.5 par case)"+
+			"<table>"+
+			"<tr><td> z </td><td> <span style=\"text-decoration:overline;\" > z </span> </td><td> Partie<br>réelle </td><td> partie<br>imaginaire</td></tr>"+ 
+			"<tr><td> "+a+" + "+b+"i </td><td> </td><td> </td><td> </td></tr>"+
+			"<tr><td> </td><td> "+c+" - "+d+"i </td><td> </td><td> </td></tr>"+
+			"<tr><td> </td><td> </td><td> "+e+" </td><td> "+f+" </td></tr>"+
+			"</table>";
+								
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			reponse = document.getElementById("reponse");
+
+			reponse.innerHTML= ""+
+							"Compléter le tableau suivant : (0.5 par case)"+
+			"<table>"+
+			"<tr><td> z </td><td> <span style=\"text-decoration:overline;\" > z </span> </td><td> Partie<br>réelle </td><td> partie<br>imaginaire</td></tr>"+ 
+			"<tr><td> "+a+" + "+b+"i </td><td> "+a+" - "+b+"i</td><td>"+a+" </td><td> "+b+"</td></tr>"+
+			"<tr><td> "+c+" + "+d+"i</td><td> "+c+" - "+d+"i </td><td> "+c+"</td><td> "+d+"</td></tr>"+
+			"<tr><td> "+e+" + "+f+"i </td><td> "+e+" - "+f+"i </td><td> "+e+" </td><td> "+f+" </td></tr>"+
+			"</table>"+
+			
+			"<br><br><br>";
+		
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>
