@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <title>générateur exercice sur les arbres statistiques</title>
+
+	
+		<style>
+			body {
+				background-color:#FFFFFF;
+				color:#000000;
+				font-size:15px;
+			}
+			table {
+				margin-top: 10px;
+				border : solid 1px black;
+				border-spacing: 0;
+			}
+			
+			td {
+				border : solid 1px black;
+				width:300px;
+				height:50px;
+				text-align:center;
+				border-spacing: 0;
+			}
+			
+			tr {
+				border-spacing: 0;
+			}
+
+			cache {
+				display:none;
+			}
+
+			#affiche {
+				margin:25px 0px 25px 0px;
+			}
+			
+			.identite {
+				display:flex;
+				width:100%
+				border-bottom : solid 1px black;
+				margin-top : 15px;
+			}
+			
+			.identite div {
+				width:50%;
+			}
+			
+			.nbSujet {
+				text-align: center;
+				margin-top:20px;
+				padding-bottom:20px;
+				border-bottom : solid 1px black;
+			}
+					
+			.espace{
+			width:10px;
+			height:500px;
+			}
+			
+			.tabreponse td {
+				width:150px;
+				height:25px;			
+			}
+			
+			.tabreponse {
+				break-after: page;
+			}
+
+			.reponse {
+			padding-bottom:15px;
+				break-before: page;
+				border-bottom : solid 1px black;
+			}
+			
+			hr {
+			margin-bottom:15px;
+			}
+			
+			
+			.big {
+				font-size: 1em;
+			}			
+			
+			sub, sup {
+				font-size : 0.5em;
+			}			
+
+			.frac{
+				display:inline-block;
+				margin-left:.1em;margin-right:.1em;
+				vertical-align:-64%;
+				text-align:center;
+				}
+				
+			.frac > .num, .frac > .den{
+				display:inline-block;
+				padding:0 .1em;
+				}
+				
+			.frac > .fracbar {
+				display:block;
+				height:0;margin:0;border:0;
+				border-bottom:.1em solid;
+				overflow:hidden;
+				}
+				
+			.den{vertical-align:top;}
+			
+			@media print {
+				background-color:#FFFFFF;
+			}
+			
+			@media file {
+				background-color:#FFFFFF;
+			}
+		</style>
+		
+    </head>
+    <body>		
+		<header>
+		</header>
+		<main id="sujet">
+		</main>
+		<footer>
+		</footer>
+		
+		<script>
+		
+		let nbEleves = 15;
+			
+		for(let i=0;i<=nbEleves;i++)
+		{
+
+			PA = Math.floor(Math.random()*15) + 25;
+			PB = Math.floor(Math.random()*15) + 25;
+
+			
+			PAD = Math.floor(Math.random()*6) + 3;
+			PBD = Math.floor(Math.random()*6) + 3;
+			PCD = Math.floor(Math.random()*10) + 5;
+
+			
+			while(PA==PB)
+			{
+				PB = Math.floor(Math.random()*15) + 25;
+			}
+			
+			while(PAD==PBD)
+			{
+				PBD = Math.floor(Math.random()*6) + 3;
+			}			
+			
+			while((PAD==PCD)||(PBD==PCD))
+			{
+				PCD = PCD = Math.floor(Math.random()*10) + 5;
+			}
+			
+			PC = 100 - PA - PB ;
+			PTD = ((PA*PAD) + (PB*PBD) + (PC*PCD))/100 ;
+
+			while((PTD/100).toString().length > 7)
+			{
+				PCD = PCD = Math.floor(Math.random()*10) + 5;
+				PTD = ((PA*PAD) + (PB*PBD) + (PC*PCD))/100 ;
+
+			}
+
+
+				sujet = document.getElementById("sujet");
+
+				reponse = document.createElement("div");
+				reponse.setAttribute("class","reponse");
+				reponse.innerHTML = "BTS CPRP 1 - les arbres statistiques - Correction numéro "+i+"<br>" +
+				"<div style=\"display:flex\"><div><img src=\"../images/arbre_stat_c.png\" alt=\"arbre statistique\" width=\"120px\"></div><div style=\"margin-left:20px\">"+
+				"<br>P(C) = 1 - "+PA/100+" - "+PB/100+" = "+PC/100+" "+
+			"<br>PC(D) : "+PTD/100+" = ( "+PA/100+" x "+PAD/100+") + ( "+PB/100+" x "+PBD/100+" ) + ( "+PC/100+" x PC(D)) <br>=> PC(D) = "+ (( PTD/100 - ((PA*PAD)/10000) - ((PB*PBD)/10000))/(PC/100))+" => "+PCD/100+""+
+			"<br>avec P(A) = "+PA/100+" / P(B) = "+PB/100+" / P(C) = "+PC/100+" / PA(D) = "+PAD/100+" / PA(OK) = "+(100-PAD)/100+" <br> PB(D) = "+PBD/100+" / PB(OK) = "+(100-PBD)/100+" / PC(D) = "+PCD/100+" / PC(OK) = "+(100-PCD)/100+
+			"</div></div><br><br>";
+								
+				sujet.appendChild(reponse);
+				
+				divId=document.createElement("div");
+				divId.setAttribute("class","identite");
+			
+				divNom=document.createElement("div");
+				divNom.innerHTML="<br>Nom : "
+			
+				divPrenom=document.createElement("div");
+				divPrenom.innerHTML="<br>Prénom : ";
+
+				divId.appendChild(divNom);
+				divId.appendChild(divPrenom);
+				
+				sujet.appendChild(divId);
+				
+				
+				divSujet = document.createElement("div");
+				divSujet.setAttribute("class","nbSujet");
+				divSujet.innerHTML = "BTS CPRP 1 - les arbres statistiques - Sujet numéro "+i;
+				
+				sujet.appendChild(divSujet);
+			
+				enonce=document.createElement("div");
+			enonce.innerHTML= 			""+
+			"Une usine possède 3 machines qui fabriquent la même pièce. <br>On note P(M) la probabilité qu'une pièce soit fabriquée par la machine M. On note PM(D) la probabilité que la pièce produite par la machine M soit défectueuse.  "+
+			".<br>On a : P(A) = "+PA/100+" et PA(D) = "+PAD/100+". On a P(B) = "+PB/100+" et PB(D) = "+PBD/100+ 
+			".<br>Calculez P(C). <br>(raisonnement/formule:0.5)<br><br><br>(calcul:0.5)<br><br><br>(réponse:0.25)<br><br>"+
+			"<br>Sachant que la probabilité qu'une pièce produite soit défectueuse est de "+PTD/100+", calculez PC(D) ?<br>(raisonnement/formule:0.5)<br><br><br><br>(calcul:0.5)<br><br><br><br>(réponse:0.25)<br><br>"+
+			"<br>Complétez l'arbre de probabilité avec vos résultats.(0.5 par bonne réponse)<br>"+
+			"<img src=\"../images/arbre_stat.png\" alt=\"arbre statistique\" width=\"300px\">";
+		
+
+		
+				sujet.appendChild(enonce);
+				
+
+		}
+			
+		</script>
+		
+	</body>
+</html>
