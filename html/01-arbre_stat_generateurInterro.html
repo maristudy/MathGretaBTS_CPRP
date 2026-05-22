@@ -179,8 +179,8 @@
 				reponse.innerHTML = "BTS CPRP 1 - les arbres statistiques - Correction numéro "+i+"<br>" +
 				"<div style=\"display:flex\"><div><img src=\"../images/arbre_stat_c.png\" alt=\"arbre statistique\" width=\"120px\"></div><div style=\"margin-left:20px\">"+
 				"<br>P(C) = 1 - "+PA/100+" - "+PB/100+" = "+PC/100+" "+
-			"<br>PC(D) : "+PTD/100+" = ( "+PA/100+" x "+PAD/100+") + ( "+PB/100+" x "+PBD/100+" ) + ( "+PC/100+" x PC(D)) <br>=> PC(D) = "+ (( PTD/100 - ((PA*PAD)/10000) - ((PB*PBD)/10000))/(PC/100))+" => "+PCD/100+""+
-			"<br>avec P(A) = "+PA/100+" / P(B) = "+PB/100+" / P(C) = "+PC/100+" / PA(D) = "+PAD/100+" / PA(OK) = "+(100-PAD)/100+" <br> PB(D) = "+PBD/100+" / PB(OK) = "+(100-PBD)/100+" / PC(D) = "+PCD/100+" / PC(OK) = "+(100-PCD)/100+
+			"<br>P<sub>C</sub>(D) : "+PTD/100+" = ( "+PA/100+" x "+PAD/100+") + ( "+PB/100+" x "+PBD/100+" ) + ( "+PC/100+" x P<sub>C</sub>(D)) <br>=> P<sub>C</sub>(D) = "+ (( PTD/100 - ((PA*PAD)/10000) - ((PB*PBD)/10000))/(PC/100))+" => "+PCD/100+""+
+			"<br>avec P(A) = "+PA/100+" / P(B) = "+PB/100+" / P(C) = "+PC/100+" / P<sub>A</sub>(D) = "+PAD/100+" / P<sub>A</sub>(OK) = "+(100-PAD)/100+" <br> P<sub>B</sub>(D) = "+PBD/100+" / P<sub>B</sub>(OK) = "+(100-PBD)/100+" / P<sub>C</sub>(D) = "+PCD/100+" / P<sub>C</sub>(OK) = "+(100-PCD)/100+
 			"</div></div><br><br>";
 								
 				sujet.appendChild(reponse);
@@ -209,9 +209,9 @@
 				enonce=document.createElement("div");
 			enonce.innerHTML= 			""+
 			"Une usine possède 3 machines qui fabriquent la même pièce. <br>On note P(M) la probabilité qu'une pièce soit fabriquée par la machine M. On note PM(D) la probabilité que la pièce produite par la machine M soit défectueuse.  "+
-			".<br>On a : P(A) = "+PA/100+" et PA(D) = "+PAD/100+". On a P(B) = "+PB/100+" et PB(D) = "+PBD/100+ 
+			".<br>On a : P(A) = "+PA/100+" et P<sub>A</sub>(D) = "+PAD/100+". On a P(B) = "+PB/100+" et P<sub>B</sub>(D) = "+PBD/100+ 
 			".<br>Calculez P(C). <br>(raisonnement/formule:0.5)<br><br><br>(calcul:0.5)<br><br><br>(réponse:0.25)<br><br>"+
-			"<br>Sachant que la probabilité qu'une pièce produite soit défectueuse est de "+PTD/100+", calculez PC(D) ?<br>(raisonnement/formule:0.5)<br><br><br><br>(calcul:0.5)<br><br><br><br>(réponse:0.25)<br><br>"+
+			"<br>Sachant que la probabilité qu'une pièce produite soit défectueuse est de "+PTD/100+", calculez P<sub>C</sub>(D) ?<br>(raisonnement/formule:0.5)<br><br><br><br>(calcul:0.5)<br><br><br><br>(réponse:0.25)<br><br>"+
 			"<br>Complétez l'arbre de probabilité avec vos résultats.(0.5 par bonne réponse)<br>"+
 			"<img src=\"../images/arbre_stat.png\" alt=\"arbre statistique\" width=\"300px\">";
 		

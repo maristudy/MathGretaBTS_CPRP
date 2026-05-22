@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./../css/style.css">
+		
+		<script src="./../js/formules.js" ></script>
+		<script src="./../js/clavier.js" ></script>
+</head>
+
+<style>
+.clavier{
+display:flex;
+flex-wrap:wrap;
+}
+
+.clavier p {
+margin:5px;
+border:solid 2px red;
+padding:5px;
+background-color:#AAAAAA;
+color:#000000;
+font-size:14px;
+font-weight:bold;
+}
+
+</style>
+<body>
+	<header>
+		<h1>Mathématiques BTS CRPR greta Lycée Chaptal - Saint Brieuc</h1>
+	</header>
+	
+	<main>
+
+		<section>
+			<p id="content">
+				<p id="enonce">
+				</p>
+				<p id="repreponse">
+				&nbsp;<span id="reponse"></span>
+				</p>
+				<p id="clavier" class="clavier">
+				</p>
+			</p>
+			<script>
+		
+
+
+		
+			if(localStorage.getItem("prenom") === null )
+			{
+				content=document.getElementById("content");
+				content.innerHTML= "Quel est ton prénom ? <input type=\"text\" name=\"prenom\" id=\"prenom\"> </input> <button id=\"validerPrenom\">Enregistrer</button>";
+				validerPrenom=document.getElementById("validerPrenom");
+				validerPrenom.addEventListener("click",() => {
+				let prenom = document.getElementById("prenom").value;
+				localStorage.setItem("prenom",prenom);
+				location.reload();
+				});
+				
+			}
+			else
+			{
+				content=document.getElementById("content");
+				content.innerHTML="<p id=\"config\">Paramètres</p><p>Bonjour "+localStorage.getItem("prenom")+
+				"</p><p>Que vas-tu faire aujourd'hui ?<br><br></p>"+
+				"<p id=\"formules\"> Les formules </p>";
+				/*
+				"<p id=\"developements\"> Développements </p>"+
+				"<p id=\"factorisations\"> Factorisations </p>"+
+				"<p id=\"idremarquables\"> Identités Remarquables </p>"+
+				"<p id=\"eqdegres1\"> Equations Premier degrés </p>"+
+				"<p id=\"eqdegres2\"> Equations second degrés </p>"+
+				"<p id=\"exponentiel\"> Exponentiel </p>"+
+				"<p id=\"logarithme\"> Logarithme </p>"+
+				"<p id=\"cercletrigo\"> Cercle trigonométrique </p>"+
+				"<p id=\"sincos\"> Sinus / Cosinus </p>"+
+				"<p id=\"convlong\"> Convertir longueurs </p>"+
+				"<p id=\"convcapa\"> Convertir capacités </p>"+
+				"<p id=\"convmasses\"> Convertir masses </p>"+
+				"<p id=\"convsurfaces\"> Convertir surfaces </p>"+
+				"<p id=\"convvolumes\"> Convertir volumes </p>"+
+				"<p id=\"volumescapacites\"> Volumes et capacités </p>"+
+				"<p id=\"derivees\"> Les dérivées </p>"+
+				"<p id=\"primitives\"> Les primitives </p>"+
+				"<p id=\"integrales\"> Les intégrales </p>"+
+				"<p id=\"proba\"> Les probabilités </p>"+
+				"<p id=\"stats\"> Les statistiques </p>"+
+				"<p id=\"limites\"> Les limites </p>"+
+				"<p id=\"arrondis\"> Les arrondis </p>"; */
+				
+				formules=document.getElementById("formules");
+				formules.addEventListener("click",()=>{
+				tabQuestions=[["question 1","reponse 1"],["question 2","reponse 2"],["question 3","reponse 3"],["question 4","reponse 4"],["question 5","reponse 5"],
+				["question 6","reponse 6"],["question 7","reponse 7"],["question 8","reponse 8"],["question 9","reponse 9"],["question 10","reponse 10"]]
+				jeuFormules=new Formules(tabQuestions)});
+				
+				clavier(["0","1","2","3","4","5","6","7","8","9","+","-","/","*"],"clavier","reponse");
+				
+				
+				
+			}
+
+
+			</script>
+		</section>
+		<section>
+			<h2>1ère année</h2>
+			<section >
+				<h3 >cours du  </h3>
+				<article class="cache">
+				
+					<ul>
+						<li> </li>
+
+					</ul>
+				</article>
+			</section>
+		</section>
+	<footer>
+	</footer>
+		<script src="./../js/script.js" ></script>
+</body>
+
+</html>
