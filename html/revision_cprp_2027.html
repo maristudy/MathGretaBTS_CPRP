@@ -14,9 +14,10 @@
 .clavier{
 display:flex;
 flex-wrap:wrap;
+flex-direction:column;
 }
 
-.clavier p {
+.clavier .touche {
 margin:5px;
 border:solid 2px white;
 padding-top:10px;
@@ -27,6 +28,17 @@ background-color:#AAAAAA;
 color:#000000;
 font-size:24px;
 font-weight:bold;
+}
+
+.ligne {
+display:flex;
+flex-wrap:wrap;
+}
+
+#repreponse
+{
+border:solid 2px white;
+width:50%;
 }
 
 body {
@@ -71,9 +83,9 @@ font-size:30px;
 			else
 			{
 				content=document.getElementById("content");
-				content.innerHTML="<p id=\"config\">Paramètres</p><p>Bonjour "+localStorage.getItem("prenom")+
-				"</p><p>Que vas-tu faire aujourd'hui ?<br><br></p>"+
-				"<p id=\"formules\"> Les formules </p>";
+				content.innerHTML="<p id=\"config\"></p><p>Bonjour <span style=\"font-weight:bold\">"+localStorage.getItem("prenom")+
+				"</span></p><p>Que vas-tu faire aujourd'hui ?<br><br></p>"+
+				"<p id=\"formules\"> Test saisie </p>";
 				/*
 				"<p id=\"developements\"> Développements </p>"+
 				"<p id=\"factorisations\"> Factorisations </p>"+
@@ -104,7 +116,7 @@ font-size:30px;
 				["question 6","reponse 6"],["question 7","reponse 7"],["question 8","reponse 8"],["question 9","reponse 9"],["question 10","reponse 10"]]
 				jeuFormules=new Formules(tabQuestions)});
 				
-				clavier(["0","1","2","3","4","5","6","7","8","9","+","-","/","*"],"clavier","reponse");
+				clavier([["0","1","2","3","4","5","6","7","8","9"],["+","-","/","*"]],"clavier","reponse");
 				
 				
 				
