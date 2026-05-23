@@ -1,6 +1,12 @@
 function clavier(tablo,idAffiche,idSaisie)
 {
 	affiche = document.getElementById(idAffiche);
+	if(affiche.innerHTML.length > 5)
+	{
+		affiche.innerHTML="";
+	}
+	else
+	{
 	saisie=document.getElementById(idSaisie)
 	saisie.setAttribute("class","saisie");
 	
@@ -26,7 +32,7 @@ function clavier(tablo,idAffiche,idSaisie)
 			saisie.innerHTML = "";
 		})
 	ligne.append(efface);
-		affiche.append(ligne);
+	affiche.append(ligne);
 		
 	tablo.forEach(tab => {
 		ligne=document.createElement("p");
@@ -42,7 +48,9 @@ function clavier(tablo,idAffiche,idSaisie)
 			ligne.append(laTouche);
 		})
 		affiche.append(ligne);
-	})
+	})		
+	}
+
 
 		
 }

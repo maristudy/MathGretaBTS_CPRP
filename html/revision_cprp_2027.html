@@ -17,7 +17,7 @@ flex-wrap:wrap;
 flex-direction:column;
 }
 
-.clavier .touche {
+.clavier .touche, #afficheClavier, #valider {
 margin:5px;
 border:solid 2px white;
 padding-top:10px;
@@ -35,10 +35,20 @@ display:flex;
 flex-wrap:wrap;
 }
 
+#content
+{
+margin-bottom:15px;
+}
+
+#reponse
+{
+width:100%;
+height:35px;
+}
+
 #repreponse
 {
-border:solid 2px white;
-width:50%;
+margin-top:20px;
 }
 
 body {
@@ -57,16 +67,11 @@ font-size:30px;
 			<p id="content">
 				<p id="enonce">
 				</p>
-				<p id="repreponse">
-				&nbsp;<span id="reponse"></span>
-				</p>
+
 				<p id="clavier" class="clavier">
 				</p>
 			</p>
 			<script>
-		
-
-
 		
 			if(localStorage.getItem("prenom") === null )
 			{
@@ -85,7 +90,30 @@ font-size:30px;
 				content=document.getElementById("content");
 				content.innerHTML="<p id=\"config\"></p><p>Bonjour <span style=\"font-weight:bold\">"+localStorage.getItem("prenom")+
 				"</span></p><p>Que vas-tu faire aujourd'hui ?<br><br></p>"+
-				"<p id=\"formules\"> Test saisie </p>";
+				"<p ><span id=\"formules\"> Test saisie </span></p>"+
+				" <div id=\"repreponse\" style=\"display:flex\">&nbsp;"+
+					"<p><span id=\"afficheClavier\">Clavier</span></p>"+
+					"<p ><span id=\"valider\">Valider</span></p><p style=\"width:50%;border: 2px solid white;\">&nbsp;<span id=\"reponse\"></span></p>"+
+				"</div>";
+				
+				afficheClavier=document.getElementById("afficheClavier");
+				afficheClavier.addEventListener("click",()=>{
+					formules=document.getElementById("formules");
+					formules.addEventListener("click",()=>{
+					tabQuestions=[["question 1","reponse 1"],["question 2","reponse 2"],["question 3","reponse 3"],["question 4","reponse 4"],["question 5","reponse 5"],
+					["question 6","reponse 6"],["question 7","reponse 7"],["question 8","reponse 8"],["question 9","reponse 9"],["question 10","reponse 10"]]
+					jeuFormules=new Formules(tabQuestions)});
+				
+					clavier([["0","1","2","3","4","5","6","7","8","9"],["+","-","/","*"]],"clavier","reponse");
+								
+				});
+				
+				valider=document.getElementById("valider");
+				valider.addEventListener("click",()=>{
+				reponse=document.getElementById("reponse");
+				alert("vous avez saisi : "+reponse.textContent);
+				});
+				
 				/*
 				"<p id=\"developements\"> Développements </p>"+
 				"<p id=\"factorisations\"> Factorisations </p>"+
@@ -108,16 +136,14 @@ font-size:30px;
 				"<p id=\"proba\"> Les probabilités </p>"+
 				"<p id=\"stats\"> Les statistiques </p>"+
 				"<p id=\"limites\"> Les limites </p>"+
-				"<p id=\"arrondis\"> Les arrondis </p>"; */
+				"<p id=\"arrondis\"> Les arrondis </p>"; 
 				
-				formules=document.getElementById("formules");
-				formules.addEventListener("click",()=>{
-				tabQuestions=[["question 1","reponse 1"],["question 2","reponse 2"],["question 3","reponse 3"],["question 4","reponse 4"],["question 5","reponse 5"],
-				["question 6","reponse 6"],["question 7","reponse 7"],["question 8","reponse 8"],["question 9","reponse 9"],["question 10","reponse 10"]]
-				jeuFormules=new Formules(tabQuestions)});
+
 				
-				clavier([["0","1","2","3","4","5","6","7","8","9"],["+","-","/","*"]],"clavier","reponse");
 				
+				*/
+				
+
 				
 				
 			}
