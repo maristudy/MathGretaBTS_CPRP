@@ -62,6 +62,11 @@ font-size:30px;
 	</header>
 	
 	<main>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> </p>
+						<a href="../index.html">Retour à l'accueil</a>
+		</header>
+
 
 		<section>
 			<p id="content">
@@ -112,6 +117,12 @@ font-size:30px;
 				reponse=document.getElementById("reponse");
 				alert("vous avez saisi : "+reponse.textContent);
 				});
+				
+				
+				formules=document.createElement("a");
+				formules.textContent="Formules";
+				formules.href="./revisions/formules1a.html";
+				content.appendChild(formules);
 				
 				/*
 				"<p id=\"developements\"> Développements </p>"+
