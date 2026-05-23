@@ -1,6 +1,7 @@
 function clavier(tablo,idAffiche,idSaisie)
 {
 	affiche = document.getElementById(idAffiche);
+	alert(affiche.innerHTML.length);
 	if(affiche.innerHTML.length > 5)
 	{
 		affiche.innerHTML="";
