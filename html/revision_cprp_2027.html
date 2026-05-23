@@ -90,24 +90,23 @@ font-size:30px;
 				content=document.getElementById("content");
 				content.innerHTML="<p id=\"config\"></p><p>Bonjour <span style=\"font-weight:bold\">"+localStorage.getItem("prenom")+
 				"</span></p><p>Que vas-tu faire aujourd'hui ?<br><br></p>"+
-				"<p ><span id=\"formules\"> Test saisie </span></p>"+
-				" <div id=\"repreponse\" style=\"display:flex\">&nbsp;"+
-					"<p><span id=\"afficheClavier\">Clavier</span></p>"+
-					"<p ><span id=\"valider\">Valider</span></p><p style=\"width:50%;border: 2px solid white;\">&nbsp;<span id=\"reponse\"></span></p>"+
+				"<p ><span id=\"formules\"> Test saisie </span></p><p style=\"width:50%;border: 2px solid white;\">&nbsp;<span id=\"reponse\"></span></p>"+
+				" <div id=\"repreponse\" style=\"display:flex\" >&nbsp;"+
+				"<p ><p><span id=\"afficheClavier\">Clavier</span></p>"+
+				"<p ><span id=\"valider\">Valider</span></p></p>"+
 				"</div>";
 				
 				afficheClavier=document.getElementById("afficheClavier");
-				afficheClavier.addEventListener("click",()=>{
-					formules=document.getElementById("formules");
-					formules.addEventListener("click",()=>{
-					tabQuestions=[["question 1","reponse 1"],["question 2","reponse 2"],["question 3","reponse 3"],["question 4","reponse 4"],["question 5","reponse 5"],
-					["question 6","reponse 6"],["question 7","reponse 7"],["question 8","reponse 8"],["question 9","reponse 9"],["question 10","reponse 10"]]
-					jeuFormules=new Formules(tabQuestions)});
-				
+					afficheClavier.addEventListener("click",()=>{
+/*						formules=document.getElementById("formules");
+						formules.addEventListener("click",()=>{
+							tabQuestions=[["question 1","reponse 1"],["question 2","reponse 2"],["question 3","reponse 3"],["question 4","reponse 4"],["question 5","reponse 5"],
+							["question 6","reponse 6"],["question 7","reponse 7"],["question 8","reponse 8"],["question 9","reponse 9"],["question 10","reponse 10"]];
+//						jeuFormules=new Formules(tabQuestions)});
+						});	
+*/				
 					clavier([["0","1","2","3","4","5","6","7","8","9"],["+","-","/","*"]],"clavier","reponse");
-								
-				});
-				
+					});
 				valider=document.getElementById("valider");
 				valider.addEventListener("click",()=>{
 				reponse=document.getElementById("reponse");
