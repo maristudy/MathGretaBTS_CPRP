@@ -54,7 +54,7 @@ height:35px;
 {
 margin-top:20px;
 display:flex;
-
+display:none;
 }
 
 body {
@@ -69,6 +69,7 @@ padding:5px;
 width:50%;
 border: 2px solid white;
 height:1.5em;
+display:none;
 }
 
 #actionSuivante{
@@ -87,8 +88,24 @@ background-color:#DDDDDD;
 color:#000000;
 font-size:24px;
 font-weight:bold;
- width: max-content;
+width: max-content;
 }
+
+#stats
+{
+margin:5px;
+border:solid 2px white;
+padding-top:10px;
+padding-bottom:10px;
+padding-right:18px;
+padding-left:18px;
+background-color:#00AA00;
+color:#000000;
+font-size:24px;
+font-weight:bold;
+width: max-content;
+}
+
 
 </style>
 <body>
@@ -299,10 +316,11 @@ const NbQuestionParPartie=3;
 				activites=document.getElementById("activites");
 				clavierValidation=document.getElementById("clavierValidation");
 				clavierValidation.style.display="flex";
+				saisieReponse=document.getElementById("saisieReponse");
 				
 				clavier.textContent="";
 				reponse.textContent="";
-				
+				saisieReponse.style.display="block";
 				question.style.display="block";
 				bonneReponse.style.display="none";
 				conseil.style.display="none";
@@ -392,7 +410,37 @@ retourMenu.addEventListener("click",() => {
 				
 });
 
-stats.addEventListener("click",() => {alert(localStorage.getItem("formules1a"))});
+			stats.addEventListener("click",() => {
+			storage="";
+			totalOK=0;
+			totalpasOK=0
+			totalWin=0;
+			totalLost=0;
+			storage=((localStorage.length)-1)+" activités réalisées\n";
+			for (const [key, value] of Object.entries(localStorage)) {
+
+				resultatStorage=localStorage.getItem(key);
+				storage=storage+'.....'+key+" = \n"+value.replaceAll("],[","],\n[")+" \n";
+
+				if(value.indexOf(",")!=-1)
+				{
+				val=value.replaceAll("\"","");
+				val=val.replaceAll("[","");
+				val=val.replaceAll("]","");
+				tablo=val.split(",");
+
+				totalOK=totalOK+Number(tablo[7]);
+				totalpasOK=totalpasOK+Number(tablo[9]);
+				totalWin=totalWin+Number(tablo[13]);
+				totalLost=totalLost+Number(tablo[11]);
+				}
+
+
+			}
+			storage=storage+"-------------\nOK = "+totalOK+"\npasOK = "+totalpasOK+"\nlost = "+totalLost+"\nwin = "+totalWin+
+			"\n-------------\nOK = "+Math.floor((100*totalOK)/(totalOK+totalpasOK))+" % \nwin = "+Math.floor((100*totalWin)/(totalWin+totalLost))+" %";
+			alert(storage);
+			});
 			
 			if(localStorage.getItem("prenom") === null )
 			{
