@@ -130,11 +130,11 @@ font-weight:bold;
 			
 <script>
 
-
+const NbQuestionParPartie=3;
 		function SaveResultat(nom)
 		{
-		console.log(localStorage.getItem(sessionStorage.getItem(nom)));
-			if(localStorage.getItem(sessionStorage.getItem(nom)) === null )
+			
+			if(localStorage.getItem(nom) === null )
 			{
 				resultat=
 				[["libelle",sessionStorage.getItem("libelle")],
@@ -150,7 +150,8 @@ font-weight:bold;
 			else
 			{
 				resultatStorage=localStorage.getItem(nom);
-				resultat=JSON.Parse(resultatStorage);
+				resultat=JSON.parse(resultatStorage);
+				console.log("deja en storage "+resultat);
 				
 				// modif date
 				resultat[2][1]=Date(Date.now).toString();
@@ -164,6 +165,8 @@ font-weight:bold;
 				resultat[6][1]=Number(resultat[6][1]) + Number(sessionStorage.getItem("win"));
 							
 				localStorage.setItem(nom,JSON.stringify(resultat));
+				sessionStorage.setItem("OK",0)
+				sessionStorage.setItem("pasOK",0)
 			}
 		}
 		
@@ -187,7 +190,10 @@ font-weight:bold;
 				reponse=document.getElementById("reponse");	
 				resultat=document.getElementById("resultat");
 				clavier=document.getElementById("clavier");
+				clavierValidation=document.getElementById("clavierValidation");
+				
 				clavier.textContent="";
+				clavierValidation.style.display="none";
 				
 				numQuestion=Number(sessionStorage.getItem("numQuestion"));
 				listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
@@ -206,7 +212,7 @@ font-weight:bold;
 						sessionStorage.setItem("lost",0 );
 						SaveResultat(sessionStorage.getItem("nom"));
 						
-						if(numQuestion<5)
+						if(numQuestion<NbQuestionParPartie)
 						{
 							questionSuivante=document.getElementById("questionSuivante");
 							questionSuivante.style.display="block";
@@ -216,6 +222,7 @@ font-weight:bold;
 							retourMenu=document.getElementById("retourMenu");
 							rejouer.style.display="block";
 							retourMenu.style.display="block";
+							sessionStorage.setItem("win",1);
 						}
 
 					}
@@ -227,7 +234,7 @@ font-weight:bold;
 						reponse.style.display="block";
 						resultat.style.display="block";		
 						
-						sessionStorage.setItem("pasOK",(Number(sessionStorage.getItem("pasOK"))+1) );	
+						sessionStorage.setItem("pasOK",1 );	
 						sessionStorage.setItem("win",0 );
 						sessionStorage.setItem("lost",1 );						
 						SaveResultat(sessionStorage.getItem("nom"));
@@ -290,7 +297,8 @@ font-weight:bold;
 				bonneReponse=document.getElementById("bonneReponse");
 				conseil=document.getElementById("conseil");
 				activites=document.getElementById("activites");
-				
+				clavierValidation=document.getElementById("clavierValidation");
+				clavierValidation.style.display="flex";
 				
 				clavier.textContent="";
 				reponse.textContent="";
@@ -311,11 +319,11 @@ font-weight:bold;
 				libelle=sessionStorage.getItem("libelle");
 				numQuestion=Number(sessionStorage.getItem("numQuestion"));
 				
-				//numquestion <=5
+				//numquestion <= NbQuestionParPartie
 				
-				if(numQuestion < 5)
+				if(numQuestion < NbQuestionParPartie)
 				{
-				nomActivite.innerHTML=libelle+" : question "+(numQuestion+1)+" / 5";
+				nomActivite.innerHTML=libelle+" : question "+(numQuestion+1)+" / "+NbQuestionParPartie;
 
 				listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
 				question.innerHTML=questions[numQuestion][0];
