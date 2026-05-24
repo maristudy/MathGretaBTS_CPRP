@@ -1,4 +1,4 @@
-function clavier(tablo,idAffiche,idSaisie)
+function Clavier(tablo,idAffiche,idSaisie)
 {
 	affiche = document.getElementById(idAffiche);
 	if(affiche.innerHTML.length > 5)
