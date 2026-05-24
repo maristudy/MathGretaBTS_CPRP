@@ -1,4 +1,4 @@
-class Formules {
+/*class Formules {
     constructor() {
 		this.name="Formules";
         this.last="";
@@ -23,7 +23,7 @@ class Formules {
         return 'vrooomm vrooomm';
     }
 }
-
+*/
 
 
 function partieFormules()

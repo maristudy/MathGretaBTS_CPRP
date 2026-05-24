@@ -96,6 +96,7 @@ font-weight:bold;
 			<a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> <br>
 			<a href="../index.html">Retour à l'accueil</a>
 			<p id="prenomDOM"></p>
+			<p id="stats">Voir mes stats</p>
 		</header>
 	
 	<main>
@@ -350,8 +351,11 @@ font-weight:bold;
 questionSuivante=document.getElementById("questionSuivante");
 rejouer=document.getElementById("rejouer");
 retourMenu=document.getElementById("retourMenu");
+stats=document.getElementById("stats");
+
 questionSuivante.addEventListener("click",() => {afficheQuestion(); });
 rejouer.addEventListener("click",() => {sessionStorage.clear();location.reload();});
+
 retourMenu.addEventListener("click",() => {
 				sessionStorage.clear();
 				question=document.getElementById("question");
@@ -380,7 +384,7 @@ retourMenu.addEventListener("click",() => {
 				
 });
 
-
+stats.addEventListener("click",() => {alert(localStorage.getItem("formules1a"))});
 			
 			if(localStorage.getItem("prenom") === null )
 			{
@@ -422,7 +426,7 @@ retourMenu.addEventListener("click",() => {
 				switch(activite)
 				{
 					case "formules1a":
-						questions=partieFormules()
+						questions=partieFormules();
 						initActivite("formules1a","La formule", questions);
 						afficheQuestion();
 					break;
