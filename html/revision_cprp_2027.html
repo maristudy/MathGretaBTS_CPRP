@@ -6,105 +6,105 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./../css/style.css">
 		
-		<script src="./../js/formules.js" ></script>
-		<script src="./../js/clavier.js" ></script>
+		<script src="./../js/formules.js"  ></script>
+		<script src="./../js/clavier.js"  ></script>
 </head>
 
 <style>
-.clavier{
-display:flex;
-flex-wrap:wrap;
-flex-direction:column;
-}
+	.clavier{
+		display:flex;
+		flex-wrap:wrap;
+		flex-direction:column;
+	}
 
-.clavier .touche, #afficheClavier, #valider {
-margin:5px;
-border:solid 2px white;
-padding-top:10px;
-padding-bottom:10px;
-padding-right:18px;
-padding-left:18px;
-background-color:#AAAAAA;
-color:#000000;
-font-size:24px;
-font-weight:bold;
-}
+	.clavier .touche, #afficheClavier, #valider {
+		margin:5px;
+		border:solid 2px white;
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-right:18px;
+		padding-left:18px;
+		background-color:#AAAAAA;
+		color:#000000;
+		font-size:24px;
+		font-weight:bold;
+	}
 
-.clavier {
-margin-top:15px;
-}
+	.clavier {
+		margin-top:15px;
+	}
 
-.ligne {
-display:flex;
-flex-wrap:wrap;
-}
+	.ligne {
+		display:flex;
+		flex-wrap:wrap;
+	}
 
-#content
-{
-margin-bottom:15px;
-}
+	#content
+	{
+		margin-bottom:15px;
+	}
 
-#reponse
-{
-width:100%;
-height:35px;
-}
+	#reponse
+	{
+		width:100%;
+		height:35px;
+	}
 
-#clavierValidation
-{
-margin-top:20px;
-display:flex;
-display:none;
-}
+	#clavierValidation
+	{
+		margin-top:20px;
+		display:flex;
+		display:none;
+	}
 
-body {
-font-size:30px;
-}
+	body {
+		font-size:30px;
+	}
 
-button {
-padding:5px;
-}
+	button {
+		padding:5px;
+	}
 
-#saisieReponse {
-width:50%;
-border: 2px solid white;
-height:1.5em;
-display:none;
-}
+	#saisieReponse {
+		width:50%;
+		border: 2px solid white;
+		height:1.5em;
+		display:none;
+	}
 
-#actionSuivante{
-display:flex;
-}
+	#actionSuivante{
+		display:flex;
+	}
 
-#questionSuivante, #rejouer, #retourMenu {
-display:none;
-margin:5px;
-border:solid 2px white;
-padding-top:10px;
-padding-bottom:10px;
-padding-right:18px;
-padding-left:18px;
-background-color:#DDDDDD;
-color:#000000;
-font-size:24px;
-font-weight:bold;
-width: max-content;
-}
+	#questionSuivante, #rejouer, #retourMenu {
+		display:none;
+		margin:5px;
+		border:solid 2px white;
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-right:18px;
+		padding-left:18px;
+		background-color:#DDDDDD;
+		color:#000000;
+		font-size:24px;
+		font-weight:bold;
+		width: max-content;
+	}
 
-#stats
-{
-margin:5px;
-border:solid 2px white;
-padding-top:10px;
-padding-bottom:10px;
-padding-right:18px;
-padding-left:18px;
-background-color:#00AA00;
-color:#000000;
-font-size:24px;
-font-weight:bold;
-width: max-content;
-}
+	#stats
+	{
+		margin:5px;
+		border:solid 2px white;
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-right:18px;
+		padding-left:18px;
+		background-color:#00AA00;
+		color:#000000;
+		font-size:24px;
+		font-weight:bold;
+		width: max-content;
+	}
 
 
 </style>
@@ -147,283 +147,281 @@ width: max-content;
 			
 <script>
 
-const NbQuestionParPartie=3;
-		function SaveResultat(nom)
+	const NbQuestionParPartie=3;
+
+	function SaveResultat(nom)
+	{
+		if(localStorage.getItem(nom) === null )
 		{
-			
-			if(localStorage.getItem(nom) === null )
-			{
-				resultat=
-				[["libelle",sessionStorage.getItem("libelle")],
-				["nom",sessionStorage.getItem("nom"),],
-				["date",Date(Date.now).toString()],
-				["OK",sessionStorage.getItem("OK")],
-				["pasOK",sessionStorage.getItem("pasOK")],
-				["lost",Number(sessionStorage.getItem("lost"))],
-				["win",Number(sessionStorage.getItem("win"))]];
+			resultat=
+			[["libelle",sessionStorage.getItem("libelle")],
+			["nom",sessionStorage.getItem("nom"),],
+			["date",Date(Date.now).toString()],
+			["OK",sessionStorage.getItem("OK")],
+			["pasOK",sessionStorage.getItem("pasOK")],
+			["lost",Number(sessionStorage.getItem("lost"))],
+			["win",Number(sessionStorage.getItem("win"))]];
 				
-				localStorage.setItem(nom,JSON.stringify(resultat));
+			localStorage.setItem(nom,JSON.stringify(resultat));
+		}
+		else
+		{
+			resultatStorage=localStorage.getItem(nom);
+			resultat=JSON.parse(resultatStorage);
+			console.log("deja en storage "+resultat);
+				
+			// modif date
+			resultat[2][1]=Date(Date.now).toString();
+			// modif OK
+			resultat[3][1]=Number(resultat[3][1]) + Number(sessionStorage.getItem("OK"));
+			// modif pas OK
+			resultat[4][1]=Number(resultat[4][1]) + Number(sessionStorage.getItem("pasOK"));
+			// modif lost
+			resultat[5][1]=Number(resultat[5][1]) + Number(sessionStorage.getItem("lost"));
+			// modif win
+			resultat[6][1]=Number(resultat[6][1]) + Number(sessionStorage.getItem("win"));
+							
+			localStorage.setItem(nom,JSON.stringify(resultat));
+			sessionStorage.setItem("OK",0)
+			sessionStorage.setItem("pasOK",0)
+		}
+	}
+		
+	function AfficheClavier()
+	{
+		numQuestion=Number(sessionStorage.getItem("numQuestion"));
+		listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
+		
+		Clavier(listeQuestion[numQuestion][3],"clavier","reponse");
+	}
+
+	function Valider()
+		{
+			question=document.getElementById("question");
+			bonneReponse=document.getElementById("bonneReponse");
+			conseil=document.getElementById("conseil");
+			nomActivite=document.getElementById("nomActivite");
+			afficheClavier=document.getElementById("afficheClavier");
+			valider=document.getElementById("valider");
+			reponse=document.getElementById("reponse");	
+			resultat=document.getElementById("resultat");
+			clavier=document.getElementById("clavier");
+			clavierValidation=document.getElementById("clavierValidation");
+				
+			clavier.textContent="";
+			clavierValidation.style.display="none";
+				
+			numQuestion=Number(sessionStorage.getItem("numQuestion"));
+			listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
+			
+			if(reponse.innerHTML==listeQuestion[numQuestion][1])
+			{
+				resultat.textContent="C'est gagné ! Bravo c'est la bonne réponse";
+				bonneReponse.style.display="block";
+				conseil.style.display="block";
+				reponse.style.display="block";
+				resultat.style.display="block";							
+						
+				sessionStorage.setItem("numQuestion",(Number(sessionStorage.getItem("numQuestion"))+1) );
+				sessionStorage.setItem("OK",(Number(sessionStorage.getItem("OK"))+1) );
+				sessionStorage.setItem("win",0 );
+				sessionStorage.setItem("lost",0 );
+				SaveResultat(sessionStorage.getItem("nom"));
+						
+				if(numQuestion<NbQuestionParPartie)
+				{
+					questionSuivante=document.getElementById("questionSuivante");
+					questionSuivante.style.display="block";
+				}
+				else
+				{
+					rejouer=document.getElementById("rejouer");
+					retourMenu=document.getElementById("retourMenu");
+					rejouer.style.display="block";
+					retourMenu.style.display="block";
+					sessionStorage.setItem("win",1);
+				}
+
 			}
 			else
 			{
-				resultatStorage=localStorage.getItem(nom);
-				resultat=JSON.parse(resultatStorage);
-				console.log("deja en storage "+resultat);
-				
-				// modif date
-				resultat[2][1]=Date(Date.now).toString();
-				// modif OK
-				resultat[3][1]=Number(resultat[3][1]) + Number(sessionStorage.getItem("OK"));
-				// modif pas OK
-				resultat[4][1]=Number(resultat[4][1]) + Number(sessionStorage.getItem("pasOK"));
-				// modif lost
-				resultat[5][1]=Number(resultat[5][1]) + Number(sessionStorage.getItem("lost"));
-				// modif win
-				resultat[6][1]=Number(resultat[6][1]) + Number(sessionStorage.getItem("win"));
-							
-				localStorage.setItem(nom,JSON.stringify(resultat));
-				sessionStorage.setItem("OK",0)
-				sessionStorage.setItem("pasOK",0)
+				resultat.textContent="perdu";
+				bonneReponse.style.display="block";
+				conseil.style.display="block";
+				reponse.style.display="block";
+				resultat.style.display="block";		
+						
+				sessionStorage.setItem("pasOK",1 );	
+				sessionStorage.setItem("win",0 );
+				sessionStorage.setItem("lost",1 );						
+				SaveResultat(sessionStorage.getItem("nom"));
+						
+				rejouer=document.getElementById("rejouer");
+				retourMenu=document.getElementById("retourMenu");
+				rejouer.style.display="block";
+				retourMenu.style.display="block";						
 			}
-		}
+			bonneReponse.innerHTML=listeQuestion[numQuestion][1];
+			conseil.innerHTML=listeQuestion[numQuestion][2];
+		}		
 		
 		
-		function AfficheClavier()
-		{
-			numQuestion=Number(sessionStorage.getItem("numQuestion"));
-			listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
-		
-			Clavier(listeQuestion[numQuestion][3],"clavier","reponse");
-		}
+	function initActivite(nom,libelle, questions)
+	{
 
-		function Valider()
-			{
-				question=document.getElementById("question");
-				bonneReponse=document.getElementById("bonneReponse");
-				conseil=document.getElementById("conseil");
-				nomActivite=document.getElementById("nomActivite");
-				afficheClavier=document.getElementById("afficheClavier");
-				valider=document.getElementById("valider");
-				reponse=document.getElementById("reponse");	
-				resultat=document.getElementById("resultat");
-				clavier=document.getElementById("clavier");
-				clavierValidation=document.getElementById("clavierValidation");
-				
-				clavier.textContent="";
-				clavierValidation.style.display="none";
-				
-				numQuestion=Number(sessionStorage.getItem("numQuestion"));
-				listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
-			
-					if(reponse.textContent==listeQuestion[numQuestion][1])
-					{
-						resultat.textContent="C'est gagné ! Bravo c'est la bonne réponse";
-						bonneReponse.style.display="block";
-						conseil.style.display="block";
-						reponse.style.display="block";
-						resultat.style.display="block";							
-						
-						sessionStorage.setItem("numQuestion",(Number(sessionStorage.getItem("numQuestion"))+1) );
-						sessionStorage.setItem("OK",(Number(sessionStorage.getItem("OK"))+1) );
-						sessionStorage.setItem("win",0 );
-						sessionStorage.setItem("lost",0 );
-						SaveResultat(sessionStorage.getItem("nom"));
-						
-						if(numQuestion<NbQuestionParPartie)
-						{
-							questionSuivante=document.getElementById("questionSuivante");
-							questionSuivante.style.display="block";
-						}
-						else{
-							rejouer=document.getElementById("rejouer");
-							retourMenu=document.getElementById("retourMenu");
-							rejouer.style.display="block";
-							retourMenu.style.display="block";
-							sessionStorage.setItem("win",1);
-						}
-
-					}
-					else
-					{
-						resultat.textContent="perdu";
-						bonneReponse.style.display="block";
-						conseil.style.display="block";
-						reponse.style.display="block";
-						resultat.style.display="block";		
-						
-						sessionStorage.setItem("pasOK",1 );	
-						sessionStorage.setItem("win",0 );
-						sessionStorage.setItem("lost",1 );						
-						SaveResultat(sessionStorage.getItem("nom"));
-						
-							rejouer=document.getElementById("rejouer");
-							retourMenu=document.getElementById("retourMenu");
-							rejouer.style.display="block";
-							retourMenu.style.display="block";						
-					}
-					bonneReponse.textContent=listeQuestion[numQuestion][1];
-					conseil.textContent=listeQuestion[numQuestion][2];
-				}		
-		
-		
-		
-		function initActivite(nom,libelle, questions)
-			{
-
-				nomActivite=document.getElementById("nomActivite");
-				nomActivite.innerHTML=libelle;
+		nomActivite=document.getElementById("nomActivite");
+		nomActivite.innerHTML=libelle;
 			
 				//display none  resultat,bonneReponse,conseil,activites
-				question=document.getElementById("question");
-				bonneReponse=document.getElementById("bonneReponse");
-				conseil=document.getElementById("conseil");
-				reponse=document.getElementById("reponse");						
-				resultat=document.getElementById("resultat");	
-				activites=document.getElementById("activites");		
+		question=document.getElementById("question");
+		bonneReponse=document.getElementById("bonneReponse");
+		conseil=document.getElementById("conseil");
+		reponse=document.getElementById("reponse");						
+		resultat=document.getElementById("resultat");	
+		activites=document.getElementById("activites");		
 
-				question.style.display="none";
-				bonneReponse.style.display="none";
-				conseil.style.display="none";
-				reponse.style.display="none";
-				resultat.style.display="none";	
-				activites.style.display="none";		
+		question.style.display="none";
+		bonneReponse.style.display="none";
+		conseil.style.display="none";
+		reponse.style.display="none";
+		resultat.style.display="none";	
+		activites.style.display="none";		
 
 				// init storage
-				sessionStorage.setItem("nom",nom);
-				sessionStorage.setItem("libelle",libelle);	
-				sessionStorage.setItem("numQuestion",0);
-				sessionStorage.setItem("listeQuestion",JSON.stringify(questions));	
-				sessionStorage.setItem("OK",0);
-				sessionStorage.setItem("pasOK",0);				
-			} // fin function initActivite(nom,libelle, questions)
+		sessionStorage.setItem("nom",nom);
+		sessionStorage.setItem("libelle",libelle);	
+		sessionStorage.setItem("numQuestion",0);
+		sessionStorage.setItem("listeQuestion",JSON.stringify(questions));	
+		sessionStorage.setItem("OK",0);
+		sessionStorage.setItem("pasOK",0);				
+	} // fin function initActivite(nom,libelle, questions)
 
-		function afficheQuestion()
-			{
+	function afficheQuestion()
+	{
+		questionSuivante=document.getElementById("questionSuivante");
+		rejouer=document.getElementById("rejouer");
+		retourMenu=document.getElementById("retourMenu");			
 			
-				questionSuivante=document.getElementById("questionSuivante");
-				rejouer=document.getElementById("rejouer");
-				retourMenu=document.getElementById("retourMenu");			
-			
-				question=document.getElementById("question");
-				nomActivite=document.getElementById("nomActivite");
-				afficheClavier=document.getElementById("afficheClavier");
-				valider=document.getElementById("valider");
-				reponse=document.getElementById("reponse");	
-				clavier=document.getElementById("clavier");
-				resultat=document.getElementById("resultat");
-				bonneReponse=document.getElementById("bonneReponse");
-				conseil=document.getElementById("conseil");
-				activites=document.getElementById("activites");
-				clavierValidation=document.getElementById("clavierValidation");
-				clavierValidation.style.display="flex";
-				saisieReponse=document.getElementById("saisieReponse");
+		question=document.getElementById("question");
+		nomActivite=document.getElementById("nomActivite");
+		afficheClavier=document.getElementById("afficheClavier");
+		valider=document.getElementById("valider");
+		reponse=document.getElementById("reponse");	
+		clavier=document.getElementById("clavier");
+		resultat=document.getElementById("resultat");
+		bonneReponse=document.getElementById("bonneReponse");
+		conseil=document.getElementById("conseil");
+		activites=document.getElementById("activites");
+		clavierValidation=document.getElementById("clavierValidation");
+		clavierValidation.style.display="flex";
+		saisieReponse=document.getElementById("saisieReponse");
 				
-				clavier.textContent="";
-				reponse.textContent="";
-				saisieReponse.style.display="block";
-				question.style.display="block";
-				bonneReponse.style.display="none";
-				conseil.style.display="none";
-				reponse.style.display="none";
-				resultat.style.display="none";	
-				activites.style.display="none";	
-				questionSuivante.style.display="none";	
-				rejouer.style.display="none";	
-				retourMenu.style.display="none";	
+		clavier.textContent="";
+		reponse.textContent="";
+		saisieReponse.style.display="block";
+		question.style.display="block";
+		bonneReponse.style.display="none";
+		conseil.style.display="none";
+		reponse.style.display="none";
+		resultat.style.display="none";	
+		activites.style.display="none";	
+		questionSuivante.style.display="none";	
+		rejouer.style.display="none";	
+		retourMenu.style.display="none";	
 				
-				valider.removeEventListener("click",AfficheClavier);
-				afficheClavier.removeEventListener("click",Valider);
+		valider.removeEventListener("click",AfficheClavier);
+		afficheClavier.removeEventListener("click",Valider);
 				
-				libelle=sessionStorage.getItem("libelle");
-				numQuestion=Number(sessionStorage.getItem("numQuestion"));
+		libelle=sessionStorage.getItem("libelle");
+		numQuestion=Number(sessionStorage.getItem("numQuestion"));
 				
 				//numquestion <= NbQuestionParPartie
 				
-				if(numQuestion < NbQuestionParPartie)
-				{
-				nomActivite.innerHTML=libelle+" : question "+(numQuestion+1)+" / "+NbQuestionParPartie;
+		if(numQuestion < NbQuestionParPartie)
+		{
+			nomActivite.innerHTML=libelle+" : question "+(numQuestion+1)+" / "+NbQuestionParPartie;
 
-				listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
-				question.innerHTML=questions[numQuestion][0];
+			listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
+			question.innerHTML=questions[numQuestion][0];
 						
-				Clavier(listeQuestion[numQuestion][3],"clavier","reponse");
+			Clavier(listeQuestion[numQuestion][3],"clavier","reponse");
 				
-				afficheClavier.addEventListener("click",AfficheClavier);		
+			afficheClavier.addEventListener("click",AfficheClavier);		
 				
-				valider.addEventListener("click",Valider);		
-				question.style.display="block";		
-				reponse.style.display="block";					
-				}
-				else{
+			valider.addEventListener("click",Valider);		
+			question.style.display="block";		
+			reponse.style.display="block";					
+		}
+		else
+		{
 				// fin de partie
-				nom=sessionStorage.getItem("nom");
-				sessionStorage.setItem("win",1);
-				SaveResultat(nom);
-				question.textContent="Bravo, vous avez terminé cette partie";
-				rejouer.style.display="block";	
-				retourMenu.style.display="block";				
-				saisieReponse=document.getElementById("saisieReponse");
-				clavierValidation=document.getElementById("clavierValidation");		
-				saisieReponse.style.display="none";
-				clavierValidation.style.display="none";
-				}
+			nom=sessionStorage.getItem("nom");
+			sessionStorage.setItem("win",1);
+			SaveResultat(nom);
+			question.textContent="Bravo, vous avez gagné cette partie !";
+			rejouer.style.display="block";	
+			retourMenu.style.display="block";				
+			saisieReponse=document.getElementById("saisieReponse");
+			clavierValidation=document.getElementById("clavierValidation");		
+			saisieReponse.style.display="none";
+			clavierValidation.style.display="none";
+		}
 				
 			
-			} // fin function afficheQuestion()
+	} // fin function afficheQuestion()
 						
 ///////////////////////////////////////////////////////////////////
 
 
-questionSuivante=document.getElementById("questionSuivante");
-rejouer=document.getElementById("rejouer");
-retourMenu=document.getElementById("retourMenu");
-stats=document.getElementById("stats");
+	questionSuivante=document.getElementById("questionSuivante");
+	rejouer=document.getElementById("rejouer");
+	retourMenu=document.getElementById("retourMenu");
+	stats=document.getElementById("stats");
 
-questionSuivante.addEventListener("click",() => {afficheQuestion(); });
-rejouer.addEventListener("click",() => {sessionStorage.clear();location.reload();});
+	questionSuivante.addEventListener("click",() => {afficheQuestion(); });
+	rejouer.addEventListener("click",() => {sessionStorage.clear();location.reload();});
 
-retourMenu.addEventListener("click",() => {
-				sessionStorage.clear();
-				question=document.getElementById("question");
-				bonneReponse=document.getElementById("bonneReponse");
-				conseil=document.getElementById("conseil");
-				reponse=document.getElementById("reponse");						
-				resultat=document.getElementById("resultat");	
-				activites=document.getElementById("activites");		
-				nomActivite=document.getElementById("nomActivite");
-				saisieReponse=document.getElementById("saisieReponse");
-				clavierValidation=document.getElementById("clavierValidation");
+	retourMenu.addEventListener("click",() => {
+		sessionStorage.clear();
+		question=document.getElementById("question");
+		bonneReponse=document.getElementById("bonneReponse");
+		conseil=document.getElementById("conseil");
+		reponse=document.getElementById("reponse");						
+		resultat=document.getElementById("resultat");	
+		activites=document.getElementById("activites");		
+		nomActivite=document.getElementById("nomActivite");
+		saisieReponse=document.getElementById("saisieReponse");
+		clavierValidation=document.getElementById("clavierValidation");
 				
-				nomActivite.innerHTML="";
-				question.style.display="none";
-				bonneReponse.style.display="none";
-				conseil.style.display="none";
-				reponse.style.display="none";
-				resultat.style.display="none";	
-				questionSuivante.style.display="none";
-				rejouer.style.display="none";
-				retourMenu.style.display="none";
-				saisieReponse.style.display="none";
-				clavierValidation.style.display="none";
+		nomActivite.innerHTML="";
+		question.style.display="none";
+		bonneReponse.style.display="none";
+		conseil.style.display="none";
+		reponse.style.display="none";
+		resultat.style.display="none";	
+		questionSuivante.style.display="none";
+		rejouer.style.display="none";
+		retourMenu.style.display="none";
+		saisieReponse.style.display="none";
+		clavierValidation.style.display="none";
 				
-				activites.style.display="block";	
-				
-});
+		activites.style.display="block";	
+	}); // fin retourMenu.addEventListener("click"
 
-			stats.addEventListener("click",() => {
-			storage="";
-			totalOK=0;
-			totalpasOK=0
-			totalWin=0;
-			totalLost=0;
-			storage=((localStorage.length)-1)+" activités réalisées\n";
-			for (const [key, value] of Object.entries(localStorage)) {
+	stats.addEventListener("click",() => {
+		storage="";
+		totalOK=0;
+		totalpasOK=0
+		totalWin=0;
+		totalLost=0;
+		storage=((localStorage.length)-1)+" activités réalisées\n";
+		for (const [key, value] of Object.entries(localStorage)) {
 
-				resultatStorage=localStorage.getItem(key);
-				storage=storage+'.....'+key+" = \n"+value.replaceAll("],[","],\n[")+" \n";
+			resultatStorage=localStorage.getItem(key);
+			storage=storage+'.....'+key+" = \n"+value.replaceAll("],[","],\n[")+" \n";
 
-				if(value.indexOf(",")!=-1)
-				{
+			if(value.indexOf(",")!=-1)
+			{
 				val=value.replaceAll("\"","");
 				val=val.replaceAll("[","");
 				val=val.replaceAll("]","");
@@ -433,63 +431,66 @@ retourMenu.addEventListener("click",() => {
 				totalpasOK=totalpasOK+Number(tablo[9]);
 				totalWin=totalWin+Number(tablo[13]);
 				totalLost=totalLost+Number(tablo[11]);
-				}
-
-
 			}
-			storage=storage+"-------------\nOK = "+totalOK+"\npasOK = "+totalpasOK+"\nlost = "+totalLost+"\nwin = "+totalWin+
-			"\n-------------\nOK = "+Math.floor((100*totalOK)/(totalOK+totalpasOK))+" % \nwin = "+Math.floor((100*totalWin)/(totalWin+totalLost))+" %";
-			alert(storage);
-			});
+		}
+		storage=storage+"-------------\nOK = "+totalOK+"\npasOK = "+totalpasOK+"\nlost = "+totalLost+"\nwin = "+totalWin+
+		"\n-------------\nOK = "+Math.floor((100*totalOK)/(totalOK+totalpasOK))+" % \nwin = "+Math.floor((100*totalWin)/(totalWin+totalLost))+" %";
+		alert(storage);
+	}); //stats.addEventListener("click"
 			
-			if(localStorage.getItem("prenom") === null )
-			{
-				prenomDOM=document.getElementById("prenomDOM");
-				prenomDOM.innerHTML= "Quel est ton prénom ? <input type=\"text\" name=\"prenom\" id=\"prenom\"> </input> <button id=\"validerPrenom\">Enregistrer</button>";
-				validerPrenom=document.getElementById("validerPrenom");
-				validerPrenom.addEventListener("click",() => {
-					let prenom = document.getElementById("prenom").value;
-					localStorage.setItem("prenom",prenom);
-					location.reload();
-				});
+	if(localStorage.getItem("prenom") === null )
+	{
+		prenomDOM=document.getElementById("prenomDOM");
+		prenomDOM.innerHTML= "Quel est ton prénom ? <input type=\"text\" name=\"prenom\" id=\"prenom\"> </input> <button id=\"validerPrenom\">Enregistrer</button>";
+		validerPrenom=document.getElementById("validerPrenom");
+		validerPrenom.addEventListener("click",() => {
+			let prenom = document.getElementById("prenom").value;
+			localStorage.setItem("prenom",prenom);
+			location.reload();
+		}); // validerPrenom.addEventListener("click"
 				
-			}
-			else
-			{
-				prenomDOM=document.getElementById("prenomDOM");
-				prenomDOM.innerHTML="<p id=\"config\"></p><p>Bonjour <span style=\"font-weight:bold\">"+localStorage.getItem("prenom")+
-				"</span></p><p>Que vas-tu faire aujourd'hui ?<br><br></p>";
+	}
+	else
+	{
+		prenomDOM=document.getElementById("prenomDOM");
+		prenomDOM.innerHTML="<p id=\"config\"></p><p>Bonjour <span style=\"font-weight:bold\">"+localStorage.getItem("prenom")+"</span>"+
+		"<br><br>L'objectif de ces activités est que tu n'oublies pas ce qui a été étudié pendant l'année.<br>"+
+		"En septembre, tu auras une note qui dépendra des activités que tu auras réalisé pendant la pause estivale. Voici le barème : <br>"+
+		"note entre 0 et 5 : Tu as fait moins de 5 parties pour chaque activité.<br>"+
+		"note entre 5 et 10 : Tu as fait 5 ( ou plus de 5 ) parties pour chaque activité. Tu as au moins 1 bonne réponse pour chaque activité.<br>"+
+		"note entre 10 et 15 : Tu as au moins gagné une partie de chaque activité.<br>"+
+		"note entre 15 et 20 : Tu as au moins gagné 5 parties de chaque activité.<br><br>"+
+		"</p><p><span style=\"font-weight:bold\">Que vas-tu faire aujourd'hui ?</span><br><br></p>";
 				
-				nomActivite=document.getElementById("nomActivite");
-				nomActivite.innerHTML="";
+		nomActivite=document.getElementById("nomActivite");
+		nomActivite.innerHTML="";
 				
-				activites=document.getElementById("activites");
+		activites=document.getElementById("activites");
 				
-				formules=document.createElement("a");
-				formules.textContent="Formules";
-				formules.href="./revision_cprp_2027.html?activite=formules1a";
-				activites.appendChild(formules);
+		formules=document.createElement("a");
+		formules.textContent="Formules";
+		formules.href="./revision_cprp_2027.html?activite=formules1a";
+		activites.appendChild(formules);
 				
-				const urlParams = new URLSearchParams(window.location.search);
-				const activite = urlParams.get('activite');
+		const urlParams = new URLSearchParams(window.location.search);
+		const activite = urlParams.get('activite');
 
-				nomActivite=document.getElementById("nomActivite");
-				question=document.getElementById("question");
-				bonneReponse=document.getElementById("bonneReponse");
-				conseil=document.getElementById("conseil");
+		nomActivite=document.getElementById("nomActivite");
+		question=document.getElementById("question");
+		bonneReponse=document.getElementById("bonneReponse");
+		conseil=document.getElementById("conseil");
 							
-				
-				switch(activite)
-				{
-					case "formules1a":
-						questions=partieFormules();
-						initActivite("formules1a","La formule", questions);
-						afficheQuestion();
-					break;
+		switch(activite)
+		{
+			case "formules1a":
+				questions=partieFormules();
+				initActivite("formules1a","La formule", questions);
+				afficheQuestion();
+			break;
 					
-					default:
-					break;
-				}
+			default:
+			break;
+		}
 				
 				/*
 				"<p id=\"developements\"> Développements </p>"+
@@ -517,8 +518,7 @@ retourMenu.addEventListener("click",() => {
 
 				*/
 
-			}
-
+	}
 
 </script>
 

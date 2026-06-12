@@ -32,16 +32,15 @@ function partieFormules()
 	listeQuestions = [
 	["Quelle est l'équation d'une fonction linéaire","y=ax","Une fonction linéaire est une droite qui passe par l'origine du repère. Elle a pour équation y=ax. On dit que a est la pente de la droite.",[["a","b","c","x","y"],["=","+","-","/","*"]]],
 	["Quelle est l'équation d'une fonction affine","y=ax+b","Une fonction affine est une droite qui ne passe pas par l'origine du repère. Elle a pour équation y=ax+b. On dit que a est la pente de la droite et b l'ordonnée à l'origine",[["a","b","c","x","y"],["=","+","-","/","*"]]],
-	["Question1","reponse1","Parce que 1",[["r","e","p","o","n","s","e","1"]]],
-	["Question2","reponse2","Parce que 2",[["r","e","p","o","n","s","e","2"]]],
-	["Question3","reponse3","Parce que 3",[["r","e","p","o","n","s","e","3"]]],
-	["Question4","reponse4","Parce que 4",[["r","e","p","o","n","s","e","4"]]],
-	["Question5","reponse5","Parce que 5",[["r","e","p","o","n","s","e","5"]]],
-	["Question6","reponse6","Parce que 6",[["r","e","p","o","n","s","e","6"]]],
-	["Question7","reponse7","Parce que 7",[["r","e","p","o","n","s","e","7"]]],
-	["Question8","reponse8","Parce que 8",[["r","e","p","o","n","s","e","8"]]],
-	["Question9","reponse9","Parce que 9",[["r","e","p","o","n","s","e","9"]]],
-	["Question0","reponse0","Parce que 0",[["r","e","p","o","n","s","e","0"]]]
+	["Quelle est l'équation cartésienne d'une droite ?","ax+by+c=0","Par définition, l'équation cartésienne d'une droite est ax+by+c=0",[["a","b","c","x","y","-1","0","1"],["=","+","-","/","*"]]],
+	["Une droite a pour équation cartésienne ax+by+c=0. Quelles sont les coordonnées du vecteur directeur de cette droite ?","(-b;a)","Par définition, une droite d'équation cartésienne ax+by+c=0 a pour vecteur directeur (-b;a). On fera attention aux notations : <br>les coordonnées s'écrivent entre parenthèses et sont séparées par un point virgule.",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
+	["Une droite a pour équation cartésienne ax+by+c=0. Quel est le coefficient directeur de la droite ?","(-a)/b","Une droite dont l'équation cartésienne est ax+by+c=0 a pour coefficient directeur m = (-a)/b.",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
+	["Quel est le vecteur directeur d'une droite dont le coefficient directeur est m ?","(1;m)","Une droite qui a pour coefficient directeur m, a pour vecteur directeur (1;m). On fera attention aux notations : <br>les coordonnées s'écrivent entre parenthèses et sont séparées par un point virgule.",[["a","b","c","x","y","m","-2","-1","0","1","2","-m","1/m"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
+	["Quel est l'équation réduite d'une droite dont le coefficient directeur est m et l'ordonnée à l'origine est p ?","y=mx+p","Une droite dont le coefficient directeur est m, et p son ordonnée à l'origine, a pour équation réduite y=mx+p",[["x","y","p","-p","1/p","m","-m","1/m"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
+	["Une droite a pour équation réduite y=mx+p. Quelle est l'ordonnée à l'origine de la droite ?","p","Lorsqu'une droite a pour équation réduite y=mx+p, alors p est l'ordonnée à l'origine",[["x","y","p","-p","1/p","m","-m","1/m"]]],
+	["Une droite a pour équation réduite y=mx+p. Quel est le coefficient directeur de la droite ?","m","Lorsqu'une droite a pour équation réduite y=mx+p, alors m est le coefficient directeur de la droite",[["x","y","p","-p","1/p","m","-m","1/m"]]],
+	["Une droite a pour équation réduite y=mx+p. Quel est le vecteur directeur de la droite ?","(1;m)","Lorsqu'une droite a pour équation réduite y=mx+p, alors le vecteur directeur de la droite est (1;m)",[["x","y","p","-p","1/p","m","-m","1/m","-1","0","1"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
+	["Une droite passe par le point A (x<sub>A</sub>;y<sub>A</sub>) et par le point B (x<sub>B</sub>;y<sub>B</sub>). Quel est le coefficient directeur de la droite ?","(y<sub>B</sub>-y<sub>A</sub>)/(x<sub>B</sub>-x<sub>A</sub>)","Lorsqu'une droite passe par les points A et B, alors son coefficient directeur est (y<sub>B</sub>-y<sub>A</sub>)/(x<sub>B</sub>-x<sub>A</sub>)",[["x<sub>A</sub>","y<sub>A</sub>","x<sub>B</sub>","y<sub>B</sub>"],["(","{","[","]","}",")",":",";",","],["+","-","/","*"]]]
 	];
 	
 	q1=q2=q3=q4=q5=0;

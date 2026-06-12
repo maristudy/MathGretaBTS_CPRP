@@ -17,9 +17,16 @@ function Clavier(tablo,idAffiche,idSaisie)
 	backspace.textContent="Backspace";
 	backspace.addEventListener("click",()=> 
 		{
-			if(saisie.textContent.length > 0)
+			if(saisie.innerHTML.length > 0)
 			{
-				saisie.textContent = saisie.textContent.substring(0,(saisie.textContent.length)-1);
+				if(saisie.innerHTML[saisie.innerHTML.length-1]==">")
+				{
+					saisie.innerHTML = saisie.innerHTML.substring(0,(saisie.innerHTML.lastIndexOf("<",saisie.innerHTML.lastIndexOf("<")-1)-1));
+				}
+				else
+				{
+					saisie.innerHTML = saisie.innerHTML.substring(0,(saisie.innerHTML.length)-1);
+				}
 			}
 		})
 	ligne.append(backspace);
@@ -40,10 +47,10 @@ function Clavier(tablo,idAffiche,idSaisie)
 		tab.forEach(elem => {
 			laTouche=document.createElement("p");
 			laTouche.setAttribute("class","touche");
-			laTouche.textContent=elem;
+			laTouche.innerHTML=elem;
 			laTouche.addEventListener("click",()=> 
 			{
-				saisie.textContent = saisie.textContent+elem
+				saisie.innerHTML = saisie.innerHTML+elem
 			})
 			ligne.append(laTouche);
 		})
