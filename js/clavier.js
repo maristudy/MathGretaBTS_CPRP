@@ -21,7 +21,7 @@ function Clavier(tablo,idAffiche,idSaisie)
 			{
 				if(saisie.innerHTML[saisie.innerHTML.length-1]==">")
 				{
-					saisie.innerHTML = saisie.innerHTML.substring(0,(saisie.innerHTML.lastIndexOf("<",saisie.innerHTML.lastIndexOf("<")-1)-1));
+					saisie.innerHTML = saisie.innerHTML.substring(0,(saisie.innerHTML.lastIndexOf("<",saisie.innerHTML.lastIndexOf("<")-1)));
 				}
 				else
 				{

@@ -66,7 +66,7 @@
 	}
 
 	#saisieReponse {
-		width:50%;
+		width:90%;
 		border: 2px solid white;
 		height:1.5em;
 		display:none;
@@ -149,6 +149,18 @@
 
 	const NbQuestionParPartie=3;
 
+	if(sessionStorage.getItem("note") === null )
+	{
+		note=" L'objectif de ces activités est que tu n'oublies pas ce qui a été étudié pendant l'année. "+
+		"En septembre, tu auras une note qui dépendra des activités que tu auras réalisé pendant la pause estivale. Voici le barème : "+
+		" * note entre 0 et 5 : Tu as fait moins de 5 parties pour chaque activité. "+
+		" * note entre 5 et 10 : Tu as fait 5 ( ou plus de 5 ) parties pour chaque activité. Tu as au moins 1 bonne réponse pour chaque activité. "+
+		" * note entre 10 et 15 : Tu as au moins gagné une partie de chaque activité. "+
+		" * note entre 15 et 20 : Tu as au moins gagné 5 parties de chaque activité. ";
+		alert(note);
+		sessionStorage.setItem("note","ok");
+	}
+
 	function SaveResultat(nom)
 	{
 		if(localStorage.getItem(nom) === null )
@@ -156,7 +168,7 @@
 			resultat=
 			[["libelle",sessionStorage.getItem("libelle")],
 			["nom",sessionStorage.getItem("nom"),],
-			["date",Date(Date.now).toString()],
+			["date",Date(Date.now).toString().substring(0,Date(Date.now).toString().lastIndexOf("GMT"))],
 			["OK",sessionStorage.getItem("OK")],
 			["pasOK",sessionStorage.getItem("pasOK")],
 			["lost",Number(sessionStorage.getItem("lost"))],
@@ -168,10 +180,10 @@
 		{
 			resultatStorage=localStorage.getItem(nom);
 			resultat=JSON.parse(resultatStorage);
-			console.log("deja en storage "+resultat);
+			//console.log("deja en storage "+resultat);
 				
 			// modif date
-			resultat[2][1]=Date(Date.now).toString();
+			resultat[2][1]=Date(Date.now).toString().substring(0,Date(Date.now).toString().lastIndexOf("GMT"));
 			// modif OK
 			resultat[3][1]=Number(resultat[3][1]) + Number(sessionStorage.getItem("OK"));
 			// modif pas OK
@@ -454,12 +466,6 @@
 	{
 		prenomDOM=document.getElementById("prenomDOM");
 		prenomDOM.innerHTML="<p id=\"config\"></p><p>Bonjour <span style=\"font-weight:bold\">"+localStorage.getItem("prenom")+"</span>"+
-		"<br><br>L'objectif de ces activités est que tu n'oublies pas ce qui a été étudié pendant l'année.<br>"+
-		"En septembre, tu auras une note qui dépendra des activités que tu auras réalisé pendant la pause estivale. Voici le barème : <br>"+
-		"note entre 0 et 5 : Tu as fait moins de 5 parties pour chaque activité.<br>"+
-		"note entre 5 et 10 : Tu as fait 5 ( ou plus de 5 ) parties pour chaque activité. Tu as au moins 1 bonne réponse pour chaque activité.<br>"+
-		"note entre 10 et 15 : Tu as au moins gagné une partie de chaque activité.<br>"+
-		"note entre 15 et 20 : Tu as au moins gagné 5 parties de chaque activité.<br><br>"+
 		"</p><p><span style=\"font-weight:bold\">Que vas-tu faire aujourd'hui ?</span><br><br></p>";
 				
 		nomActivite=document.getElementById("nomActivite");
@@ -467,10 +473,23 @@
 				
 		activites=document.getElementById("activites");
 				
+/* ajouts des activités au menu -------------------------*/	
+		caseFormule=document.createElement("p");	
+		caseFormule.setAttribute("class","formule");
 		formules=document.createElement("a");
-		formules.textContent="Formules";
-		formules.href="./revision_cprp_2027.html?activite=formules1a";
-		activites.appendChild(formules);
+		formules.textContent="Formules - les droites";
+		formules.href="./revision_cprp_2027.html?activite=formulesDroites";
+		caseFormule.appendChild(formules);
+		activites.appendChild(caseFormule);
+
+		caseFormule=document.createElement("p");	
+		caseFormule.setAttribute("class","automatisme");
+		formules=document.createElement("a");
+		formules.textContent="Automatisme - les droites";
+		formules.href="./revision_cprp_2027.html?activite=automatismeDroites";
+		caseFormule.appendChild(formules);
+		activites.appendChild(caseFormule);
+
 				
 		const urlParams = new URLSearchParams(window.location.search);
 		const activite = urlParams.get('activite');
@@ -482,12 +501,18 @@
 							
 		switch(activite)
 		{
-			case "formules1a":
-				questions=partieFormules();
-				initActivite("formules1a","La formule", questions);
+			case "formulesDroites":
+				questions=partieFormulesDroites();
+				initActivite("formulesDroites","Les formules sur les droites", questions);
 				afficheQuestion();
 			break;
-					
+
+			case "automatismeDroites":
+				questions=partieAutomatismesDroites();
+				initActivite("automatismeDroites","Les automatismes sur les droites", questions);
+				afficheQuestion();
+			break;
+			
 			default:
 			break;
 		}
