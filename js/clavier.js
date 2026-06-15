@@ -25,7 +25,14 @@ function Clavier(tablo,idAffiche,idSaisie)
 				}
 				else
 				{
-					saisie.innerHTML = saisie.innerHTML.substring(0,(saisie.innerHTML.length)-1);
+					if(saisie.innerHTML[saisie.innerHTML.length-1]==";")
+					{
+						saisie.innerHTML = saisie.innerHTML.substring(0,(saisie.innerHTML.lastIndexOf("&")));
+					}	
+					else
+					{					
+						saisie.innerHTML = saisie.innerHTML.substring(0,(saisie.innerHTML.length)-1);
+					}
 				}
 			}
 		})

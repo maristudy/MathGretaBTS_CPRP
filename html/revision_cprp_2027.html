@@ -301,9 +301,11 @@
 			numQuestion=Number(sessionStorage.getItem("numQuestion"));
 			listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
 			
+			console.log("reponse saisie = "+reponse.textContent);
+			console.log("reponse attendue = "+listeQuestion[numQuestion][1]);
 			if(reponse.innerHTML==listeQuestion[numQuestion][1])
 			{
-				resultat.textContent="C'est gagné ! Bravo c'est la bonne réponse";
+				resultat.innerHTML="C'est gagné ! Bravo c'est la bonne réponse<br>";
 				bonneReponse.style.display="block";
 				conseil.style.display="block";
 				reponse.style.display="block";
