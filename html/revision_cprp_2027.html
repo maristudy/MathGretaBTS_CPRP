@@ -106,14 +106,100 @@
 		width: max-content;
 	}
 
-
+	#notation
+	{
+		margin:5px;
+		border:solid 2px white;
+		padding-top:10px;
+		padding-bottom:10px;
+		padding-right:18px;
+		padding-left:18px;
+		background-color:#77AA77;
+		color:#000000;
+		font-size:24px;
+		font-weight:bold;
+		width: max-content;
+	}
+	
+	#afficheNotation
+	{
+		display:none;
+	}
+	
 </style>
+<script>
+	function afficheStats(){
+	 {
+		affiche=document.getElementById("afficheStats");
+		if(affiche.textContent!="")
+		{
+			affiche.textContent="";
+		}
+		else{	
+		storage="";
+		totalOK=0;
+		totalpasOK=0
+		totalWin=0;
+		totalLost=0;
+		storage=((localStorage.length)-1)+" activités réalisées\n";
+		for (const [key, value] of Object.entries(localStorage)) {
+
+			resultatStorage=localStorage.getItem(key);
+			storage=storage+'.....'+key+" : <br>"+value.replaceAll("],[","],<br>[")+" <br>";
+
+			if(value.indexOf(",")!=-1)
+			{
+				val=value.replaceAll("\"","");
+				val=val.replaceAll("[","");
+				val=val.replaceAll("]","");
+				tablo=val.split(",");
+
+				totalOK=totalOK+Number(tablo[7]);
+				totalpasOK=totalpasOK+Number(tablo[9]);
+				totalWin=totalWin+Number(tablo[13]);
+				totalLost=totalLost+Number(tablo[11]);
+			}
+		}
+		storage=storage+"-------------<br>OK = "+totalOK+"<br>pasOK = "+totalpasOK+"<br>lost = "+totalLost+"<br>win = "+totalWin+
+		"<br>-------------<br>OK = "+Math.floor((100*totalOK)/(totalOK+totalpasOK))+" % <br>win = "+Math.floor((100*totalWin)/(totalWin+totalLost))+" %";	
+		affiche.innerHTML=storage;
+		}
+	}} //stats.addEventListener("click"
+	
+	
+	function notationSwitch()
+{
+	afficheNotation=document.getElementById("afficheNotation");
+	if (afficheNotation.style.display!="block")
+	{
+		afficheNotation.style.display="block";
+	}
+	else{
+		afficheNotation.style.display="none";
+	}
+}
+
+	
+	
+</script>
 <body>
 		<header id="header">
 			<a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> gitpage </a> <br>
 			<a href="../index.html">Retour à l'accueil</a>
 			<p id="prenomDOM"></p>
-			<p id="stats">Voir mes stats</p>
+			<p id="notation" onclick="notationSwitch()">Voir la notation
+				<p id="afficheNotation">
+					L'objectif de ces activités est que tu n'oublies pas ce qui a été étudié pendant l'année. <br>
+					En septembre, tu auras une note qui dépendra des activités que tu auras réalisé pendant la pause estivale. Voici le barème : <br>
+					* note entre 0 et 5 : Tu as fait moins de 5 parties pour chaque activité. <br>
+					* note entre 5 et 10 : Tu as fait 5 ( ou plus de 5 ) parties pour chaque activité. Tu as au moins 1 bonne réponse pour chaque activité. <br>
+					* note entre 10 et 15 : Tu as au moins gagné une partie de chaque activité.<br>
+					* note entre 15 et 20 : Tu as au moins gagné 5 parties de chaque activité. 
+				</p>
+			</p>
+			<p id="stats" onclick="afficheStats()">Voir mes stats
+				<p id="afficheStats"></p>
+			</p>
 		</header>
 	
 	<main>
@@ -149,17 +235,7 @@
 
 	const NbQuestionParPartie=3;
 
-	if(sessionStorage.getItem("note") === null )
-	{
-		note=" L'objectif de ces activités est que tu n'oublies pas ce qui a été étudié pendant l'année. "+
-		"En septembre, tu auras une note qui dépendra des activités que tu auras réalisé pendant la pause estivale. Voici le barème : "+
-		" * note entre 0 et 5 : Tu as fait moins de 5 parties pour chaque activité. "+
-		" * note entre 5 et 10 : Tu as fait 5 ( ou plus de 5 ) parties pour chaque activité. Tu as au moins 1 bonne réponse pour chaque activité. "+
-		" * note entre 10 et 15 : Tu as au moins gagné une partie de chaque activité. "+
-		" * note entre 15 et 20 : Tu as au moins gagné 5 parties de chaque activité. ";
-		alert(note);
-		sessionStorage.setItem("note","ok");
-	}
+
 
 	function SaveResultat(nom)
 	{
@@ -180,7 +256,6 @@
 		{
 			resultatStorage=localStorage.getItem(nom);
 			resultat=JSON.parse(resultatStorage);
-			//console.log("deja en storage "+resultat);
 				
 			// modif date
 			resultat[2][1]=Date(Date.now).toString().substring(0,Date(Date.now).toString().lastIndexOf("GMT"));
@@ -347,8 +422,6 @@
 		libelle=sessionStorage.getItem("libelle");
 		numQuestion=Number(sessionStorage.getItem("numQuestion"));
 				
-				//numquestion <= NbQuestionParPartie
-				
 		if(numQuestion < NbQuestionParPartie)
 		{
 			nomActivite.innerHTML=libelle+" : question "+(numQuestion+1)+" / "+NbQuestionParPartie;
@@ -420,35 +493,8 @@
 		activites.style.display="block";	
 	}); // fin retourMenu.addEventListener("click"
 
-	stats.addEventListener("click",() => {
-		storage="";
-		totalOK=0;
-		totalpasOK=0
-		totalWin=0;
-		totalLost=0;
-		storage=((localStorage.length)-1)+" activités réalisées\n";
-		for (const [key, value] of Object.entries(localStorage)) {
+	
 
-			resultatStorage=localStorage.getItem(key);
-			storage=storage+'.....'+key+" = \n"+value.replaceAll("],[","],\n[")+" \n";
-
-			if(value.indexOf(",")!=-1)
-			{
-				val=value.replaceAll("\"","");
-				val=val.replaceAll("[","");
-				val=val.replaceAll("]","");
-				tablo=val.split(",");
-
-				totalOK=totalOK+Number(tablo[7]);
-				totalpasOK=totalpasOK+Number(tablo[9]);
-				totalWin=totalWin+Number(tablo[13]);
-				totalLost=totalLost+Number(tablo[11]);
-			}
-		}
-		storage=storage+"-------------\nOK = "+totalOK+"\npasOK = "+totalpasOK+"\nlost = "+totalLost+"\nwin = "+totalWin+
-		"\n-------------\nOK = "+Math.floor((100*totalOK)/(totalOK+totalpasOK))+" % \nwin = "+Math.floor((100*totalWin)/(totalWin+totalLost))+" %";
-		alert(storage);
-	}); //stats.addEventListener("click"
 			
 	if(localStorage.getItem("prenom") === null )
 	{
@@ -490,7 +536,14 @@
 		caseFormule.appendChild(formules);
 		activites.appendChild(caseFormule);
 
-				
+		caseFormule=document.createElement("p");	
+		caseFormule.setAttribute("class","formule");
+		formules=document.createElement("a");
+		formules.textContent="Formules - les équations du second degrés";
+		formules.href="./revision_cprp_2027.html?activite=formules2ndDegres";
+		caseFormule.appendChild(formules);
+		activites.appendChild(caseFormule);
+		
 		const urlParams = new URLSearchParams(window.location.search);
 		const activite = urlParams.get('activite');
 
@@ -510,6 +563,12 @@
 			case "automatismeDroites":
 				questions=partieAutomatismesDroites();
 				initActivite("automatismeDroites","Les automatismes sur les droites", questions);
+				afficheQuestion();
+			break;
+
+			case "formules2ndDegres":
+				questions=partieFormules2ndDegres();
+				initActivite("formules2ndDegres","Les formules sur équations du 2nd degrés", questions);
 				afficheQuestion();
 			break;
 			

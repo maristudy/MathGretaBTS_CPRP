@@ -1,3 +1,5 @@
+//		https://symbl.cc/fr/html-entities/
+
 /*class Formules {
     constructor() {
 		this.name="Formules";
@@ -28,6 +30,9 @@
 
 // tabloQuestion=[["question","reponse","explication",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],["question","reponse","explication",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]]]
 	
+	
+// https://symbl.cc/fr/html-entities/
+
 function getSigne()
 {
 	nb=Math.floor(Math.random()*10);
@@ -43,7 +48,7 @@ function getSigne()
 
 function getNbEntierNonNull(max)
 {
-		return(Math.floor(Math.random()*(max-1))+1);
+		return(Math.floor(Math.random()*(max-2))+2);
 }
 
 
@@ -63,6 +68,20 @@ let	listeQuestionsFormulesDroites = [
 	["Une droite passe par le point A (x<sub>A</sub>;y<sub>A</sub>) et par le point B (x<sub>B</sub>;y<sub>B</sub>). Quel est le coefficient directeur de la droite ?","(y<sub>B</sub>-y<sub>A</sub>)/(x<sub>B</sub>-x<sub>A</sub>)","Lorsqu'une droite passe par les points A et B, alors son coefficient directeur est (y<sub>B</sub>-y<sub>A</sub>)/(x<sub>B</sub>-x<sub>A</sub>)",[["x<sub>A</sub>","y<sub>A</sub>","x<sub>B</sub>","y<sub>B</sub>"],["(","{","[","]","}",")",":",";",","],["+","-","/","*"]]],
 	["Une droite a pour équation cartésienne ax+by+c=0. Quelle est l'ordonnée à l'origine de la droite ?","(-c)/b","Une droite dont l'équation cartésienne est ax+by+c=0 a pour ordonnée à l'origine (-c)/b.",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]]
 	];
+
+let listeQuestionsFormules2ndDegres = [
+	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Quelle formule permet de calculer &Delta; ?","b<sup>2</sup>-4ac","formule à connaitre : &Delta;=b<sup>2</sup>-4ac",[["a","b","c","<sup>2</sup>","&plusmn;","&radic;","+","-"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]]],
+	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;>0","2","explication",[["Pas de solutions dans &Ropf;"],[0,1,2,3,4,5,6,7,8,9]]],
+	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;=0","1","explication",[["Pas de solutions dans &Ropf;"],[0,1,2,3,4,5,6,7,8,9]]],
+	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;<0","Pas de solutions dans &Ropf;","explication",[["Pas de solutions dans &Ropf;"],[0,1,2,3,4,5,6,7,8,9]]],
+	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;>0. Quelle formule permet de connaitre les solutions ?","reponse","explication",[["a","b","c","x","y"],["&Delta;","&plusmn;","<sup>2</sup>","&radic;","=","+","-","/","*"],["(","{","[","]","}",")",":",";",","],[0,1,2,3,4,5,6,7,8,9]]],
+	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;=0. Quelle formule permet de connaitre la solution ?","reponse","explication",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
+	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]x<sub>1</sub>;x<sub>2</sub>[","reponse","explication",[["positif","négatif","signe de a","signe de -a"]]],
+	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]-&infin;;x<sub>1</sub>[","reponse","explication",[["positif","négatif","signe de a","signe de -a"]]],
+	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]x<sub>2</sub>;+infin;[","reponse","explication",[["positif","négatif","signe de a","signe de -a"]]],
+	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub>. Comment s'écrit sa forme factorisée ?","reponse","explication",[["a","b","c","x","y","x<sub>1</sub>","x<sub>2</sub>"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
+	];
+
 
 function getFormules(tabQuestions)
 {
@@ -107,7 +126,11 @@ function getFormules(tabQuestions)
 function partieFormulesDroites()
 {
 	return(getFormules(listeQuestionsFormulesDroites));
-	
+}
+
+function partieFormules2ndDegres()
+{
+	return(getFormules(listeQuestionsFormules2ndDegres));
 }
 
 
@@ -151,34 +174,34 @@ function partieAutomatismesDroites()
 	e04="Si le point A(x<sub>A</sub>;y<sub>A</sub>) appartient à la droite, alors les coordonnées du point A vérifient l'équation de la droite. On doit donc avoir ("+a+"*"+x0+") + ("+(b<0?"":"+")+b+"*"+y1+") "+(c<0?"":"+")+c+" = 0 ";
 	c04=[["oui","non"]];
 	
-	q05="Quelle est l'équation cartésienne de la droite dont l'équation réduite est y="+(m<0?"":"")+m+" x "+(p<0?"":"+")+p+"";
-	r05=(m<0?"":"")+m+"x-y"+(p<0?"":"+")+p+"=0";
+	q05="Quelle est l'équation cartésienne de la droite dont l'équation réduite est y="+m+" x "+(p<0?"":"+")+p+"";
+	r05=m+"x-y"+(p<0?"":"+")+p+"=0";
 	e05="Pour trouver l'équation cartésienne, on écrit l'équation sous la forme ax + by + c = 0. Nous aurons b=-1";
 	c05=[["x","y","=","+","-"],[0,1,2,3,4,5,9,7,8,9]];
 	
 	q06="Quelle est l'équation réduite de la droite dont l'équation cartésienne est "+a+" x "+(b<0?"":"+")+b+" y "+(c<0?"":"+")+c+" = 0 ";
-	r06="y="+(m<0?"":"")+m+"x"+(p<0?"":"+")+p+"";
+	r06="y="+m+"x"+(p<0?"":"+")+p+"";
 	e06="Pour trouver l'équation réduite, on calcul m=(-a)/b et p=(-c)/b. L'équation réduite s'écrit y=mx+p";
 	c06=[["x","y","=","+","-"],[0,1,2,3,4,5,9,7,8,9]];
 	
-	q07="Le point A ("+x0+";"+y1+") appartient-il à la droite d'équation y="+(m<0?"":"")+m+" x "+(p<0?"":"+")+p+" ?";
+	q07="Le point A ("+x0+";"+y1+") appartient-il à la droite d'équation y="+m+" x "+(p<0?"":"+")+p+" ?";
 	r07=(y0==y1?"oui":"non");
-	e07="Si le point A(x<sub>A</sub>;y<sub>A</sub>) appartient à la droite, alors les coordonnées du point A vérifient l'équation de la droite. On doit donc avoir "+y1+" = "+(m<0?"":"")+m+"*"+x0+") "+(p<0?"":"+")+p;
+	e07="Si le point A(x<sub>A</sub>;y<sub>A</sub>) appartient à la droite, alors les coordonnées du point A vérifient l'équation de la droite. On doit donc avoir "+y1+" = ("+m+"*"+x0+") "+(p<0?"":"+")+p;
 	c07=[["oui","non"]];	
 
-	q08="Quel est le coefficient directeur de la droite d'équation y="+(m<0?"":"")+m+" x "+(p<0?"":"+")+p+" ? ";
+	q08="Quel est le coefficient directeur de la droite d'équation y="+m+" x "+(p<0?"":"+")+p+" ? ";
 	r08=m;
-	e08="Lorsque l'équation de la droite est réduite, le coefficient directeur est le coefficient de x. Ici c'est donc "+(m<0?"":"")+m;
+	e08="Lorsque l'équation de la droite est réduite, le coefficient directeur est le coefficient de x. Ici c'est donc "+m;
 	c08=[["-",0,1,2,3,4,5,9,7,8,9]];
 	
-	q09="Quel est le vecteur directeur de la droite d'équation y="+(m<0?"":"")+m+" x "+(p<0?"":"+")+p+" ? ";
+	q09="Quel est le vecteur directeur de la droite d'équation y="+m+" x "+(p<0?"":"+")+p+" ? ";
 	r09="(1;"+m+")";
-	e09="Lorsque l'équation de la droite est réduite, le vecteur directeur est (1;m) où m est le coefficient directeur de la droite. C'est le coefficient de x. Ici m= "+(m<0?"":"")+m+". Le vecteur directeur est donc (1;"+(m<0?"":"")+m+")";
+	e09="Lorsque l'équation de la droite est réduite, le vecteur directeur est (1;m) où m est le coefficient directeur de la droite. C'est le coefficient de x. Ici m= "+m+". Le vecteur directeur est donc (1;"+m+")";
 	c09=[["-",0,1,2,3,4,5,9,7,8,9],["(","{","[","]","}",")",":",";",","]];
 	
-	q10="Quelle est l'ordonnée à l'origine de la droite d'équation y="+(m<0?"":"")+m+" x "+(p<0?"":"+")+p+" ? ";
+	q10="Quelle est l'ordonnée à l'origine de la droite d'équation y="+m+" x "+(p<0?"":"+")+p+" ? ";
 	r10=p;
-	e10="Lorsque l'équation de la droite est réduite, l'ordonnée à l'origine est le nombre qui n'est pas le coefficient de x. Ici c'est donc "+(p<0?"":"+")+p;
+	e10="Lorsque l'équation de la droite est réduite, l'ordonnée à l'origine est le nombre qui n'est pas le coefficient de x. Ici c'est donc "+p;
 	c10=[["-",0,1,2,3,4,5,9,7,8,9]];
 	
 	listeQuestions=[[q01,r01,e01,c01],[q02,r02,e02,c02],[q03,r03,e03,c03],[q04,r04,e04,c04],[q05,r05,e05,c05],[q06,r06,e06,c06],[q07,r07,e07,c07],[q08,r08,e08,c08],[q09,r09,e09,c09],[q10,r10,e10,c10]];
