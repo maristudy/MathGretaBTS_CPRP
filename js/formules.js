@@ -145,6 +145,7 @@ function partieAutomatismesDroites()
 	c=(-1)*p*b;
 	x0=getSigne()*getNbEntierNonNull(5);
 	y0=(m*x0)+p;
+	
 	if(getSigne()<0)
 	{
 		y1=y0+(getSigne()*getNbEntierNonNull(5));
@@ -157,17 +158,17 @@ function partieAutomatismesDroites()
 	q01="Quel est le coefficient directeur de la droite d'équation "+a+" x "+(b<0?"":"+")+b+" y "+(c<0?"":"+")+c+" = 0 ";
 	r01=m;
 	e01="Lorsque nous avons l'équation cartésienne d'une droite, le coefficient directeur est donné par la formule : m=(-a)/b. Ici a="+a+" et b="+b+". On a donc m="+((-1)*a)+"/"+b+".";
-	c01=[["-",0,1,2,3,4,5,9,7,8,9]];
+	c01=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
 	q02="Quel est le vecteur directeur de la droite d'équation "+a+" x "+(b<0?"":"+")+b+" y "+(c<0?"":"+")+c+" = 0 ";
 	r02="(1;"+m+")";
 	e02="Lorsque nous avons l'équation cartésienne d'une droite, le coefficient directeur est donné par la formule : m=(-a)/b. Ici a="+a+" et b="+b+". On a donc m="+((-1)*a)+"/"+b+". Le vecteur directeur a pour coordonnée (1;m). Nous obtenons donc ici (1;"+m+").";
-	c02=[["-",0,1,2,3,4,5,9,7,8,9],["(","{","[","]","}",")",":",";",","]];
+	c02=[["-",0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]];
 	
 	q03="Quelle est l'ordonnée à l'origine de la droite d'équation "+a+" x "+(b<0?"":"+")+b+" y "+(c<0?"":"+")+c+" = 0 ";
 	r03=p;
 	e03="Lorsque nous avons l'équation cartésienne d'une droite, l'ordonnée à l'origine est donné par la formule : p=(-c)/b. Ici c="+c+" et b="+b+". On a donc p="+((-1)*c)+"/"+b+".";
-	c03=[["-",0,1,2,3,4,5,9,7,8,9]];
+	c03=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
 	q04="Le point A ("+x0+";"+y1+") appartient-il à la droite d'équation "+a+" x "+(b<0?"":"+")+b+" y "+(c<0?"":"+")+c+" = 0 ?";
 	r04=(y0==y1?"oui":"non");
@@ -177,12 +178,12 @@ function partieAutomatismesDroites()
 	q05="Quelle est l'équation cartésienne de la droite dont l'équation réduite est y="+m+" x "+(p<0?"":"+")+p+"";
 	r05=m+"x-y"+(p<0?"":"+")+p+"=0";
 	e05="Pour trouver l'équation cartésienne, on écrit l'équation sous la forme ax + by + c = 0. Nous aurons b=-1";
-	c05=[["x","y","=","+","-"],[0,1,2,3,4,5,9,7,8,9]];
+	c05=[["x","y","=","+","-"],[0,1,2,3,4,5,6,7,8,9]];
 	
 	q06="Quelle est l'équation réduite de la droite dont l'équation cartésienne est "+a+" x "+(b<0?"":"+")+b+" y "+(c<0?"":"+")+c+" = 0 ";
 	r06="y="+m+"x"+(p<0?"":"+")+p+"";
 	e06="Pour trouver l'équation réduite, on calcul m=(-a)/b et p=(-c)/b. L'équation réduite s'écrit y=mx+p";
-	c06=[["x","y","=","+","-"],[0,1,2,3,4,5,9,7,8,9]];
+	c06=[["x","y","=","+","-"],[0,1,2,3,4,5,6,7,8,9]];
 	
 	q07="Le point A ("+x0+";"+y1+") appartient-il à la droite d'équation y="+m+" x "+(p<0?"":"+")+p+" ?";
 	r07=(y0==y1?"oui":"non");
@@ -192,17 +193,99 @@ function partieAutomatismesDroites()
 	q08="Quel est le coefficient directeur de la droite d'équation y="+m+" x "+(p<0?"":"+")+p+" ? ";
 	r08=m;
 	e08="Lorsque l'équation de la droite est réduite, le coefficient directeur est le coefficient de x. Ici c'est donc "+m;
-	c08=[["-",0,1,2,3,4,5,9,7,8,9]];
+	c08=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
 	q09="Quel est le vecteur directeur de la droite d'équation y="+m+" x "+(p<0?"":"+")+p+" ? ";
 	r09="(1;"+m+")";
 	e09="Lorsque l'équation de la droite est réduite, le vecteur directeur est (1;m) où m est le coefficient directeur de la droite. C'est le coefficient de x. Ici m= "+m+". Le vecteur directeur est donc (1;"+m+")";
-	c09=[["-",0,1,2,3,4,5,9,7,8,9],["(","{","[","]","}",")",":",";",","]];
+	c09=[["-",0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]];
 	
 	q10="Quelle est l'ordonnée à l'origine de la droite d'équation y="+m+" x "+(p<0?"":"+")+p+" ? ";
 	r10=p;
 	e10="Lorsque l'équation de la droite est réduite, l'ordonnée à l'origine est le nombre qui n'est pas le coefficient de x. Ici c'est donc "+p;
-	c10=[["-",0,1,2,3,4,5,9,7,8,9]];
+	c10=[["-",0,1,2,3,4,5,6,7,8,9]];
+	
+	listeQuestions=[[q01,r01,e01,c01],[q02,r02,e02,c02],[q03,r03,e03,c03],[q04,r04,e04,c04],[q05,r05,e05,c05],[q06,r06,e06,c06],[q07,r07,e07,c07],[q08,r08,e08,c08],[q09,r09,e09,c09],[q10,r10,e10,c10]];
+	
+	
+	return(getFormules(listeQuestions));
+	
+}
+
+function partieAutomatismes2ndDegres()
+{
+	//getSigne() 	//getNbEntierNonNull(max)
+	
+	a=getSigne()*getNbEntierNonNull(5);
+    x1=getSigne()*getNbEntierNonNull(5);
+    x2=getSigne()*getNbEntierNonNull(5);
+    u=getSigne()*getNbEntierNonNull(5);
+    v=getSigne()*getNbEntierNonNull(5);
+    
+	while(x1==x2)
+	{
+		x2=getSigne()*getNbEntierNonNull(5);
+	}
+	
+	while(u==v)
+	{
+		v=getSigne()*getNbEntierNonNull(5);
+	}
+	
+    sommeR=x1+x2;
+    prodR=x1*x2;
+    sommeC=2*u;
+    prodC=(u*u)+(v*v);
+    
+	q01="";
+	r01=;
+	e01="";
+	c01=[["-",0,1,2,3,4,5,6,7,8,9]];
+	
+	q02="";
+	r02="(1;"+m+")";
+	e02="";
+	c02=[["-",0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]];
+	
+	q03="";
+	r03=p;
+	e03=""";
+	c03=[["-",0,1,2,3,4,5,6,7,8,9]];
+	
+	q04="";
+	r04=(y0==y1?"oui":"non");
+	e04="";
+	c04=[["oui","non"]];
+	
+	q05="";
+	r05=m+"x-y"+(p<0?"":"+")+p+"=0";
+	e05="";
+	c05=[["x","y","=","+","-"],[0,1,2,3,4,5,6,7,8,9]];
+	
+	q06="";
+	r06="y="+m+"x"+(p<0?"":"+")+p+"";
+	e06="";
+	c06=[["x","y","=","+","-"],[0,1,2,3,4,5,6,7,8,9]];
+	
+	q07="";
+	r07=(y0==y1?"oui":"non");
+	e07="";
+	c07=[["oui","non"]];	
+
+	q08="";
+	r08=m;
+	e08="";
+	c08=[["-",0,1,2,3,4,5,6,7,8,9]];
+	
+	q09="";
+	r09="(1;"+m+")";
+	e09="";
+	c09=[["-",0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]];
+	
+	q10="";
+	r10=p;
+	e10="";
+	c10=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
 	listeQuestions=[[q01,r01,e01,c01],[q02,r02,e02,c02],[q03,r03,e03,c03],[q04,r04,e04,c04],[q05,r05,e05,c05],[q06,r06,e06,c06],[q07,r07,e07,c07],[q08,r08,e08,c08],[q09,r09,e09,c09],[q10,r10,e10,c10]];
 	

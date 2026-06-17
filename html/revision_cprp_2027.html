@@ -546,6 +546,14 @@
 		caseFormule.appendChild(formules);
 		activites.appendChild(caseFormule);
 		
+		caseFormule=document.createElement("p");	
+		caseFormule.setAttribute("class","automatisme");
+		formules=document.createElement("a");
+		formules.textContent="Automatisme - les équations du second degrés";
+		formules.href="./revision_cprp_2027.html?activite=automatisme2ndDegres";
+		caseFormule.appendChild(formules);
+		activites.appendChild(caseFormule);
+		
 		const urlParams = new URLSearchParams(window.location.search);
 		const activite = urlParams.get('activite');
 
@@ -570,9 +578,15 @@
 
 			case "formules2ndDegres":
 				questions=partieFormules2ndDegres();
-				initActivite("formules2ndDegres","Les formules sur équations du 2nd degrés", questions);
+				initActivite("formules2ndDegres","Les formules sur les équations du 2nd degrés", questions);
 				afficheQuestion();
 			break;
+			
+			case "automatisme2ndDegres":
+				questions=partieAutomatismes2ndDegres();
+				initActivite("automatisme2ndDegres","Les automatismes sur les équations du 2nd degrés", questions);
+				afficheQuestion();
+			break;			
 			
 			default:
 			break;
