@@ -232,62 +232,55 @@ function partieAutomatismes2ndDegres()
 		v=getSigne()*getNbEntierNonNull(5);
 	}
 	
-    sommeR=x1+x2;
-    prodR=x1*x2;
-    sommeC=2*u;
-    prodC=(u*u)+(v*v);
+    sommeR=a*(x1+x2);
+    prodR=x1*x2*a;
+	deltaR=(sommeR*sommeR)-4*(a*prodR);
+    sommeC=2*u*a;
+    prodC=((u*u)+(v*v))*a;
+	deltaC=(sommeC*sommeC)-4*(a*prodC);
     
-	q01="";
-	r01=;
-	e01="";
+	q01="Soit le polynôme p(x) = "+a+" x<sup>2</sup> "+(((-1)*sommeR)<0?"":"+")+(-1)*sommeR+" x "+(prodR<0?"":"+")+prodR+". Quelle est la valeur de &Delta; ?";
+	r01=deltaR;
+	e01="formule à connaitre : &Delta;=b<sup>2</sup>-4ac";
 	c01=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
-	q02="";
-	r02="(1;"+m+")";
-	e02="";
-	c02=[["-",0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]];
+	q02="Soit le polynôme p(x) = "+a+" x<sup>2</sup> "+(((-1)*sommeR)<0?"":"+")+(-1)*sommeR+" x "+(prodR<0?"":"+")+prodR+". On a &Delta; = "+deltaR+". Quelle est la plus petite des deux solutions de p(x)=0 ?";
+	r02=(x1<x2?x1:x2);
+	e02="Les solutions sont "+x1+" et "+x2+". La plus petite est "+r02;
+	c02=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
-	q03="";
-	r03=p;
-	e03=""";
+	q03="Soit le polynôme p(x) = "+a+" x<sup>2</sup> "+(((-1)*sommeR)<0?"":"+")+(-1)*sommeR+" x "+(prodR<0?"":"+")+prodR+". On a &Delta; = "+deltaR+". Quelle est la plus grande des deux solutions de p(x)=0 ?";
+	r03=(x1<x2?x2:x1);
+	e03="Les solutions sont "+x1+" et "+x2+". La plus grande est "+r03;
 	c03=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
-	q04="";
-	r04=(y0==y1?"oui":"non");
-	e04="";
-	c04=[["oui","non"]];
+	q04="Soit le polynôme p(x) = "+a+" x<sup>2</sup> "+((-a*2*u)<0?"":"+")+(-a*2*u)+" x "+(a*(u*u))+". Quelle est la valeur de &Delta; ?";
+	r04=0;
+	e04="formule à connaitre : &Delta;=b<sup>2</sup>-4ac";
+	c04=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
-	q05="";
-	r05=m+"x-y"+(p<0?"":"+")+p+"=0";
-	e05="";
-	c05=[["x","y","=","+","-"],[0,1,2,3,4,5,6,7,8,9]];
+	q05="Soit le polynôme p(x) = "+a+" x<sup>2</sup> "+((-a*2*v)<0?"":"+")+(-a*2*v)+" x "+(a*a*(v*v))+". On a &Delta; = 0. Quelle est la valeur de la solution ?";
+	r05=v;
+	e05="Lorsque &Delta; = 0, la solution est de la forme (-b)/2a.";
+	c05=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
-	q06="";
-	r06="y="+m+"x"+(p<0?"":"+")+p+"";
-	e06="";
-	c06=[["x","y","=","+","-"],[0,1,2,3,4,5,6,7,8,9]];
+	q06="Soit le polynôme p(x) = "+a+" x<sup>2</sup> "+(((-1)*sommeC)<0?"":"+")+(-1)*sommeC+" x "+(prodC<0?"":"+")+prodC+". Quelle est la valeur de &Delta; ?";
+	r06=deltaC;
+	e06="formule à connaitre : &Delta;=b<sup>2</sup>-4ac";
+	c06=[["-",0,1,2,3,4,5,6,7,8,9]];
 	
-	q07="";
-	r07=(y0==y1?"oui":"non");
-	e07="";
-	c07=[["oui","non"]];	
+	q07="Soit le polynôme p(x) = "+a+" x<sup>2</sup> "+(((-1)*sommeR)<0?"":"+")+(-1)*sommeR+" x "+(prodR<0?"":"+")+prodR+". Les solutions sont "+x1+" et "+x2+". Sur quel interval p(x) est positif ?";
+	r07=(a<0?"]"+(x1<x2?x1:x2)+";"+(x1<x2?x2:x1)+"[":"]-∞;"+(x1<x2?x1:x2)+"[∪]"+(x1<x2?x2:x1)+";+∞[");
+	e07="Un polynôme a le même signe que a ("+a+") à l'extérieur des solutions, et le signe de -a à l'intérieur des solutions";
+	c07=[["-","+",0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",",","∩","∪","∞"]];	
 
-	q08="";
-	r08=m;
-	e08="";
-	c08=[["-",0,1,2,3,4,5,6,7,8,9]];
+	q08="Soit le polynôme p(x) = "+a+" x<sup>2</sup> "+(((-1)*sommeR)<0?"":"+")+(-1)*sommeR+" x "+(prodR<0?"":"+")+prodR+". Les solutions sont "+x1+" et "+x2+". Sur quel interval p(x) est négatif ?";
+	r08=(a>0?"]"+(x1<x2?x1:x2)+";"+(x1<x2?x2:x1)+"[":"]-∞;"+(x1<x2?x1:x2)+"[∪]"+(x1<x2?x2:x1)+";+∞[");
+	e08="Un polynôme a le même signe que a ("+a+") à l'extérieur des solutions, et le signe de -a à l'intérieur des solutions";
+	c08=[["-","+",0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",",","∩","∪","∞"]];	
 	
-	q09="";
-	r09="(1;"+m+")";
-	e09="";
-	c09=[["-",0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]];
 	
-	q10="";
-	r10=p;
-	e10="";
-	c10=[["-",0,1,2,3,4,5,6,7,8,9]];
-	
-	listeQuestions=[[q01,r01,e01,c01],[q02,r02,e02,c02],[q03,r03,e03,c03],[q04,r04,e04,c04],[q05,r05,e05,c05],[q06,r06,e06,c06],[q07,r07,e07,c07],[q08,r08,e08,c08],[q09,r09,e09,c09],[q10,r10,e10,c10]];
+	listeQuestions=[[q01,r01,e01,c01],[q02,r02,e02,c02],[q03,r03,e03,c03],[q04,r04,e04,c04],[q05,r05,e05,c05],[q06,r06,e06,c06],[q07,r07,e07,c07],[q08,r08,e08,c08]];
 	
 	
 	return(getFormules(listeQuestions));
