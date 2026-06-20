@@ -33,6 +33,8 @@
 	
 // https://symbl.cc/fr/html-entities/
 
+
+
 function getSigne()
 {
 	nb=Math.floor(Math.random()*10);
@@ -52,7 +54,7 @@ function getNbEntierNonNull(max)
 }
 
 
-
+/*
 	//liste des questions, reponses, conseils, clavier
 let	listeQuestionsFormulesDroites = [
 	["Quelle est l'équation d'une fonction linéaire","y=ax","Une fonction linéaire est une droite qui passe par l'origine du repère. Elle a pour équation y=ax. On dit que a est la pente de la droite.",[["a","b","c","x","y"],["=","+","-","/","*"]]],
@@ -81,7 +83,7 @@ let listeQuestionsFormules2ndDegres = [
 	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]x<sub>2</sub>;+infin;[","signe de a","P(x) a le signe de a hors des solutions et le signe de -a entre les solutions.",[["positif","négatif","signe de a","signe de -a"]]],
 	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub>. Comment s'écrit sa forme factorisée ?","a(x-x<sub>1</sub>)(x-x<sub>2</sub>)","C'est une formule à connaitre : P(x)=ax<sup>2</sup>+bx+c = a(x-x<sub>1</sub>)(x-x<sub>2</sub>)",[["a","b","c","x","y","x<sub>1</sub>","x<sub>2</sub>"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
 	];
-
+*/
 
 function getFormules(tabQuestions)
 {
@@ -287,8 +289,6 @@ function partieAutomatismes2ndDegres()
 	
 }
 
-
-
 function getQuestions(nom,libelle)
 {
 			switch(nom)
@@ -317,11 +317,11 @@ function getQuestions(nom,libelle)
 			
 			case "formules2ndDegres":
 				questions = [
-				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Quelle formule permet de calculer &Delta; ?","b<sup>2</sup>-4ac","formule à connaitre : &Delta;=b<sup>2</sup>-4ac",[["a","b","c","<sup>2</sup>","&plusmn;","&radic;","+","-"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]]],
+				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Quelle formule permet de calculer &Delta; ?","b<sup>2</sup>-4ac","formule à connaitre : &Delta;=b<sup>2</sup>-4ac",[["a","b","c","<sup>2</sup>","&plusmn;","√","+","-"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]]],
 				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;>0","2","Si &Delta;>0 alors l'équation a deux solutions.",[["Pas de solutions dans ℝ"],[0,1,2,3,4,5,6,7,8,9]]],
 				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;=0","1","Si &Delta;=0 alors l'équation a une seule solutions.",[["Pas de solutions dans &Ropf;"],[0,1,2,3,4,5,6,7,8,9]]],
 				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;<0","Pas de solutions dans ℝ","Si &Delta;<0 alors l'équation n'a pas de solution dans &Ropf;. Les solutions sont complexes. ",[["Pas de solutions dans &Ropf;"],[0,1,2,3,4,5,6,7,8,9]]],
-				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;>0. Quelle formule permet de connaitre les solutions ?","(-b±√Δ)/2a","C'est une formule à connaitre, si &Delta;>0 alors les solutions sont (-b&plusmn;&radic;&Delta;)/2a",[["a","b","c","x","y"],["&Delta;","&plusmn;","<sup>2</sup>","&radic;","=","+","-","/","*"],["(","{","[","]","}",")",":",";",","],[0,1,2,3,4,5,6,7,8,9]]],
+				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;>0. Quelle formule permet de connaitre les solutions ?","(-b±√Δ)/2a","C'est une formule à connaitre, si &Delta;>0 alors les solutions sont (-b&plusmn;√&Delta;)/2a",[["a","b","c","x","y"],["&Delta;","&plusmn;","<sup>2</sup>","√","=","+","-","/","*"],["(","{","[","]","}",")",":",";",","],[0,1,2,3,4,5,6,7,8,9]]],
 				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;=0. Quelle formule permet de connaitre la solution ?","-b/2a","C'est une formule à connaitre, si &Delta;=0 alors les solutions sont (-b&plusmn;)/2a",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","],[0,1,2,3,4,5,6,7,8,9]]],
 				["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]x<sub>1</sub>;x<sub>2</sub>[","signe de -a","P(x) a le signe de a hors des solutions et le signe de -a entre les solutions.",[["positif","négatif","signe de a","signe de -a"]]],
 				["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]-&infin;;x<sub>1</sub>[","signe de a","P(x) a le signe de a hors des solutions et le signe de -a entre les solutions.",[["positif","négatif","signe de a","signe de -a"]]],
@@ -348,11 +348,61 @@ function getQuestions(nom,libelle)
 				["sin(-x) = ","-sin(x)","sin(-x) = -sin(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
 				];
 			break;			
+			 
+			case "automatismeTrigoCercle":
+				questions = [
+				["cos(&pi;/2) = ","0","cos(&pi;/2) = 0<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;/2) = ","1","sin(&pi;/2) = 1<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(-(&pi;/2)) =  ","0","cos(-(&pi;/2)) = 0<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(-(&pi;/2)) = ","-1","sin(-(&pi;/2)) = -1<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;) =  ","-1","cos(&pi;) = -1<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;) =  ","0","sin(&pi;) = 0<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(0) =  ","1","cos(0) = 1<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(0) =  ","0","sin(0) = 0<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos((&pi;/2)-(&pi;/6)) = ","1/2","cos((&pi;/2)-x) = sin(x) avec sin(&pi;/6) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin((&pi;/2)-(&pi;/6)) = ","(√3)/2","sin((&pi;/2)-x) = cos(x) avec cos(&pi;/6) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos((&pi;/2)+(&pi;/6)) =  ","-1/2","cos((&pi;/2)+x) = -sin(x) avec sin(&pi;/6) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin((&pi;/2)+(&pi;/6)) = ","(√3)/2","sin((&pi;/2)+x) = cos(x) avec cos(&pi;/6) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;-(&pi;/6)) =  ","-(√3)/2","cos(&pi;-x) = -cos(x) avec cos(&pi;/6) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;-(&pi;/6)) =  ","1/2","sin(&pi;-x) = sin(x) avec sin(&pi;/6) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;+(&pi;/6)) =  ","-(√3)/2","cos(&pi;+x) = -cos(x) avec cos(&pi;/6) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;+(&pi;/6)) =  ","-1/2","sin(&pi;+x) = -sin(x) avec sin(&pi;/6) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(-(&pi;/6)) = ","(√3)/2","cos(-x) = cos(x) avec cos(&pi;/6) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(-(&pi;/6)) = ","-1/2","sin(-x) = -sin(x) avec sin(&pi;/6) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;/6) = ","(√3)/2","cos(&pi;/6) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;/6) = ","1/2","sin(&pi;/6) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos((&pi;/2)-(&pi;/4)) = ","(√2)/2","cos((&pi;/2)-x) = sin(x) avec sin(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin((&pi;/2)-(&pi;/4)) = ","(√2)/2","sin((&pi;/2)-x) = cos(x) avec cos(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos((&pi;/2)+(&pi;/4)) =  ","-(√2)/2","cos((&pi;/2)+x) = -sin(x) avec sin(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin((&pi;/2)+(&pi;/4)) = ","(√2)/2","sin((&pi;/2)+x) = cos(x) avec cos(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;-(&pi;/4)) =  ","-(√2)/2","cos(&pi;-x) = -cos(x) avec cos(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;-(&pi;/4)) =  ","(√2)/2","sin(&pi;-x) = sin(x) avec sin(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;+(&pi;/4)) =  ","-(√2)/2","cos(&pi;+x) = -cos(x) avec cos(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;+(&pi;/4)) =  ","-(√2)/2","sin(&pi;+x) = -sin(x) avec sin(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(-(&pi;/4)) = ","(√2)/2","cos(-x) = cos(x) avec cos(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(-(&pi;/4)) = ","(√2)/2","sin(-x) = -sin(x) avec sin(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;/4) = ","(√2)/2","cos(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;/4) = ","(√2)/2","sin(&pi;/4) = (√2)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos((&pi;/2)-(&pi;/3)) = ","(√3)/2","cos((&pi;/2)-x) = sin(x) avec sin(&pi;/3) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin((&pi;/2)-(&pi;/3)) = ","1/2","sin((&pi;/2)-x) = cos(x) avec cos(&pi;/3) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos((&pi;/2)+(&pi;/3)) =  ","-(√3)/2","cos((&pi;/2)+x) = -sin(x) avec sin(&pi;/3) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin((&pi;/2)+(&pi;/3)) = ","1/2","sin((&pi;/2)+x) = cos(x) avec cos(&pi;/3) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;-(&pi;/3)) =  ","-1/2","cos(&pi;-x) = -cos(x) avec cos(&pi;/3) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;-(&pi;/3)) =  ","(√3)/2","sin(&pi;-x) = sin(x) avec sin(&pi;/3) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;+(&pi;/3)) =  ","-1/2","cos(&pi;+x) = -cos(x) avec cos(&pi;/3) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;+(&pi;/3)) =  ","-(√3)/2","sin(&pi;+x) = -sin(x) avec sin(&pi;/3) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(-(&pi;/3)) = ","1/2","cos(-x) = cos(x) avec cos(&pi;/3) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(-(&pi;/3)) = ","-(√3)/2","sin(-x) = -sin(x) avec sin(&pi;/3) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["cos(&pi;/3) = ","1/2","cos(&pi;/3) = 1/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				["sin(&pi;/3) = ","(√3)/2","sin(&pi;/3) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
+				];
+			break;			
 			
 			default:
 			break;			
 		}
-		initActivite(nom,libelle, questions);
+		
+		initActivite(nom,libelle,getFormules(questions));
 		afficheQuestion();
 
 }
