@@ -334,6 +334,21 @@ function getQuestions(nom,libelle)
 				questions=partieAutomatismes2ndDegres();
 			break;			
 			
+			case "formulesTrigoCercle":
+				questions = [
+				["cos((&pi;/2)-x) = ","sin(x)","cos((&pi;/2)-x) = sin(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				["sin((&pi;/2)-x) = ","cos(x)","sin((&pi;/2)-x) = cos(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				["cos((&pi;/2)+x) =  ","-sin(x)","cos((&pi;/2)+x) = -sin(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				["sin((&pi;/2)+x) = ","cos(x)","sin((&pi;/2)+x) = cos(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				["cos(&pi;-x) =  ","-cos(x)","cos(&pi;-x) = -cos(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				["sin(&pi;-x) =  ","sin(x)","sin(&pi;-x) = sin(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				["cos(&pi;+x) =  ","-cos(x)","cos(&pi;+x) = -cos(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				["sin(&pi;+x) =  ","-sin(x)","sin(&pi;+x) = -sin(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				["cos(-x) = ","cos(x)","cos(-x) = cos(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				["sin(-x) = ","-sin(x)","sin(-x) = -sin(x)<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoFormules.png\">",[["cos(x)","sin(x)","-cos(x)","-sin(x)"]]],
+				];
+			break;			
+			
 			default:
 			break;			
 		}

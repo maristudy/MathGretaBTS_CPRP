@@ -1,5 +1,5 @@
 function Clavier(tablo,idAffiche,idSaisie)
-{
+{	console.log(tablo);
 	affiche = document.getElementById(idAffiche);
 	if(affiche.innerHTML.length > 5)
 	{
