@@ -348,8 +348,8 @@
 			numQuestion=Number(sessionStorage.getItem("numQuestion"));
 			listeQuestion=JSON.parse(sessionStorage.getItem("listeQuestion"));
 			
-			console.log("reponse saisie = "+reponse.textContent);
-			console.log("reponse attendue = "+listeQuestion[numQuestion][1]);
+//			console.log("reponse saisie = "+reponse.textContent);
+//			console.log("reponse attendue = "+listeQuestion[numQuestion][1]);
 			if(reponse.innerHTML==listeQuestion[numQuestion][1])
 			{
 				resultat.innerHTML="C'est gagné ! Bravo c'est la bonne réponse<br>";
@@ -506,7 +506,6 @@
 						
 ///////////////////////////////////////////////////////////////////
 
-
 	questionSuivante=document.getElementById("questionSuivante");
 	rejouer=document.getElementById("rejouer");
 	retourMenu=document.getElementById("retourMenu");
@@ -542,34 +541,6 @@
 		activites.style.display="block";	
 	}); // fin retourMenu.addEventListener("click"
 
-	function afficheFormulesDroites()
-	{
-		questions=partieFormulesDroites();
-		initActivite("formulesDroites","Les formules sur les droites", questions);
-		afficheQuestion();
-	}
-
-	function afficheAutomatismeDroites()
-	{
-		questions=partieAutomatismesDroites();
-		initActivite("automatismeDroites","Les automatismes sur les droites", questions);
-		afficheQuestion();
-	}
-		
-	function afficheFformules2ndDegres()
-	{
-		questions=partieFormules2ndDegres();
-		initActivite("formules2ndDegres","Les formules sur les équations du 2nd degrés", questions);
-		afficheQuestion();
-	}
-
-	function afficheAutomatisme2ndDegres()
-	{
-		questions=partieAutomatismes2ndDegres();
-		initActivite("automatisme2ndDegres","Les automatismes sur les équations du 2nd degrés", questions);
-		afficheQuestion();
-	}
-	
 	
 	if(localStorage.getItem("prenom") === null )
 	{
@@ -594,56 +565,31 @@
 				
 		activites=document.getElementById("activites");
 				
-/* ajouts des activités au menu -------------------------*/	
-		caseFormule=document.createElement("p");	
-		caseFormule.setAttribute("class","formule");
-		caseFormule.setAttribute("onclick","afficheFormulesDroites()");
-		caseFormule.textContent="Formules - les droites";
-		activites.appendChild(caseFormule);
+		tabActivites=[
+			["formule","Formules - les droites","formulesDroites","Les formules sur les droites"],
+			["automatisme","Automatismes - les droites","automatismeDroites","Les automatismes sur les droites"],
+			["formule","Formules - les équations du second degrés","formules2ndDegres","Les formules sur les équations du 2nd degrés"],
+			["automatisme","Automatismes - les équations du second degrés","automatisme2ndDegres","Les automatismes sur les équations du 2nd degrés"],
+//			[],			
+			];
+				
+				
+			for(let numActi=0;numActi<tabActivites.length;numActi++)
+			{
+				caseFormule=document.createElement("p");	
+				caseFormule.setAttribute("class",tabActivites[numActi][0]);
+				caseFormule.setAttribute("onclick","getQuestions(\""+tabActivites[numActi][2]+"\",\""+tabActivites[numActi][3]+"\")");
+				caseFormule.textContent=tabActivites[numActi][1];
+				activites.appendChild(caseFormule);
+			}
 
-		caseFormule=document.createElement("p");	
-		caseFormule.setAttribute("class","automatisme");
-		caseFormule.setAttribute("onclick","afficheAutomatismeDroites()");		
-		caseFormule.textContent="Automatismes - les droites";
-		activites.appendChild(caseFormule);
-
-		caseFormule=document.createElement("p");	
-		caseFormule.setAttribute("class","formule");
-		caseFormule.setAttribute("onclick","afficheFformules2ndDegres()");
-		caseFormule.textContent="Formules - les équations du second degrés";
-		activites.appendChild(caseFormule);
-		
-		caseFormule=document.createElement("p");	
-		caseFormule.setAttribute("class","automatisme");
-		caseFormule.setAttribute("onclick","afficheAutomatisme2ndDegres()");	
-		caseFormule.textContent="Automatismes - les équations du second degrés";
-		activites.appendChild(caseFormule);
-		
-//		const urlParams = new URLSearchParams(window.location.search);
-//		const activite = urlParams.get('activite');
 
 		nomActivite=document.getElementById("nomActivite");
 		question=document.getElementById("question");
 		bonneReponse=document.getElementById("bonneReponse");
 		conseil=document.getElementById("conseil");
 							
-/*		switch(activite)
-		{
-
-			case "formules2ndDegres":
-
-	//			location.reload();	
-			break;
-			
-			case "automatisme2ndDegres":
-
-		//		location.reload();	
-			break;			
-			
-			default:
-			break;
-		}
-*/				
+	
 				/*
 				"<p id=\"developements\"> Développements </p>"+
 				"<p id=\"factorisations\"> Factorisations </p>"+
