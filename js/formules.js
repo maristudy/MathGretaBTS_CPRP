@@ -54,37 +54,6 @@ function getNbEntierNonNull(max)
 }
 
 
-/*
-	//liste des questions, reponses, conseils, clavier
-let	listeQuestionsFormulesDroites = [
-	["Quelle est l'équation d'une fonction linéaire","y=ax","Une fonction linéaire est une droite qui passe par l'origine du repère. Elle a pour équation y=ax. On dit que a est la pente de la droite.",[["a","b","c","x","y"],["=","+","-","/","*"]]],
-	["Quelle est l'équation d'une fonction affine","y=ax+b","Une fonction affine est une droite qui ne passe pas par l'origine du repère. Elle a pour équation y=ax+b. On dit que a est la pente de la droite et b l'ordonnée à l'origine",[["a","b","c","x","y"],["=","+","-","/","*"]]],
-	["Quelle est l'équation cartésienne d'une droite ?","ax+by+c=0","Par définition, l'équation cartésienne d'une droite est ax+by+c=0",[["a","b","c","x","y","-1","0","1"],["=","+","-","/","*"]]],
-	["Une droite a pour équation cartésienne ax+by+c=0. Quelles sont les coordonnées du vecteur directeur de cette droite ?","(-b;a)","Par définition, une droite d'équation cartésienne ax+by+c=0 a pour vecteur directeur (-b;a). On fera attention aux notations : <br>les coordonnées s'écrivent entre parenthèses et sont séparées par un point virgule.",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
-	["Une droite a pour équation cartésienne ax+by+c=0. Quel est le coefficient directeur de la droite ?","(-a)/b","Une droite dont l'équation cartésienne est ax+by+c=0 a pour coefficient directeur m = (-a)/b.",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
-	["Quel est le vecteur directeur d'une droite dont le coefficient directeur est m ?","(1;m)","Une droite qui a pour coefficient directeur m, a pour vecteur directeur (1;m). On fera attention aux notations : <br>les coordonnées s'écrivent entre parenthèses et sont séparées par un point virgule.",[["a","b","c","x","y","m","1","2"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
-	["Quelle est l'équation réduite d'une droite dont le coefficient directeur est m et l'ordonnée à l'origine est p ?","y=mx+p","Une droite dont le coefficient directeur est m, et p son ordonnée à l'origine, a pour équation réduite y=mx+p",[["x","y","p","m"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
-	["Une droite a pour équation réduite y=mx+p. Quelle est l'ordonnée à l'origine de la droite ?","p","Lorsqu'une droite a pour équation réduite y=mx+p, alors p est l'ordonnée à l'origine",[["x","y","p","m","1","/","*"]]],
-	["Une droite a pour équation réduite y=mx+p. Quel est le coefficient directeur de la droite ?","m","Lorsqu'une droite a pour équation réduite y=mx+p, alors m est le coefficient directeur de la droite",[["x","y","p","m","1","/","*"]]],
-	["Une droite a pour équation réduite y=mx+p. Quel est le vecteur directeur de la droite ?","(1;m)","Lorsqu'une droite a pour équation réduite y=mx+p, alors le vecteur directeur de la droite est (1;m)",[["x","y","p","m","1"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
-	["Une droite passe par le point A (x<sub>A</sub>;y<sub>A</sub>) et par le point B (x<sub>B</sub>;y<sub>B</sub>). Quel est le coefficient directeur de la droite ?","(y<sub>B</sub>-y<sub>A</sub>)/(x<sub>B</sub>-x<sub>A</sub>)","Lorsqu'une droite passe par les points A et B, alors son coefficient directeur est (y<sub>B</sub>-y<sub>A</sub>)/(x<sub>B</sub>-x<sub>A</sub>)",[["x<sub>A</sub>","y<sub>A</sub>","x<sub>B</sub>","y<sub>B</sub>"],["(","{","[","]","}",")",":",";",","],["+","-","/","*"]]],
-	["Une droite a pour équation cartésienne ax+by+c=0. Quelle est l'ordonnée à l'origine de la droite ?","(-c)/b","Une droite dont l'équation cartésienne est ax+by+c=0 a pour ordonnée à l'origine (-c)/b.",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]]
-	];
-
-let listeQuestionsFormules2ndDegres = [
-	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Quelle formule permet de calculer &Delta; ?","b<sup>2</sup>-4ac","formule à connaitre : &Delta;=b<sup>2</sup>-4ac",[["a","b","c","<sup>2</sup>","&plusmn;","&radic;","+","-"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]]],
-	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;>0","2","Si &Delta;>0 alors l'équation a deux solutions.",[["Pas de solutions dans ℝ"],[0,1,2,3,4,5,6,7,8,9]]],
-	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;=0","1","Si &Delta;=0 alors l'équation a une seule solutions.",[["Pas de solutions dans &Ropf;"],[0,1,2,3,4,5,6,7,8,9]]],
-	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;<0","Pas de solutions dans ℝ","Si &Delta;<0 alors l'équation n'a pas de solution dans &Ropf;. Les solutions sont complexes. ",[["Pas de solutions dans &Ropf;"],[0,1,2,3,4,5,6,7,8,9]]],
-	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;>0. Quelle formule permet de connaitre les solutions ?","(-b±√Δ)/2a","C'est une formule à connaitre, si &Delta;>0 alors les solutions sont (-b&plusmn;&radic;&Delta;)/2a",[["a","b","c","x","y"],["&Delta;","&plusmn;","<sup>2</sup>","&radic;","=","+","-","/","*"],["(","{","[","]","}",")",":",";",","],[0,1,2,3,4,5,6,7,8,9]]],
-	["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;=0. Quelle formule permet de connaitre la solution ?","-b/2a","C'est une formule à connaitre, si &Delta;=0 alors les solutions sont (-b&plusmn;)/2a",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","],[0,1,2,3,4,5,6,7,8,9]]],
-	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]x<sub>1</sub>;x<sub>2</sub>[","signe de -a","P(x) a le signe de a hors des solutions et le signe de -a entre les solutions.",[["positif","négatif","signe de a","signe de -a"]]],
-	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]-&infin;;x<sub>1</sub>[","signe de a","P(x) a le signe de a hors des solutions et le signe de -a entre les solutions.",[["positif","négatif","signe de a","signe de -a"]]],
-	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]x<sub>2</sub>;+infin;[","signe de a","P(x) a le signe de a hors des solutions et le signe de -a entre les solutions.",[["positif","négatif","signe de a","signe de -a"]]],
-	["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub>. Comment s'écrit sa forme factorisée ?","a(x-x<sub>1</sub>)(x-x<sub>2</sub>)","C'est une formule à connaitre : P(x)=ax<sup>2</sup>+bx+c = a(x-x<sub>1</sub>)(x-x<sub>2</sub>)",[["a","b","c","x","y","x<sub>1</sub>","x<sub>2</sub>"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","]]],
-	];
-*/
-
 function getFormules(tabQuestions)
 {
 
@@ -317,11 +286,11 @@ function getQuestions(nom,libelle)
 			
 			case "formules2ndDegres":
 				questions = [
-				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Quelle formule permet de calculer &Delta; ?","b<sup>2</sup>-4ac","formule à connaitre : &Delta;=b<sup>2</sup>-4ac",[["a","b","c","<sup>2</sup>","&plusmn;","√","+","-"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]]],
+				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Quelle formule permet de calculer &Delta; ?","b<sup>2</sup>-4ac","formule à connaitre : &Delta;=b<sup>2</sup>-4ac",[["a","b","c","a<sup>2</sup>","b<sup>2</sup>","c<sup>2</sup>","&plusmn;","√","+","-"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]]],
 				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;>0","2","Si &Delta;>0 alors l'équation a deux solutions.",[["Pas de solutions dans ℝ"],[0,1,2,3,4,5,6,7,8,9]]],
 				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;=0","1","Si &Delta;=0 alors l'équation a une seule solutions.",[["Pas de solutions dans &Ropf;"],[0,1,2,3,4,5,6,7,8,9]]],
 				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. Combien de solutions à cette équation si &Delta;<0","Pas de solutions dans ℝ","Si &Delta;<0 alors l'équation n'a pas de solution dans &Ropf;. Les solutions sont complexes. ",[["Pas de solutions dans &Ropf;"],[0,1,2,3,4,5,6,7,8,9]]],
-				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;>0. Quelle formule permet de connaitre les solutions ?","(-b±√Δ)/2a","C'est une formule à connaitre, si &Delta;>0 alors les solutions sont (-b&plusmn;√&Delta;)/2a",[["a","b","c","x","y"],["&Delta;","&plusmn;","<sup>2</sup>","√","=","+","-","/","*"],["(","{","[","]","}",")",":",";",","],[0,1,2,3,4,5,6,7,8,9]]],
+				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;>0. Quelle formule permet de connaitre les solutions ?","(-b±√Δ)/2a","C'est une formule à connaitre, si &Delta;>0 alors les solutions sont (-b&plusmn;√&Delta;)/2a",[["a","b","c","x","y"],["&Delta;","&plusmn;","a<sup>2</sup>","b<sup>2</sup>","c<sup>2</sup>","√","=","+","-","/","*"],["(","{","[","]","}",")",":",";",","],[0,1,2,3,4,5,6,7,8,9]]],
 				["Soit une équation du second degrés : ax<sup>2</sup>+bx+c=0. On sait que &Delta;=0. Quelle formule permet de connaitre la solution ?","-b/2a","C'est une formule à connaitre, si &Delta;=0 alors les solutions sont (-b&plusmn;)/2a",[["a","b","c","x","y"],["=","+","-","/","*"],["(","{","[","]","}",")",":",";",","],[0,1,2,3,4,5,6,7,8,9]]],
 				["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]x<sub>1</sub>;x<sub>2</sub>[","signe de -a","P(x) a le signe de a hors des solutions et le signe de -a entre les solutions.",[["positif","négatif","signe de a","signe de -a"]]],
 				["Soit le polynôme du second degrés P(x) = ax<sup>2</sup>+bx+c=0. P(x) = 0 admet deux solutions x<sub>1</sub> et x<sub>2</sub> telles que x<sub>1</sub>&lt;x<sub>2</sub>. Quel est le signe de P(x) sur l'interval ]-&infin;;x<sub>1</sub>[","signe de a","P(x) a le signe de a hors des solutions et le signe de -a entre les solutions.",[["positif","négatif","signe de a","signe de -a"]]],
@@ -397,6 +366,39 @@ function getQuestions(nom,libelle)
 				["sin(&pi;/3) = ","(√3)/2","sin(&pi;/3) = (√3)/2<br><img width=\"100%\" alt =\"cercle trigo\" src=\"../images/cercleTrigoAutomatisme.png\">",[["-","/","(√2)","(√3)"],["0","1","2","3"]]],
 				];
 			break;			
+			
+			case "formules1erDegres":
+				questions = [
+				["Soit l'équation ax+b=0. On a alors ax = ","-b","On place b de l'autre côté du égal, on change son signe",[["-","+","/"],["a","b","c","x","y"]]],
+				["Soit l'équation ax+b=0. On a alors a = ","-b/x","On place b de l'autre côté du égal, on change son signe. Puis on déplace le x de l'autre côté du égal. Comme il était un multiple de a, il devient un diviseur.",[["-","+","/"],["a","b","c","x","y"]]],				
+				["Soit l'équation ax+b=0. On a alors x = ","-b/a","On place b de l'autre côté du égal, on change son signe. Puis on déplace le a de l'autre côté du égal. Comme il était un multiple de x, il devient un diviseur.",[["-","+","/"],["a","b","c","x","y"]]],				
+				["Soit l'équation ax+by+c=0. On a alors y = ","(-c-ax)/b","On place c et ax de l'autre côté du égal, on change les signes. Puis on déplace le b de l'autre côté du égal. Comme il était un multiple de y, il devient un diviseur.",[["-","+","/"],["a","b","c","x","y"],["(","{","[","]","}",")",":",";",","]]],				
+				["Soit l'équation ax+by+c=0. On a alors x = ","(-c-by)/a","On place c et by de l'autre côté du égal, on change les signes. Puis on déplace le a de l'autre côté du égal. Comme il était un multiple de x, il devient un diviseur.",[["-","+","/"],["a","b","c","x","y"],["(","{","[","]","}",")",":",";",","]]],				
+				["Soit l'équation ax+by+c=0. On a alors c = ","-ax-by","On place ax et by de l'autre côté du égal, on change les signes. ",[["-","+","/"],["a","b","c","x","y"],["(","{","[","]","}",")",":",";",","]]],				
+				["Soit l'équation U=RI. On a alors R = ","U/I","On place I de l'autre côté du égal, comme il était un multiple de R, il devient un diviseur. ",[["-","+","/"],["U","R","I"],["(","{","[","]","}",")",":",";",","]]],				
+				["Soit l'équation U=RI. On a alors I = ","U/R","On place R de l'autre côté du égal, comme il était un multiple de I, il devient un diviseur. ",[["-","+","/"],["U","R","I"],["(","{","[","]","}",")",":",";",","]]],				
+				["Soit l'équation y=ax+b. On a alors x = ","(y-b)/a","On place b de l'autre côté du égal, on change son signe. Puis on déplace le a de l'autre côté du égal. Comme il était un multiple de x, il devient un diviseur.",[["-","+","/"],["a","b","c","x","y"],["(","{","[","]","}",")",":",";",","]]],				
+				];			
+			break;
+
+			case "automatisme1erDegres":
+				a=getSigne()*getNbEntierNonNull(5);
+				k=getSigne()*getNbEntierNonNull(5);
+				b=a*k;
+				j=getSigne()*getNbEntierNonNull(5);
+				c=a*j;
+				R=getNbEntierNonNull(5);
+				I=getNbEntierNonNull(5);
+				U=R*I
+				questions = [
+				["Soit l'équation "+a+"x"+(b<0?"":"+")+b+"=0. On a alors x = ",""+(-1*k),"On place "+(b<0?"":"+")+b+" de l'autre côté du égal, on change son signe. Puis on divise par "+(a<0?"":"+")+a+"",[["-","+","/"],[0,1,2,3,4,5,6,7,8,9]]],
+				["Soit l'équation "+a+"x"+(b<0?"":"+")+b+"="+(c<0?"":"+")+c+". On a alors x = ",""+(j-k),"On place "+(b<0?"":"+")+b+" de l'autre côté du égal, on change son signe. Puis on divise par "+(a<0?"":"+")+a+"",[["-","+","/"],[0,1,2,3,4,5,6,7,8,9]]],				
+ 				["Soit l'équation "+a+"x"+(b<0?"":"+")+b+"y"+(c<0?"":"+")+c+"=0. On a alors y = ","("+(-1*c)+((-1*a)<0?"":"+")+(-1*a)+"x)/"+b+"","On place"+(c<0?"":"+")+c+"et "+a+"x"+" de l'autre côté du égal, on change les signes. Puis on déplace le "+(b<0?"":"+")+b+" de l'autre côté du égal. Comme il était un multiple de y, il devient un diviseur.",[["-","+","/"],[0,1,2,3,4,5,6,7,8,9,"x","y"],["(","{","[","]","}",")",":",";",","]]],				
+ 				["Soit l'équation "+a+"x"+(b<0?"":"+")+b+"y"+(c<0?"":"+")+c+"=0. On a alors x = ","("+(-1*c)+((-1*b)<0?"":"+")+(-1*b)+"y)/"+a+"","On place"+(c<0?"":"+")+c+"et "+b+"y"+" de l'autre côté du égal, on change les signes. Puis on déplace le "+(a<0?"":"+")+a+" de l'autre côté du égal. Comme il était un multiple de x, il devient un diviseur.",[["-","+","/"],[0,1,2,3,4,5,6,7,8,9,"x","y"],["(","{","[","]","}",")",":",";",","]]],				
+ 				["Soit l'équation "+U+"=R"+I+". On a alors R = ",""+R,"On place "+I+" de l'autre côté du égal, comme il était un multiple de R, il devient un diviseur. ",[["-","+","/"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]]],				
+				["Soit l'équation "+U+"="+R+"I. On a alors I = ",""+I+"","On place "+R+" de l'autre côté du égal, comme il était un multiple de I, il devient un diviseur. ",[["-","+","/"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",":",";",","]]],				
+				];			
+			break;
 			
 			default:
 			break;			

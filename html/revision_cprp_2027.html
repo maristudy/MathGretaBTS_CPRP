@@ -512,7 +512,7 @@
 	stats=document.getElementById("stats");
 
 	questionSuivante.addEventListener("click",() => {afficheQuestion(); });
-	rejouer.addEventListener("click",() => {sessionStorage.clear();location.reload();});
+	rejouer.addEventListener("click",() => {getQuestions(sessionStorage.getItem("nom"),sessionStorage.getItem("libelle"));});
 
 	retourMenu.addEventListener("click",() => {
 		sessionStorage.clear();
@@ -568,12 +568,12 @@
 		tabActivites=[
 			["formule","Formules - les droites","formulesDroites","Les formules sur les droites"],
 			["automatisme","Automatismes - les droites","automatismeDroites","Les automatismes sur les droites"],
+			["formule","Formules - les équations du premier degrés","formules1erDegres","Les formules sur les équations du premier degrés"],	
+			["automatisme","Automatismes - les équations du premier degrés","automatisme1erDegres","Les automatismes sur les équations du premier degrés"],
 			["formule","Formules - les équations du second degrés","formules2ndDegres","Les formules sur les équations du 2nd degrés"],
 			["automatisme","Automatismes - les équations du second degrés","automatisme2ndDegres","Les automatismes sur les équations du 2nd degrés"],
 			["formule","Formules - le cercle trigonométrique","formulesTrigoCercle","Les formules sur le cercle trigonométrique"],	
 			["automatisme","Automatismes - le cercle trigonométrique","automatismeTrigoCercle","Les automatismes sur le cercle trigonométrique"],
-//			[],	
-//			[],	
 //			[],	
 //			[],	
 //			[],	
@@ -604,20 +604,18 @@
 				"<p id=\"factorisations\"> Factorisations </p>"+
 				"<p id=\"idremarquables\"> Identités Remarquables </p>"+
 				"<p id=\"eqdegres1\"> Equations Premier degrés </p>"+
-				"<p id=\"eqdegres2\"> Equations second degrés </p>"+
 				"<p id=\"exponentiel\"> Exponentiel </p>"+
 				"<p id=\"logarithme\"> Logarithme </p>"+
-				"<p id=\"cercletrigo\"> Cercle trigonométrique </p>"+
-				"<p id=\"sincos\"> Sinus / Cosinus </p>"+
+				"<p id=\"derivees\"> Les dérivées </p>"+
+				"<p id=\"primitives\"> Les primitives </p>"+
+				"<p id=\"integrales\"> Les intégrales </p>"+
+				
 				"<p id=\"convlong\"> Convertir longueurs </p>"+
 				"<p id=\"convcapa\"> Convertir capacités </p>"+
 				"<p id=\"convmasses\"> Convertir masses </p>"+
 				"<p id=\"convsurfaces\"> Convertir surfaces </p>"+
 				"<p id=\"convvolumes\"> Convertir volumes </p>"+
 				"<p id=\"volumescapacites\"> Volumes et capacités </p>"+
-				"<p id=\"derivees\"> Les dérivées </p>"+
-				"<p id=\"primitives\"> Les primitives </p>"+
-				"<p id=\"integrales\"> Les intégrales </p>"+
 				"<p id=\"proba\"> Les probabilités </p>"+
 				"<p id=\"stats\"> Les statistiques </p>"+
 				"<p id=\"limites\"> Les limites </p>"+
