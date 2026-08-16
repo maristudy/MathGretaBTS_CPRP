@@ -178,7 +178,7 @@ function partieAutomatismesDroites()
 	
 	listeQuestions=[[q01,r01,e01,c01],[q02,r02,e02,c02],[q03,r03,e03,c03],[q04,r04,e04,c04],[q05,r05,e05,c05],[q06,r06,e06,c06],[q07,r07,e07,c07],[q08,r08,e08,c08],[q09,r09,e09,c09],[q10,r10,e10,c10]];
 	
-	
+
 	return(getFormules(listeQuestions));
 	
 }
@@ -253,7 +253,7 @@ function partieAutomatismes2ndDegres()
 	
 	listeQuestions=[[q01,r01,e01,c01],[q02,r02,e02,c02],[q03,r03,e03,c03],[q04,r04,e04,c04],[q05,r05,e05,c05],[q06,r06,e06,c06],[q07,r07,e07,c07],[q08,r08,e08,c08]];
 	
-	
+
 	return(getFormules(listeQuestions));
 	
 }
@@ -405,8 +405,8 @@ function getQuestions(nom,libelle)
 				["(a+b)<sup>2</sup> = ","a<sup>2</sup>+2ab+b<sup>2</sup>","Formule à connaitre : (a+b)<sup>2</sup> = a<sup>2</sup>+2ab+b<sup>2</sup>",[["-","+","/"],["a","b","a<sup>2</sup>","b<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9]]],
 				["(a-b)<sup>2</sup> = ","a<sup>2</sup>-2ab+b<sup>2</sup>","Formule à connaitre : (a-b)<sup>2</sup> = a<sup>2</sup>-2ab+b<sup>2</sup>",[["-","+","/"],["a","b","a<sup>2</sup>","b<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9]]],				
 				["(a-b)(a+b) = ","a<sup>2</sup>-b<sup>2</sup>","Formule à connaitre : (a-b)(a+b) = a<sup>2</sup>-b<sup>2</sup>",[["-","+","/"],["a","b","a<sup>2</sup>","b<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9]]],				
-				["a<sup>2</sup>+2ab+b<sup>2</sup> = ","(a+b)<sup>2</sup>","Formule à connaitre : a<sup>2</sup>+2ab+b<sup>2</sup> = (a+b)<sup>2</sup>",[["-","+","/"],["a","b","a<sup>2</sup>","b<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")"]]],				
-				["a<sup>2</sup>-2ab+b<sup>2</sup> = ","(a-b)<sup>2</sup>","Formule à connaitre : a<sup>2</sup>-2ab+b<sup>2</sup> = (a-b)<sup>2</sup>",[["-","+","/"],["a","b","a<sup>2</sup>","b<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")"]]],				
+				["a<sup>2</sup>+2ab+b<sup>2</sup> = ","(a+b)<sup>2</sup>","Formule à connaitre : a<sup>2</sup>+2ab+b<sup>2</sup> = (a+b)<sup>2</sup>",[["-","+","/"],["a","b","a<sup>2</sup>","b<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",")<sup>2</sup>","]<sup>2</sup>","}<sup>2</sup>"]]],				
+				["a<sup>2</sup>-2ab+b<sup>2</sup> = ","(a-b)<sup>2</sup>","Formule à connaitre : a<sup>2</sup>-2ab+b<sup>2</sup> = (a-b)<sup>2</sup>",[["-","+","/"],["a","b","a<sup>2</sup>","b<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")",")<sup>2</sup>","]<sup>2</sup>","}<sup>2</sup>"]]],				
 				["a<sup>2</sup>-b<sup>2</sup>= ","(a-b)(a+b)","Formule à connaitre : a<sup>2</sup>-b<sup>2</sup>= (a-b)(a+b)",[["-","+","/"],["a","b","a<sup>2</sup>","b<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")"]]],				
 				["a(b+c) = ","ab+ac","C'est la distributivité simple. Formule à connaitre : a(b+c) = ab+ac ",[["-","+","/"],["a","b","c","a<sup>2</sup>","b<sup>2</sup>","c<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")"]]],				
 				["ab+ac = ","a(b+c)","On factorise par a. Formule à connaitre : ab+ac = a(b+c)",[["-","+","/"],["a","b","c","a<sup>2</sup>","b<sup>2</sup>","c<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")"]]],				
