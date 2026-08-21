@@ -439,6 +439,20 @@ function getQuestions(nom,libelle)
 				["Développer ("+A+"x+"+B+")("+C+"y+"+D+")=",""+(A*C)+"xy+"+(A*D)+"x+"+(B*C)+"y+"+(B*D)+"","C'est la double distributivité. Formule à connaitre : (a+b)(c+d)= ac+ad+bc+bd. Ici a="+A+"x , b="+B+", c= "+C+"y et d="+D+"",[["-","+","/"],["x","x<sup>2</sup>","y","y<sup>2</sup>"],[0,1,2,3,4,5,6,7,8,9],["(","{","[","]","}",")"]]],				
 				];			
 			break;
+
+			case "formulesDerivees":
+				questions = [
+				["Quelle est la dérivée de x<sup>n</sup> ?","nx<sup>n-1</sup>","Formule à connaitre : (x<sup>n</sup>)' = n x <sup>n-1</sup>",[["(n-1)","n","(n+1)"],["x<sup>n-1</sup>","x<sup>n</sup>","x<sup>n+1</sup>"],["-","+","/"]]],
+				["Quelle est la dérivée de ln(u) ?","u'/u","Formule à connaitre : (ln(u))' = u'/u",[["u","u'"],["-","+","/"]]],
+				["Quelle est la dérivée de e<sup>u</sup> ?","u'e<sup>u</sup>","Formule à connaitre : (e<sup>u</sup>)' = u'e<sup>u</sup>",[["u","u'"],["e<sup>u</sup>","e<sup>u'</sup>"],["-","+","/"]]],
+				["Quelle est la dérivée de u.v ?","u'v+uv'","Formule à connaitre : (u.v)' = u'v+uv'",[["u","u'","v","v'"],["-","+","/"]]],
+				["Quelle est la dérivée de u/v ?","(u'v-uv')/v<sup>2</sup>","Formule à connaitre : (u/v)' = (u'v-uv')/v<sup>2</sup>",[["u","u'","v","v'","u<sup>2</sup>","v<sup>2</sup>"],["-","+","/","(",")"]]],
+				["Quelle est la dérivée de sin(u) ?","u'cos(u)","Formule à connaitre : (sin(u))' = u'cos(u)",[["u","u'"],["sin(u)","cos(u)","sin(u')","cos(u')"],["-","+","/"]]],
+				["Quelle est la dérivée de cos(u) ?","-u'sin(u)","Formule à connaitre : (cos(u))' = -u'sin(u)",[["u","u'"],["sin(u)","cos(u)","sin(u')","cos(u')"],["-","+","/"]]],
+				["Quelle est la dérivée de 1/x ?","(-1)/x<sup>2</sup>","Formule à connaitre : (1/x)' = (-1)/x<sup>2</sup>",[["(-1)","1","x<sup>-2</sup>","x","x<sup>2</sup>"],["+","/"]]],
+				["Quelle est la dérivée de &radic;x ?","1/2√x","Formule à connaitre : (&radic;x)' = 1/2&radic;x",[["(-1)","1","(-2)","2","x<sup>-2</sup>","x","x<sup>2</sup>","&radic;-x","&radic;x"],["+","/"]]],
+				];			
+			break;
 			
 			default:
 			break;			
