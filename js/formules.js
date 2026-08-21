@@ -450,7 +450,7 @@ function getQuestions(nom,libelle)
 				["Quelle est la dérivée de sin(u) ?","u'cos(u)","Formule à connaitre : (sin(u))' = u'cos(u)",[["u","u'"],["sin(u)","cos(u)","sin(u')","cos(u')"],["-","+","/"]]],
 				["Quelle est la dérivée de cos(u) ?","-u'sin(u)","Formule à connaitre : (cos(u))' = -u'sin(u)",[["u","u'"],["sin(u)","cos(u)","sin(u')","cos(u')"],["-","+","/"]]],
 				["Quelle est la dérivée de 1/x ?","(-1)/x<sup>2</sup>","Formule à connaitre : (1/x)' = (-1)/x<sup>2</sup>",[["(-1)","1","x<sup>-2</sup>","x","x<sup>2</sup>"],["+","/"]]],
-				["Quelle est la dérivée de &radic;x ?","1/2√x","Formule à connaitre : (&radic;x)' = 1/2&radic;x",[["(-1)","1","(-2)","2","x<sup>-2</sup>","x","x<sup>2</sup>","&radic;-x","&radic;x"],["+","/"]]],
+				["Quelle est la dérivée de &radic;x ?","1/2√x","Formule à connaitre : (&radic;x)' = 1/2&radic;x",[["(-1)","1","(-2)","2","x<sup>-2</sup>","x","x<sup>2</sup>","&radic;-x","&radic;x"],["+","/"]]]
 				];			
 			break;
 			

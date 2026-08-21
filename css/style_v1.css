@@ -1,0 +1,60 @@
+* {
+	padding : 0px;
+	margin : 0px;
+}
+
+body {
+	background-color : #555555;
+	color : #e0e0e0;
+	font-family: sans-serif;
+	font-size: 14px;
+}
+
+a , a:visited {
+	color: #80caff; 
+}
+
+.video a:visited , .video a  {
+	color: #f2b2b2; 
+}
+
+.interro a:visited , .interro a  {
+	color: #86fac4; 
+}
+
+
+li {
+	margin-left:15px;
+	padding-left:15px;
+}
+
+ul {
+	margin-left:15px;
+	padding-left:15px;
+}
+
+section , article {
+	margin-top : 10px;
+	margin-bottom:10px;
+	margin-left:15px;
+}
+
+article {
+	display:none;
+}
+
+h2 {
+	background-color:#424242;
+}
+
+.cache {
+	display : none ;
+}
+
+.visible {
+	display : block ;
+}
+
+.cours{
+	margin-top:15px ;
+}
