@@ -59,3 +59,5 @@ function affiche(annee)
 
 annee=document.URL.split("#")[1];
 affiche(annee);
+
+
