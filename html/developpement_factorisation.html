@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/style.css">
+
+        <title>générateur exercice - Developpement et factorisation</title>
+    </head>
+    <body>
+	
+		<style>
+			table {
+				border : solid 1px white;
+			}
+			
+			td {
+				border : solid 1px white;
+				width:200px;
+				height:40px;
+				text-align:center;
+			}
+
+			body{
+				font-size: 1.5em;
+			}
+			
+			.cache {
+				display:none;
+			}
+			
+			sub, sup {
+				font-size : 0.5em;
+			}
+			
+
+			#affiche {
+			margin:25px 0px 25px 0px;
+			padding : 10px;
+			border : 1px solid #eeeeee;
+			border-radius : 10px;
+			background : #333333;
+			width : fit-content;
+			}
+			
+			#reponse .big {
+				font-size: 1em;
+			}
+			
+		@media screen and (min-width: 795px) {
+			body{
+				font-size: 1em;
+				}
+			}				
+			
+		</style>
+		<header>
+			<p><a href="https://maristudy.github.io/MathGretaBTS_CPRP/"> accueil du site </a> </p>
+		</header>
+		<main>
+		
+
+			<a href="../../index.html">Retour à l'accueil</a>
+			<div class="enonce">
+				<p>	x<sub>A</sub><sup>2</sup></p>
+			</div>
+			<p id="affiche">Afficher la réponse</p>
+			<div id="reponse" class="cache">
+			
+			</div>
+
+		</main>
+		<footer>
+
+		</footer>
+		
+		<script>
+			
+			
+			a1=Math.floor(Math.random()*10)-5;
+			while(a1 == 0)
+			{
+				a1=Math.floor(Math.random()*10)-5;
+			}
+			
+			b1=Math.floor(Math.random()*10)-5;
+			while((b1 == 0) || (a1 == b1))
+			{
+				b1=Math.floor(Math.random()*10)-5;
+			}
+			
+			c1=Math.floor(Math.random()*10)-5;
+			while((c1 == 0) || (c1 == b1) || (c1 == a1))
+			{
+				c1=Math.floor(Math.random()*10)-5;
+			}
+			
+			a2=Math.floor(Math.random()*10)-5;
+			while(a2 == 0)
+			{
+				a2=Math.floor(Math.random()*10)-5;
+			}
+			
+			b2=Math.floor(Math.random()*10)-5;
+			while((b2 == 0) || (a2 == b2))
+			{
+				b2=Math.floor(Math.random()*10)-5;
+			}
+			
+			c2=Math.floor(Math.random()*10)-5;
+			while((c2 == 0) || (c2 == b2) || (c2 == a2))
+			{
+				c2=Math.floor(Math.random()*10)-5;
+			}
+			
+			d2=Math.floor(Math.random()*10)-5;
+			while((d2 == 0) || (d2 == b2) || (d2 == a2) || (d2 == c2))
+			{
+				d2=Math.floor(Math.random()*10)-5;
+			}
+
+			
+			a3=Math.floor(Math.random()*10)-5;
+			while(a3 == 0)
+			{
+				a3=Math.floor(Math.random()*10)-5;
+			}
+			
+			b3=Math.floor(Math.random()*10)-5;
+			while((b3 == 0) || (a3 == b3))
+			{
+				b3=Math.floor(Math.random()*10)-5;
+			}
+			
+			c3=Math.floor(Math.random()*10)-5;
+			while((c3 == 0) || (c3 == b3) || (c3 == a3))
+			{
+				c3=Math.floor(Math.random()*10)-5;
+			}		
+			
+			d3=Math.floor(Math.random()*10)-5;
+			while((d3 == 0) || (d3 == b3) || (d3 == a3) || (d3 == c3))
+			{
+				d3=Math.floor(Math.random()*10)-5;
+			}
+			
+			a4=Math.floor(Math.random()*10)-5;
+			while(a4 == 0)
+			{
+				a4=Math.floor(Math.random()*10)-5;
+			}
+			
+			b4=Math.floor(Math.random()*10)-5;
+			while((b4 == 0) || (a4 == b4))
+			{
+				b4=Math.floor(Math.random()*10)-5;
+			}
+			
+			a5=Math.floor(Math.random()*10)-5;
+			while(a5 == 0)
+			{
+				a5=Math.floor(Math.random()*10)-5;
+			}
+			
+			b5=Math.floor(Math.random()*10)-5;
+			while((b5 == 0) || (a5 == b5))
+			{
+				b5=Math.floor(Math.random()*10)-5;
+			}
+			
+			c5=Math.floor(Math.random()*10)-5;
+			while((c5 == 0) || (c5 == b5) || (c5 == a5))
+			{
+				c5=Math.floor(Math.random()*10)-5;
+			}		
+			
+			d5=Math.floor(Math.random()*10)-5;
+			while((d5 == 0) || (d5 == b5) || (d5 == a5) || (d5 == c5))
+			{
+				d5=Math.floor(Math.random()*10)-5;
+			}
+			
+			e5=Math.floor(Math.random()*10)-5;
+			while((e5 == 0) || (e5 == a5) || (e5 == b5) || (e5 == c5) || (e5 == d5) )
+			{
+				e5=Math.floor(Math.random()*10)-5;
+			}
+			
+			f5=Math.floor(Math.random()*10)-5;
+			while((f5 == 0) || (f5 == a5) || (f5 == b5) || (f5 == c5) || (f5 == d5) || (f5 == e5) )
+			{
+				f5=Math.floor(Math.random()*10)-5;
+			}			
+			
+			tabQR=[
+			["Développez et réduire "+a1+" ( "+(b1==1?"":b1)+"x "+(c1>0?"+"+c1:c1)+" )"," = "+(a1*b1)+"x "+((a1*c1)<0?"+"+(a1*c1):(a1*c1)],
+			["Développez et réduire ( "+a2+" "+(b2>0?"+"+b2:b2)+" x )( "+c2+" "+(d2>0?"+"+d2:d2)+" x )"," = "+(b2*d2)+" x<sup>2</sup> "+((a2*d2+b2*c2)>0?"+"+(a2*d2+b2*c2):(a2*d2+b2*c2)+" x "+((a2*c2)>0:"+"+(a2*c2):(a2*c2)],
+			["Développez et réduire ",""],
+			["Développez et réduire ",""],
+			["Fatorisez ",""],
+			["Fatorisez ",""]];
+			
+			avantagesContact="<br>On peut mesurer une température de surface si la sonde ou la surface le permet<br>On peut mesurer une température interne lorsque la sonde pénètre dans la matière<br>On peut mesurer la température d'un gaz ou d'un liquide";
+			inconvenientsContact="Le temps de réponse est assez lent. Il faut attendre que le thermomètre se matte à l'équilibre thermique<br>L'exactitude de la mesure dépend de la qualité du contact sonde/cible<br>La température maximale est limitée par la résistance des matériaux";
+			
+			avantagesIR="La mesure est instantanée<br>Ils peuvent mesurer les températures très élevées<br>Ils fonctionnent lorsqu'il est impossible de toucher la cible (liquide corrosif, cylindre en rotation)<br>La mesure est fiable et rapide";
+			inconvenientsIR="Il peut mesurer uniquement une température de surface<br>On ne peut pas mesurer la température d'un gaz<br>il faut configurer l'emissivité<br>Il fonctionne avec des pile ou une batterie";
+						
+			tabThermometre =[ 	["Thermomètre à tube de verre","Un liquide coloré se dilate","Fonctionne sans électricité<br>La mesure est précise<br>En fonction du choix du liquide, il peut être utilisé entre -200°C et +1000 °C"+avantagesContact,"Le tube de verre est très fragile<br>"+inconvenientsContact] ,
+								["Thermomètre bimétallique","Il est composé d'une lame bimétallique qui se déforme sous l'effet de la chaleur. Cette déformation fait bouger une aiguille qui indique la température","Fonctionne sans électricité"+avantagesContact,"Le temps de réponse est lent<br>Ils sont sensibles aux vibrations"+inconvenientsContact],
+								["Thermomètre électronique","Il est composé d'un capteur qui transforme la chaleur en une résistance électrique. En mesurant cette résistance électrique, on peut en déduire la température",""+avantagesContact,"Ils fonctionnent avec des piles ou une batterie<br>"+inconvenientsContact],
+								["Thermomètre Infrarouge","Le rayonnement émis par une surface est focalisé par une lentille vers un détecteur infrarouge dont le signal de sortie est converti en mesure lisible sur l’afficheur du thermomètre.",""+avantagesIR,""+inconvenientsIR]
+								];
+			
+			enonce = document.getElementsByClassName("enonce")[0];
+			enonce.innerHTML= "<br>(/0.5) Question 1 : Convertissez en Kelvin la température de "+C1+" °C : <br><br>"+
+				 "<br>(/0.5) Question 2 : Convertissez en degrés Celsius la température de "+K2+",15 K : <br><br>"+
+				 "Question 3 : Vous disposez d'un thermomètre "+tabThermometre[indiceThermo][0]+".<br>(/0.5) Donnez le principe de fonctionnement de ce type de thermomètre : <br><br><br><br><br>"+
+				 "(/1) Donnez 2 avantages de ce type de thermomètre : <br><br><br><br><br>"+
+				 "(/1) Donnez 2 inconvénients de ce type de thermomètre : <br><br><br><br><br>";
+				 
+		<!-- <sub> pour indice <sup> pour exposant &infin; symbole infini ; &Delta symbol delta;-->
+		<!-- https://www.w3schools.com/html/html_symbols.asp -->
+		
+			reponse = document.getElementById("reponse");
+			reponse.innerHTML= "<br>(/0.5) Question 1 : Convertissez en Kelvin la température de "+C1+" °C : "+K1+",15 K"+
+				 "<br>(/0.5) Question 2 : Convertissez en degrés Celsius la température de "+K2+",15 K : "+C2+" °C<br>"+
+				 "Question 3 : Vous disposez d'un "+tabThermometre[indiceThermo][0]+".<br>(/0.5) Donnez le principe de fonctionnement de ce type de thermomètre : <br>"+tabThermometre[indiceThermo][1]+
+				 "<br><br>(/1) Donnez 2 avantages de ce type de thermomètre : <br>"+tabThermometre[indiceThermo][2]+
+				 "<br><br>(/1) Donnez 2 inconvénients de ce type de thermomètre : <br>"+tabThermometre[indiceThermo][3];                                                                                                                                        
+	
+
+			affiche=document.getElementById("affiche");
+			affiche.addEventListener("click",() => {
+				document.getElementById("reponse").classList.toggle("cache");
+		
+			});
+			
+		</script>
+		
+	</body>
+</html>
