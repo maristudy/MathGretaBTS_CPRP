@@ -43,7 +43,7 @@
 				display:flex;
 				width:100%
 				border-bottom : solid 1px black;
-				margin-top : 15px;
+				margin-top : 10px;
 			}
 			
 			.identite div {
@@ -52,8 +52,8 @@
 			
 			.nbSujet {
 				text-align: center;
-				margin-top:20px;
-				padding-bottom:20px;
+				margin-top:0px;
+				padding-bottom:0px;
 				border-bottom : solid 1px black;
 			}
 					
@@ -72,7 +72,7 @@
 			}
 
 			.reponse {
-			padding-bottom:15px;
+			padding-bottom:5px;
 				break-before: page;
 				border-bottom : solid 1px black;
 			}
@@ -131,7 +131,7 @@
 		
 		<script>
 		
-		let nbEleves = 15;
+		let nbEleves = 20;
 			
 		for(let i=0;i<=nbEleves;i++)
 		{
@@ -151,14 +151,14 @@
 
 				reponse = document.createElement("div");
 				reponse.setAttribute("class","reponse");
-				reponse.innerHTML = "BTS CPRP 2 - équations différentielles ordre 1 - solution affine - Correction numéro "+i+"<br><br>" +
-							"1) Déterminer une solution affine particulière de l'équation différentielle (E) : "+a+" y ' + "+b+" y = "+c+" x + "+d+" <br><br>"+
+				reponse.innerHTML = "BTS CPRP 2 - équations différentielles ordre 1 - solution affine - Correct° num "+i+"<br>" +
+							"1) Déterminer une solut° affine particulière de l'équat° différentielle <br>(E) : "+a+" y ' + "+b+" y = "+c+" x + "+d+" <br>"+
 								"(0.5) forme générale d'une fonction affine : y(x) = a x + b<br>"+
 								"(0.5) dérivée de la forme générale de la fonction affine : y'(x) = a<br>"+
 								"(0.5) équation à résoudre : "+a+".(a) + "+b+".(a x + b) = "+c+" x + "+d+"<br>"+
 								"(0.5) calculs : "+b+"ax + "+a+"a + "+b+"b = "+c+" x + "+d+" <br>"+
 								"(0.5) système à résoudre :  <br>&nbsp;&nbsp;("+b+"a = "+c+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; donc a = "+c+" / "+b+" &nbsp;&nbsp;  a = "+(c/b)+"<br>&nbsp;&nbsp;("+a+"a + "+b+"b = "+d+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; donc b = ("+d+" - ("+a+". "+(c/b)+")) / "+b+") &nbsp;&nbsp;  b = "+((d-((a*c)/b))/b)+"<br>"+
-								"(0.5) solution : a = "+(c/b)+" et b = "+((d-((a*c)/b))/b)+" . <br>La solution particulière de (E) est y(x) = "+(c/b)+" x + "+((d-((a*c)/b))/b)+"<br>";
+								"(0.5) solution : a = "+(c/b)+" et b = "+((d-((a*c)/b))/b)+" . <br>La solution particulière de (E) est y(x) = "+(c/b)+" x + "+((d-((a*c)/b))/b)+"";
 		
 								
 				sujet.appendChild(reponse);
@@ -185,16 +185,14 @@
 				sujet.appendChild(divSujet);
 			
 				enonce=document.createElement("div");
-			enonce.innerHTML= "1) Déterminer une solution affine particulière de l'équation différentielle (E) : "+a+" y ' + "+b+" y = "+c+" x + "+d+" <br><br>"+
+			enonce.innerHTML= "1) Déterminer une solution affine particulière de l'équation différentielle(E):"+a+" y ' + "+b+" y = "+c+" x + "+d+" <br>"+
 								"(0.5) forme générale d'une fonction affine : <br><br>"+
 								"(0.5) dérivée de la forme générale de la fonction affine : <br><br>"+
 								"(0.5) équation à résoudre : <br><br>"+
-								"(0.5) calculs : <br><br><br><br><br><br><br><br><br><br><br><br>"+
-								"(0.5) système à résoudre :  <br><br><br><br><br><br><br><br><br><br><br><br><br><br>"+
-								"(0.5) solution : <br><br>";			
+								"(0.5) calculs : <br><br><br><br><br><br><br><br><br><br><br>"+
+								"(0.5) système à résoudre :  <br><br><br><br><br><br><br><br><br><br><br><br><br>"+
+								"(0.5) solution : ";			
 
-				
-				
 				sujet.appendChild(enonce);
 				
 

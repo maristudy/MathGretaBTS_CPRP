@@ -52,8 +52,8 @@
 			
 			.nbSujet {
 				text-align: center;
-				margin-top:20px;
-				padding-bottom:20px;
+				margin-top:0px;
+				padding-bottom:0px;
 				border-bottom : solid 1px black;
 			}
 					
@@ -72,9 +72,10 @@
 			}
 
 			.reponse {
-			padding-bottom:15px;
+			padding-bottom:0px;
 				break-before: page;
 				border-bottom : solid 1px black;
+				font-size:12px;
 			}
 			
 			hr {
@@ -152,12 +153,12 @@
 
 				reponse = document.createElement("div");
 				reponse.setAttribute("class","reponse");
-				reponse.innerHTML = "BTS CPRP 2 - les nombres complexes  - formes algébriques et calculs - Correction numéro "+i+"<br><br>" +
+				reponse.innerHTML = "BTS CPRP 2 - les nombres complexes-formes algébriques et calculs-Cor. num "+i+"<br>" +
 				"z<sub>1</sub> = "+b+" + "+c+" i &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; et &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+
 			"z<sub>2</sub> = "+e+" + "+f+" i <br>"+
 			"1/ Ecrire sous forme algébrique "+a+" x z<sub>1</sub> : "+
-			"Calculs (0.5) : "+
-			"résultats (0.5) : "+(a*b)+" + "+(a*c)+"i <br>"+
+			"Calculs(0.5) : "+
+			"résult(0.5) : "+(a*b)+" + "+(a*c)+"i <br>"+
 			"2/ Ecrire sous forme algébrique ("+d+"i ) x z<sub>2</sub> : "+
 			"Calculs (0.5) : "+
 			"résultats (0.5) : - "+(f*d)+" + "+(e*d)+" i <br>"+
@@ -168,9 +169,9 @@
 			"Calculs (1) : "+
 			"résultats (0.5) : "+((b*e)-(c*f))+" + "+((b*f)+(e*c))+" i <br>"+		
 			"5/ Ecrire sous forme algébrique z<sub>1</sub> / z<sub>2</sub>  : "+
-			"Calculs (numérateur : 1 / dénominateur : 0.5) : <br>"+
+			"Calculs (num : 1/dénom : 0.5) : <br>"+
 			"résultats (0.5) : ("+ ((b*e)+(c*f))+" + "+((e*c)-(b*f))+" i ) / "+((e*e)+(f*f))+
-			"<br><br><br>";
+			"";
 								
 				sujet.appendChild(reponse);
 				
@@ -191,7 +192,7 @@
 				
 				divSujet = document.createElement("div");
 				divSujet.setAttribute("class","nbSujet");
-				divSujet.innerHTML = "BTS CPRP 2 - les nombres complexes  - formes algébriques et calculs - Sujet numéro "+i;
+				divSujet.innerHTML = "BTS CPRP 2 - les nombres complexes-formes algébriques et calculs - Sujet "+i;
 				
 				sujet.appendChild(divSujet);
 			
@@ -213,7 +214,7 @@
 			"résultats (0.5) :<br><br>"+		
 			"5/ Ecrire sous forme algébrique z<sub>1</sub> / z<sub>2</sub>  : <br>"+
 			"Calculs (numérateur : 1 / dénominateur : 0.5) : <br><br><br><br><br><br><br><br><br>"+
-			"résultats (0.5) :<br><br>"+	
+			"résultats (0.5) :"+	
 			"";			
 
 		
